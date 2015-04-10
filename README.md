@@ -1,4 +1,4 @@
-[Thesis Build Status](https://www.sharelatex.com/github/repos/cornetto/thesis-v1)
+[Thesis Build Status](https://www.sharelatex.com/github/repos/onuryilmaz/thesis-tex)
 
-![](https://www.sharelatex.com/github/repos/cornetto/thesis-v1/builds/latest/badge.svg)
+![](https://www.sharelatex.com/github/repos/onuryilmaz/thesis-tex/builds/latest/badge.svg)
 
