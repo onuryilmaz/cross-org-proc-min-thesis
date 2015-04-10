@@ -1,0 +1,6 @@
+﻿introduction'da overview için şunu örnek alabilirsin:
+Towards Comprehensive Support for Organizational Mining
+
+
+coselog datasını anlatmak için de burdan alabilirsin: 
+Towards Cross-Organizational Process Mining in Collections of Process Models and their Executions
