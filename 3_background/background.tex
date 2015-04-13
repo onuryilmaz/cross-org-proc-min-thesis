@@ -2,7 +2,7 @@
 
 \chapter{BACKGROUND}
 \label{chp:background}
-#TODO
+#TODO write
 
 \section{Event Log}
 \label{sec:event-log}
@@ -136,31 +136,43 @@ Business Process Modeling Notation (BPMN) is one of the most popular and widely 
 
 \section{Process Discovery}
 \label{sec:process-discovery}
-In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address process discovery challenges. Therefore, a simple and highly applicable process mining approach is exploited throughout the study. With this aim, Alpha algorithm is selected to be appropriate since it is a theoretical benchmark for most of further studies in this field. Alpha algorithm focused on discovering Petri nets and derivatives like Workflow nets since they ensure concurrency, choices and iterations \cite{van2011process}.
+In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address process discovery challenges. Therefore, it is considered that using a simple, highly applicable and configurable process mining approach is appropriate. Inductive Process Mining \cite{leemans2013discovering} and its derivatives \cite{leemans2014discoveringinfrequent} \cite{leemans2014discoveringincomplete} \cite{weidlich2012profiles} which addresses different challenges are used within this thesis according to the event data specifications. In the following subsections, these algorithms and the challenges that they are addressing are explained within the scope of this thesis.
 
-% inductive miner ile dene, 
-	% loan ile aynı, yenisini dene çalışıyor, rapor çıkar
-% background'ı ilerlet, toparla
-% hocadan gelen yorumları düzelt
+\subsection{Inductive Process Mining}
+\label{sec:inductive-process-mining}
+\cite{leemans2013discovering}
+We present an extensible framework to discover from any given log a set of block-structured process models that are sound and fit the observed behaviour. In addition we characterise the minimal information required in the log to rediscover a particular process model.
+In this paper, we focus on soundness and fitness, as so far no existing discovery algorithm guarantees to return a sound fitting model in finite time
 
-\subsection{Alpha Algorithm}
-\label{sec:alpha-algorithm}
+bu direk olarak kullanılmıyor, framework 
 
-%However, the α-algorithm should not be seen as a very practical mining 				technique as it has problems with noise, infrequent/incomplete behavior, and complex 				routing constructs. Nevertheless, it provides a good introduction into the topic. The α-algorithm is simple and many of its ideas have been embedded in more complex 				and robust techniques. We will use the algorithm as a baseline for discussing 				the challenges related to process discovery and for introducing more practical algorithms. -> burası  \cite{van2013discovering}
+
+
+variant'ları:
+1)Inductive Miner – infrequent (default)
+Applies noise filtering during mining. The threshold for noise filtering can be set using the slider ‘noise threshold’; 0.00 filters no noise, 1.00 filters noise maximally. For more information, \cite{leemans2014discoveringinfrequent}
+
+2)Inductive Miner – incompleteness
+Applies the divide-and-conquer strategy, but uses optimisation techniques to find the ‘best’ division locally. Might take a while for event logs containing > 30 activities. For more information, \cite{leemans2014discoveringincomplete}
+
+3)Inductive Miner - exhaustive K-successor
+Applies the divide-and-conquer strategy, but searches for the best division according to the K-successor relation, \cite{weidlich2012profiles}
+
+prom üzerinde geldiğini ve oradan kullanıldığını belirt
 
 \section{Replay Algorithm}
 \label{sec:replay-algorithm}
-#TODO
+#TODO write
 % burayı 2.3.2'den performance ile enhance et
 
 \section{Unsupervised Learning}
 \label{sec:unsupervised-learning}
-#TODO
+#TODO write
 
 \subsection{K-means Clustering}
 \label{sec:kmeans-clustering}
-#TODO
+#TODO write
 
 \section{Mismatch Patterns}
 \label{sec:mismatch-patterns}
-#TODO
+#TODO write
