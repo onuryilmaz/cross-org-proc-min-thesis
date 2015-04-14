@@ -134,10 +134,17 @@ Business Process Modeling Notation (BPMN) is one of the most popular and widely 
 \label{sec:process-discovery}
 In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges. With this reasoning, Inductive Process Mining \cite{leemans2013discovering} is selected as appropriate since it is simple, highly applicable and configurable. In the literature, its derivatives which handles infrequent behaviors \cite{leemans2014discoveringinfrequent}; incomplete logs \cite{leemans2014discoveringincomplete}; and model optimization \cite{weidlich2012profiles} are also available.  
 
-\textit{Inductive Miner}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a key attribute in this study. Formalization of the key points in this study are as following:
+\textit{Inductive Miner (IM)}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a key attribute in this study. Formalization of the key points in this study are as following:
 
-- rediscoverability
-- block structured process model  
+\theoremstyle{definition}
+\begin{definition}{}
+(Block-structured Workflow Nets) Block-structured WF-nets are subset of WF-nets where the workflow can be divided recursively into  parts with single entry and exit points.  
+\end{definition}
+
+\theoremstyle{definition}
+\begin{definition}{}
+(Rediscoverability) Let a process is expressible by a model $M$ which is unknown priori. Given a log $L$ of $M$, $L$ is a subset of language used to describe model $M$. $M$ is isomorphic-rediscoverable from $L$ by mining algorithm $B$ if and only if $M \in B(L)$.
+\end{definition}
  
 Framework developed in the study \cite{leemans2013discovering} used a divide-and-conquer approach to discover subprocesses of sublogs obtained by splitting the event log. Main steps of the algorithm are listed as following:
 \begin{enumerate}
@@ -146,18 +153,8 @@ Framework developed in the study \cite{leemans2013discovering} used a divide-and
   \item Recursive Mining: Mine sublogs with these steps until a sublog contains only single activity.
 \end{enumerate}
 
-In this study \cite{leemans2013discovering}, an algorithm based on this framework is presented that gurantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior which is used within this study to address challenges of different event logs.
- 
-\cite{leemans2014discoveringinfrequent}
-Being an extension to \textit{Inductive Miner}, 
-% 1)Inductive Miner – infrequent (default) Applies noise filtering during mining. The threshold for noise filtering can be set using the slider ‘noise threshold’; 0.00 filters no noise, 1.00 filters noise maximally. For more information, 
-
-%In this section, we introduce Inductive Miner - infrequent (IMi) by adding infrequent behaviour filters to all steps of IM. For each of the operational steps of IM it is described how infrequent behaviour affects the step and how distinguishing frequent and infrequent behaviour can be used to improve discovery of the 80\% model. In each recursion step, IMi first applies the steps of IM unaltered. Only if this fails and IM would return a flower model, the filters are applied. Frequencies of traces and events are ignored by IM but are taken into account by IMi in order to distinguish frequent and infrequent behaviour. In the operator and cut selection steps, two techniques are applied: filtering the directly-follows graph for infrequent edges and using a variant of the directly-follows graph for selection of !. Filters are added to base case detection to filter accumulated artifacts of filtering over recursions. In the following, k denotes a user-defined threshold value between 0 and 1 to separate frequent and infrequent behaviour. Filters on the operator and cut selection steps are described first, followed by filters on base cases, and filters on log splitting.
-
-% Compared with IM, models discovered by IMi have a lower fitness, higher precision, equal generalisation and comparable simplicity.
-
-Variants of \textit{Inductive Miner} are developed on ProM framework \cite{verbeek2010prom} and published as plugins by their authors. In this study, infrequent behavior capable implementation is used for experimenting the cross-organizational mining of process models.
-
+In the study \cite{leemans2013discovering}, an algorithm based on this framework is presented that gurantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior which is used within this study to address challenges of different event logs. Frequent behavior is caused by the traces in the logs that might follow many different paths. In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \texit{IM}, filtering is applied if the discovered model is a flower modek which represents infrequent behavior. Basic idea behind filtering is considering the trace and event frequency with a user-defined threshold between 0 to 1. Using this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
+In this thesis study, infrequent behavior capable implementation is used for experimenting the cross-organizational mining of process models with their implementation of ProM framework \cite{verbeek2010prom}.
 
 \section{Replay Algorithm}
 \label{sec:replay-algorithm}
