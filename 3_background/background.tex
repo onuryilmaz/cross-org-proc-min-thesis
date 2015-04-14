@@ -136,29 +136,45 @@ Business Process Modeling Notation (BPMN) is one of the most popular and widely 
 
 \section{Process Discovery}
 \label{sec:process-discovery}
-In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address process discovery challenges. Therefore, it is considered that using a simple, highly applicable and configurable process mining approach is appropriate. Inductive Process Mining \cite{leemans2013discovering} and its derivatives \cite{leemans2014discoveringinfrequent} \cite{leemans2014discoveringincomplete} \cite{weidlich2012profiles} which addresses different challenges are used within this thesis according to the event data specifications. In the following subsections, these algorithms and the challenges that they are addressing are explained within the scope of this thesis.
+In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges. Therefore, it is considered that using a simple, highly applicable and configurable process mining approach is appropriate. Inductive Process Mining \cite{leemans2013discovering} and its derivatives \cite{leemans2014discoveringinfrequent} \cite{leemans2014discoveringincomplete} \cite{weidlich2012profiles} which addresses different challenges are used within this thesis according to specifications of event data. In the following subsections, these algorithms and the challenges that they are addressing are explained within the scope of this thesis.
 
 \subsection{Inductive Process Mining}
 \label{sec:inductive-process-mining}
-\cite{leemans2013discovering}
-We present an extensible framework to discover from any given log a set of block-structured process models that are sound and fit the observed behaviour. In addition we characterise the minimal information required in the log to rediscover a particular process model.
-In this paper, we focus on soundness and fitness, as so far no existing discovery algorithm guarantees to return a sound fitting model in finite time
+\textit{Inductive Miner}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a key attribute in this study. Formalization of the key points in this study are as following:
 
-bu direk olarak kullanılmıyor, framework 
+- rediscoverability
+- block structured process model  
+ 
+Framework developed in this study used a divide-and-conquer approach to discover subprocesses of sublogs obtained by splitting the event log. Main steps of the algorithm are listed as following:
 
+\begin{enumerate}
+  \item Activity Sets: Split the \textit{activities} in log to disjoint sets.
+  \item Sublogs: Split the \textit{log} by using \textit{activity sets}.
+  \item Recursive Mining: Mine sublogs with these steps until a sublog contains only single activity.
+\end{enumerate}
 
+In this study \cite{leemans2013discovering}, an algorithm based on this framework is presented that gurantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extensions, which are presented in the following subsections, are used within this study to address challenges of different event logs.
 
-variant'ları:
-1)Inductive Miner – infrequent (default)
-Applies noise filtering during mining. The threshold for noise filtering can be set using the slider ‘noise threshold’; 0.00 filters no noise, 1.00 filters noise maximally. For more information, \cite{leemans2014discoveringinfrequent}
+\subsubsection{Inductive Miner for Infrequent Behavior}
+\label{sec:inductive-miner-infrequent}
+\cite{leemans2014discoveringinfrequent}
+Being an extension to \textit{Inductive Miner}, 
+% 1)Inductive Miner – infrequent (default) Applies noise filtering during mining. The threshold for noise filtering can be set using the slider ‘noise threshold’; 0.00 filters no noise, 1.00 filters noise maximally. For more information, 
 
-2)Inductive Miner – incompleteness
-Applies the divide-and-conquer strategy, but uses optimisation techniques to find the ‘best’ division locally. Might take a while for event logs containing > 30 activities. For more information, \cite{leemans2014discoveringincomplete}
+%In this section, we introduce Inductive Miner - infrequent (IMi) by adding infrequent behaviour filters to all steps of IM. For each of the operational steps of IM it is described how infrequent behaviour affects the step and how distinguishing frequent and infrequent behaviour can be used to improve discovery of the 80\% model. In each recursion step, IMi first applies the steps of IM unaltered. Only if this fails and IM would return a flower model, the filters are applied. Frequencies of traces and events are ignored by IM but are taken into account by IMi in order to distinguish frequent and infrequent behaviour. In the operator and cut selection steps, two techniques are applied: filtering the directly-follows graph for infrequent edges and using a variant of the directly-follows graph for selection of !. Filters are added to base case detection to filter accumulated artifacts of filtering over recursions. In the following, k denotes a user-defined threshold value between 0 and 1 to separate frequent and infrequent behaviour. Filters on the operator and cut selection steps are described first, followed by filters on base cases, and filters on log splitting.
 
-3)Inductive Miner - exhaustive K-successor
-Applies the divide-and-conquer strategy, but searches for the best division according to the K-successor relation, \cite{weidlich2012profiles}
+\subsubsection{Inductive Miner for Incomplete Event Logs}
+\label{sec:inductive-miner-incomplete}
+\cite{leemans2014discoveringincomplete}
+% 2)Inductive Miner – incompleteness: Applies the divide-and-conquer strategy, but uses optimisation techniques to find the ‘best’ division locally. Might take a while for event logs containing > 30 activities. For more information, 
 
-prom üzerinde geldiğini ve oradan kullanıldığını belirt
+\subsubsection{Inductive Miner for Incomplete Event Logs}
+\label{sec:inductive-miner-incomplete}
+\cite{weidlich2012profiles}
+% 3)Inductive Miner - exhaustive K-successor: Applies the divide-and-conquer strategy, but searches for the best division according to the K-successor relation, 
+
+Variants of \textit{Inductive Miner} are developed on ProM framework \cite{verbeek2010prom} and published as plugins by their authors. In this study, these implementations are used for experimenting the cross-organizational mining of process models.
+
 
 \section{Replay Algorithm}
 \label{sec:replay-algorithm}
