@@ -151,6 +151,8 @@ Framework developed in the study \cite{leemans2013discovering} uses a divide-and
   \item Recursive Mining: Mine sublogs with these steps until a sublog contains only single activity.
 \end{enumerate}
 
+#TODO Recursive mining nasıl yapılıyor genişlet!
+
 In the study \cite{leemans2013discovering}, an algorithm based on this framework is presented that gurantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior which is used within this study to address challenges of different event logs. Frequent behavior is caused by the traces in the logs that might follow many different paths. In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \texit{IM}, filtering is applied if the discovered model is a flower modek which represents infrequent behavior. Basic idea behind filtering is considering the trace and event frequency with a user-defined threshold between 0 to 1. Using this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
 In this thesis study, infrequent behavior capable implementation is used for experimenting the cross-organizational mining of process models with their implementation of ProM framework \cite{verbeek2010prom}.
 
@@ -159,14 +161,36 @@ In this thesis study, infrequent behavior capable implementation is used for exp
 #TODO write
 % burayı 2.3.2'den performance ile enhance et
 
-\section{Unsupervised Learning}
+\section{Machine Learning and Clustering}
 \label{sec:unsupervised-learning}
-#TODO write
+Machine learning is a study area of computer science which have roots in pattern recognition and computational learning theory of artficial intelligence. MAchine learning approaches works on construction and learning from data to make further predictions. There are various approaches proposed in this area and clustering approach will be presented in this section. Cluster analysis is based on assigning the set of observations into subsets (\textit{clusters}) so that observations within the same cluster are similar whereas the observations from different clusters are dissimilar, where the similarity criteria is predefined. Clustering is a method in unsupervised learning, where the main problem is learning a hidden structure in unlabeled data. Since the provided data is unlabeled there is no error or reward assignment to the potential solutions provided these approaches; however, quality metrics on clusters are used to evaluate results. With these characteristics, clustering is a common technique in exploratory data mining and statistical data analysis and it is used in many fields like image analysis, information retrieval and bioinformatics.
 
-\subsection{K-means Clustering}
-\label{sec:kmeans-clustering}
-#TODO write
+In cluster analysis, various algorithms are proposed with different notions on defining clusters and how to efficiently find them. Popular approaches are based on the idea of decreasing the distance among the members of same cluster, space density of data space, intervals or particular statistical distributions. Within this thesis study, centroid-based clustering is used in which the clusters are defined by a central vector, which may not a member of data set. When number of clusters are fixed to \textit{k}, the approach is named as \textit{k-means clustering} and the problem is finding k cluster centers and assigning data members to nearest cluster center while minimizing the squared distances of data members to the assigned cluster centers. Although seems easy, this optimization problem is NP-hard and most of the implementations include approximate solutions. A well-known algorithm in k-means clustering is Lloyd's algorithm and it is referred as \textit{k-means algorithm} and its variation based on random initialization \textit{k-means++} are formalized in the study of Arthur and Vassilvitskii \cite{arthur2007}:
+ 
+\theoremstyle{definition}
+\begin{definition}{k-means Algorithm}
+\begin{enumerate}
+  \item Arbitrarily choose initial k centers: $C={c_1,c_2,...c_k}$
+  \item For each $i \in {1,...k}$, set the cluster C_i to be the set of points that are closer to $c_i$ than they are to $c_j$ for all $i\neqj$.
+  \item For each $i \in {1,...k}$, set $c_i$ to be the center of mass of all points in $C_i$. $c_i=\frac{1}{|C_i|} \sum_{\substack{x\in C_i}} x$
+  \item Repeat Step 2 and 3 until C no longer changes.
+\end{enumerate}
+\end{definition}
 
-\section{Mismatch Patterns}
-\label{sec:mismatch-patterns}
+\theoremstyle{definition}
+\begin{definition}{k-means++ Algorithm}
+\begin{enumerate}
+  \item Take one center $c_1$, chosen uniformly from data points $X$.
+  \item Take a new center $c_i$, chosen from data points $X$ with probability $\frac{D(x)^2}{\sum_{\substack{x\in X}} D(x)^2}$
+  \item Repeat Step 2 until $k$ cluster centers are selected.
+  \item Proceed with the 2-4 steps of k-means algorithm.
+\end{enumerate}
+\end{definition}
+
+
+In this thesis study, clustering of performance analysis results is undertaken and since the number of data instances low an approach focused on initialization is selected. Implementation of \textit{k-means++} in WEKA (Waikato Environment for Knowledge
+Analysis) \cite{hall2009} is used as Java API to call from ProM Framework \cite{verbeek2010prom}. 
+
+\section{Mismatch Patterns in Process Models}
+\label{sec:mismatch-patterns-in-process-models}
 #TODO write
