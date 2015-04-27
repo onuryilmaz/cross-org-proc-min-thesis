@@ -62,7 +62,7 @@ Event log structure and related notions are formalized in \cite{van2011process} 
 (Event Log) Event log is set of cases \textit{L} $\subseteq$ \textit{C} such that each event occurs at most one in the event log.
 \end{definition}
 
-In this study, event logs from different organizations are exploited, thus organization related attributes are used for cases. Within these event logs, traces of cases for each organizational is used to discover underlying process models. In addition, timestamp and resource related attributes of events are used to collect performance related data for further analysis.
+In this study, event logs from different organizations are exploited, thus organization related attributes are used for cases. Within these event logs, traces of cases for each organizational is used to discover underlying process models. In addition, timestamps and resource related attributes of events are used to collect performance related data for further analysis.
 
 \section{Process Modeling}
 \label{sec:process-modeling}
@@ -70,13 +70,13 @@ Process modeling is the foundation of process management applications and main t
 
 \subsection{Petri Nets}
 \label{sec:petri-nets}
-Petri net is a mathematical modeling language that is aimed to describe concurrent systems. Graphical notation of Petri nets seems intuitive and simple; however, it is powerful in terms of being executable and applicability of analysis techniques \cite{vanderAalst:2011:MBP:2000715}. Petri nets are directed bipartite graphs where nodes \textit{represent} transitions and \textit{places} represent conditions. Structure represented by Petri nets is static and the state of the net is described by placint \textit{tokens}, namely the process of \textit{marking}. Formalization of Petri nets are explained in \cite{reisig1998lectures} as following:
+Petri net is a mathematical modeling language that is aimed to describe concurrent systems. Graphical notation of Petri nets seems intuitive and simple; however, it is powerful in terms of being executable and applicability of analysis techniques \cite{vanderAalst:2011:MBP:2000715}. Petri nets are directed bipartite graphs where nodes \textit{represent} transitions and \textit{places} represent conditions. Structure represented by Petri nets is static and the state of the net is described by placing \textit{tokens}, namely the process of \textit{marking}. Formalization of Petri nets are explained in \cite{reisig1998lectures} as following:
 
 \theoremstyle{definition}
 \begin{definition}{}
 (Petri Nets) A \textit{Petri net} is a triplet $N = (P, T, F)$ where $P$ is finite set of \textit{places}, $T$ is finite set of \textit{transitions} and $F$ is set of \textit{flow relations} where:
 \begin{enumerate}
-  \item (Seperation) $P \cap T = \varnothing$
+  \item (Separation) $P \cap T = \varnothing$
   \item (Flow relation) $F \subseteq (P \times T) \cup (T \times P)$
 \end{enumerate}
 \end{definition}
@@ -103,7 +103,7 @@ In simple terms, a Workflow net is a Petri net with a source place to start the 
   \label{fig:loan-petri-net}
 \end{figure}
 
-Workflow nets are representative to real life processes; however, they can result with processes including deadlocks, livelocks and never-reached activities. In order to avoid process models from these problems, soundness definition is suggested in \cite{van1998application} and it is simplified as following with the context of this thesis:
+Workflow nets are representative to real life processes; however, they can result with processes including deadlocks, live-locks and never-reached activities. In order to avoid process models from these problems, soundness definition is suggested in \cite{van1998application} and it is simplified as following with the context of this thesis:
 \theoremstyle{definition}
 \begin{definition}{}
 (Soundness) Let $N$ be a Workflow net and it is sound if and only if:
@@ -153,7 +153,7 @@ Framework developed in the study \cite{leemans2013discovering} uses a divide-and
 
 #TODO Recursive mining nasıl yapılıyor genişlet!
 
-In the study \cite{leemans2013discovering}, an algorithm based on this framework is presented that gurantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior which is used within this study to address challenges of different event logs. Frequent behavior is caused by the traces in the logs that might follow many different paths. In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \texit{IM}, filtering is applied if the discovered model is a flower modek which represents infrequent behavior. Basic idea behind filtering is considering the trace and event frequency with a user-defined threshold between 0 to 1. Using this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
+In the study \cite{leemans2013discovering}, an algorithm based on this framework is presented that guarantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior which is used within this study to address challenges of different event logs. Frequent behavior is caused by the traces in the logs that might follow many different paths. In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \texit{IM}, filtering is applied if the discovered model is a flower model which represents infrequent behavior. Basic idea behind filtering is considering the trace and event frequency with a user-defined threshold between 0 to 1. Using this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
 In this thesis study, infrequent behavior capable implementation is used for experimenting the cross-organizational mining of process models with their implementation of ProM framework \cite{verbeek2010prom}.
 
 \section{Process Performance Analysis}
@@ -163,7 +163,7 @@ In this thesis study, infrequent behavior capable implementation is used for exp
 
 \section{Machine Learning and Clustering}
 \label{sec:unsupervised-learning}
-Machine learning is a study area of computer science which have roots in pattern recognition and computational learning theory of artficial intelligence. MAchine learning approaches works on construction and learning from data to make further predictions. There are various approaches proposed in this area and clustering approach will be presented in this section. Cluster analysis is based on assigning the set of observations into subsets (\textit{clusters}) so that observations within the same cluster are similar whereas the observations from different clusters are dissimilar, where the similarity criteria is predefined. Clustering is a method in unsupervised learning, where the main problem is learning a hidden structure in unlabeled data. Since the provided data is unlabeled there is no error or reward assignment to the potential solutions provided these approaches; however, quality metrics on clusters are used to evaluate results. With these characteristics, clustering is a common technique in exploratory data mining and statistical data analysis and it is used in many fields like image analysis, information retrieval and bioinformatics.
+Machine learning is a study area of computer science which have roots in pattern recognition and computational learning theory of artificial intelligence. Machine learning approaches works on construction and learning from data to make further predictions. There are various approaches proposed in this area and clustering approach will be presented in this section. Cluster analysis is based on assigning the set of observations into subsets (\textit{clusters}) so that observations within the same cluster are similar whereas the observations from different clusters are dissimilar, where the similarity criteria is predefined. Clustering is a method in unsupervised learning, where the main problem is learning a hidden structure in unlabeled data. Since the provided data is unlabeled there is no error or reward assignment to the potential solutions provided these approaches; however, quality metrics on clusters are used to evaluate results. With these characteristics, clustering is a common technique in exploratory data mining and statistical data analysis and it is used in many fields like image analysis, information retrieval and bioinformatics.
 
 In cluster analysis, various algorithms are proposed with different notions on defining clusters and how to efficiently find them. Popular approaches are based on the idea of decreasing the distance among the members of same cluster, space density of data space, intervals or particular statistical distributions. Within this thesis study, centroid-based clustering is used in which the clusters are defined by a central vector, which may not a member of data set. When number of clusters are fixed to \textit{k}, the approach is named as \textit{k-means clustering} and the problem is finding k cluster centers and assigning data members to nearest cluster center while minimizing the squared distances of data members to the assigned cluster centers. Although seems easy, this optimization problem is NP-hard and most of the implementations include approximate solutions. A well-known algorithm in k-means clustering is Lloyd's algorithm and it is referred as \textit{k-means algorithm} and its variation based on random initialization \textit{k-means++} are formalized in the study of Arthur and Vassilvitskii \cite{arthur2007}:
  
@@ -193,4 +193,23 @@ Analysis) \cite{hall2009} is used as Java API to call from ProM Framework \cite{
 
 \section{Mismatch Patterns in Process Models}
 \label{sec:mismatch-patterns-in-process-models}
-#TODO write
+
+In cross-organizational process mining environment, there is a need to align processes of different organizations and in this scope both the organizations and their processes are similar but have significant differences. In order to align these processes and organizations, there is a need for spotting differences between process models. In the study of Dijkman \cite{dijkman2007mismatch}, a collection of patterns to describe frequent mismatches between the similar process models are presented. Mismatch patterns are grouped into three as authorization, activity and control flow mismatch patterns. Authorization mismatch patterns are based on assignment of the same tasks to different roles in different processes and left outside the scope of this thesis. Activity mismatch patterns are based on representing the tasks of a process by a different collection of activities in a different process, or not representing at all. Within the scope of this study, the related mismatch patterns are defined in study \cite{dijkman2007mismatch} as following:
+
+\begin{description}
+  \item[Skipped Activity] An activity exists in one process but no equivalent activity is found in the other process as illustrated in Figure~.
+  \item[Interchanged Activity] An activity exists in one process but as an equivalent another activity is found in the other process to achieve the same task as illustrated in Figure~.
+  \item[Refined Activity] An activity exists in one process but as an equivalent a collection of activities are existing in the other process to achieve the same task. An illustration is provided in Figure~. 
+\end{description}
+ 
+Control flow mismatch patterns are based on using different control-flow relations and dependencies for the same activities in different processes. Within the scope of this study, the following control flow mismatch patterns are defined in study \cite{dijkman2007mismatch}:
+
+\begin{description}
+  \item[Activities at Different Moments in Processes] Set of activities are undertaken with different orders in different processes as shown in Figure~.
+  \item[Different Conditions for Occurrence] Set of dependencies are same for two processes; however, occurrence condition is different. An example is provided in Figure~.
+  \item[Different Dependencies] Set of activities have differ in their dependency sets. An example of this pattern is shown in Figure~.
+  \item[Additional Dependencies] This pattern is a special case of different dependencies where one set of activities includes the other and results with additional dependencies as illustrated in Figure~.
+\end{description}
+
+
+As mentioned in the study \cite{dijkman2007mismatch}, their approach does not create a comprehensive list to resolve all mismatches but the most common ones spotted during case studies. In addition, there are no algorithms provided to spot these mismatches in \cite{dijkman2007mismatch} or consequent studies, and thus implementation of spotting mismatch patterns are kept within the scope of this thesis study. 
