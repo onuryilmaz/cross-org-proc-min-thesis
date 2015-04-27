@@ -2,7 +2,7 @@
 
 \chapter{BACKGROUND}
 \label{chp:background}
-#TODO write
+\todo{WRITE}
 
 \section{Event Log}
 \label{sec:event-log}
@@ -151,14 +151,12 @@ Framework developed in the study \cite{leemans2013discovering} uses a divide-and
   \item Recursive Mining: Mine sublogs with these steps until a sublog contains only single activity.
 \end{enumerate}
 
-#TODO Recursive mining nasıl yapılıyor genişlet!
-
 In the study \cite{leemans2013discovering}, an algorithm based on this framework is presented that guarantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior which is used within this study to address challenges of different event logs. Frequent behavior is caused by the traces in the logs that might follow many different paths. In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \texit{IM}, filtering is applied if the discovered model is a flower model which represents infrequent behavior. Basic idea behind filtering is considering the trace and event frequency with a user-defined threshold between 0 to 1. Using this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
 In this thesis study, infrequent behavior capable implementation is used for experimenting the cross-organizational mining of process models with their implementation of ProM framework \cite{verbeek2010prom}.
 
 \section{Process Performance Analysis}
 \label{sec:process-performance-analysis}
-#TODO write
+\todo{WRITE}
 % burayı 2.3.2'den performance ile enhance et
 
 \section{Machine Learning and Clustering}
@@ -196,6 +194,7 @@ Analysis) \cite{hall2009} is used as Java API to call from ProM Framework \cite{
 
 In cross-organizational process mining environment, there is a need to align processes of different organizations and in this scope both the organizations and their processes are similar but have significant differences. In order to align these processes and organizations, there is a need for spotting differences between process models. In the study of Dijkman \cite{dijkman2007mismatch}, a collection of patterns to describe frequent mismatches between the similar process models are presented. Mismatch patterns are grouped into three as authorization, activity and control flow mismatch patterns. Authorization mismatch patterns are based on assignment of the same tasks to different roles in different processes and left outside the scope of this thesis. Activity mismatch patterns are based on representing the tasks of a process by a different collection of activities in a different process, or not representing at all. Within the scope of this study, the related mismatch patterns are defined in study \cite{dijkman2007mismatch} as following:
 
+\todo{draw diagrams}
 \begin{description}
   \item[Skipped Activity] An activity exists in one process but no equivalent activity is found in the other process as illustrated in Figure~.
   \item[Interchanged Activity] An activity exists in one process but as an equivalent another activity is found in the other process to achieve the same task as illustrated in Figure~.
