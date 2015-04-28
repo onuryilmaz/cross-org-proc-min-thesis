@@ -163,8 +163,7 @@ In this thesis study, infrequent behavior capable implementation is used for exp
 \label{sec:unsupervised-learning}
 Machine learning is a study area of computer science which have roots in pattern recognition and computational learning theory of artificial intelligence. Machine learning approaches works on construction and learning from data to make further predictions. There are various approaches proposed in this area and clustering approach will be presented in this section. Cluster analysis is based on assigning the set of observations into subsets (\textit{clusters}) so that observations within the same cluster are similar whereas the observations from different clusters are dissimilar, where the similarity criteria is predefined. Clustering is a method in unsupervised learning, where the main problem is learning a hidden structure in unlabeled data. Since the provided data is unlabeled there is no error or reward assignment to the potential solutions provided these approaches; however, quality metrics on clusters are used to evaluate results. With these characteristics, clustering is a common technique in exploratory data mining and statistical data analysis and it is used in many fields like image analysis, information retrieval and bioinformatics.
 
-In cluster analysis, various algorithms are proposed with different notions on defining clusters and how to efficiently find them. Popular approaches are based on the idea of decreasing the distance among the members of same cluster, space density of data space, intervals or particular statistical distributions. Within this thesis study, centroid-based clustering is used in which the clusters are defined by a central vector, which may not a member of data set. When number of clusters are fixed to \textit{k}, the approach is named as \textit{k-means clustering} and the problem is finding k cluster centers and assigning data members to nearest cluster center while minimizing the squared distances of data members to the assigned cluster centers. Although seems easy, this optimization problem is NP-hard and most of the implementations include approximate solutions. A well-known algorithm in k-means clustering is Lloyd's algorithm and it is referred as \textit{k-means algorithm} and its variation based on random initialization \textit{k-means++} are formalized in the study of Arthur and Vassilvitskii \cite{arthur2007}:
- 
+In cluster analysis, various algorithms are proposed with different notions on defining clusters and how to efficiently find them. Popular approaches are based on the idea of decreasing the distance among the members of same cluster, space density of data space, intervals or particular statistical distributions. Within this thesis study, centroid-based clustering is used in which the clusters are defined by a central vector, which may not a member of data set. When number of clusters are fixed to \textit{k}, the approach is named as \textit{k-means clustering} and the problem is finding k cluster centers and assigning data members to nearest cluster center while minimizing the squared distances of data members to the assigned cluster centers. Although seems easy, this optimization problem is NP-hard and most of the implementations include approximate solutions. A well-known algorithm in k-means clustering is Lloyd's algorithm and it is referred as \textit{k-means algorithm} and its variation based on random initialization \textit{k-means++} are formalized in the study of Arthur and Vassilvitskii \cite{arthur2007}: 
 \theoremstyle{definition}
 \begin{definition}{k-means Algorithm}
 \begin{enumerate}
@@ -174,7 +173,6 @@ In cluster analysis, various algorithms are proposed with different notions on d
   \item Repeat Step 2 and 3 until $C$ no longer changes.
 \end{enumerate}
 \end{definition}
-
 \theoremstyle{definition}
 \begin{definition}{k-means++ Algorithm}
 \begin{enumerate}
@@ -184,7 +182,6 @@ In cluster analysis, various algorithms are proposed with different notions on d
   \item Proceed with the 2-4 steps of k-means Algorithm.
 \end{enumerate}
 \end{definition}
-
 
 In this thesis study, clustering of performance analysis results is undertaken and since the number of data instances low an approach focused on initialization is selected. Implementation of \textit{k-means++} in WEKA (Waikato Environment for Knowledge
 Analysis) \cite{hall2009} is used as Java API to call from ProM Framework \cite{verbeek2010prom}. 
@@ -209,6 +206,5 @@ Control flow mismatch patterns are based on using different control-flow relatio
   \item[Different Dependencies] Set of activities have differ in their dependency sets. An example of this pattern is shown in Figure~.
   \item[Additional Dependencies] This pattern is a special case of different dependencies where one set of activities includes the other and results with additional dependencies as illustrated in Figure~.
 \end{description}
-
 
 As mentioned in the study \cite{dijkman2007mismatch}, their approach does not create a comprehensive list to resolve all mismatches but the most common ones spotted during case studies. In addition, there are no algorithms provided to spot these mismatches in \cite{dijkman2007mismatch} or consequent studies, and thus implementation of spotting mismatch patterns are kept within the scope of this thesis study. 
