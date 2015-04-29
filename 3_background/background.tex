@@ -193,18 +193,53 @@ In cross-organizational process mining environment, there is a need to align pro
 
 \todo{draw diagrams}
 \begin{description}
-  \item[Skipped Activity] An activity exists in one process but no equivalent activity is found in the other process as illustrated in Figure~.
-  \item[Interchanged Activity] An activity exists in one process but as an equivalent another activity is found in the other process to achieve the same task as illustrated in Figure~.
-  \item[Refined Activity] An activity exists in one process but as an equivalent a collection of activities are existing in the other process to achieve the same task. An illustration is provided in Figure~. 
+  \item[Skipped Activity] An activity exists in one process but no equivalent activity is found in the other process as illustrated in Figure~\ref{fig:skipped-activity}.
+  \begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_background/mismatch-patterns-skipped-activity}
+  \caption{Example of Skipped Activity Pattern}
+  \label{fig:skipped-activity}
+\end{figure}
+  \item[Refined Activity] An activity exists in one process but as an equivalent a collection of activities are existing in the other process to achieve the same task. An illustration is provided in Figure~\ref{fig:refined-activity}. 
+  \begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_background/mismatch-patterns-refined-activity}
+  \caption{Example of Refined Activity Pattern}
+  \label{fig:refined-activity}
+\end{figure}
 \end{description}
  
-Control flow mismatch patterns are based on using different control-flow relations and dependencies for the same activities in different processes. Within the scope of this study, the following control flow mismatch patterns are defined in study \cite{dijkman2007mismatch}:
+Control flow mismatch patterns are based on using different control-flow relations and dependencies for the same activities in different processes. Within the scope of this study, the following related control flow mismatch patterns are defined in study \cite{dijkman2007mismatch}:
 
 \begin{description}
-  \item[Activities at Different Moments in Processes] Set of activities are undertaken with different orders in different processes as shown in Figure~.
-  \item[Different Conditions for Occurrence] Set of dependencies are same for two processes; however, occurrence condition is different. An example is provided in Figure~.
-  \item[Different Dependencies] Set of activities have differ in their dependency sets. An example of this pattern is shown in Figure~.
-  \item[Additional Dependencies] This pattern is a special case of different dependencies where one set of activities includes the other and results with additional dependencies as illustrated in Figure~.
+  \item[Activities at Different Moments in Processes] Set of activities are undertaken with different orders in different processes as shown in Figure~\ref{fig:different-moments}. 
+    \begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_background/mismatch-patterns-different-moments}
+  \caption{Example of Activities at Different Moments in Process Pattern}
+  \label{fig:different-moments}
+\end{figure}
+  \item[Different Conditions for Occurrence] Set of dependencies are same for two processes; however, occurrence condition is different. An example is provided in Figure~\ref{fig:different-conditions}.
+      \begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_background/mismatch-patterns-different-conditions}
+  \caption{Example of Different Conditions for Occurrence Pattern}
+  \label{fig:different-conditions}
+\end{figure}
+  \item[Different Dependencies] Set of activities have differ in their dependency sets. An example of this pattern is shown in Figure~\ref{fig:different-dependency}.
+        \begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_background/mismatch-patterns-different-dependency}
+  \caption{Example of Different Dependencies Pattern}
+  \label{fig:different-dependency}
+\end{figure}
+  \item[Additional Dependencies] This pattern is a special case of different dependencies where one set of activities includes the other and results with additional dependencies as illustrated in Figure~\ref{fig:additional-dependency}.
+        \begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_background/mismatch-patterns-additional-dependency}
+  \caption{Example of Additional Dependencies Pattern}
+  \label{fig:additional-dependency}
+\end{figure}
 \end{description}
 
 As mentioned in the study \cite{dijkman2007mismatch}, their approach does not create a comprehensive list to resolve all mismatches but the most common ones spotted during case studies. In addition, there are no algorithms provided to spot these mismatches in \cite{dijkman2007mismatch} or consequent studies, and thus implementation of spotting mismatch patterns are kept within the scope of this thesis study. 
