@@ -43,9 +43,8 @@ Within this framework, the study presented in this thesis is a combination of di
 \section{Process Discovery in Process Mining}
 \label{sec:process-discovery-in-process-mining} 
 In this section, process discovery studies will be presented briefly. Within the process mining framework, there are various different process mining algorithms proposed which have the same aim of discovering underlying processes. Considering the approaches undertaken with the proposed algorithms, the following grouping is provided \cite{khodabandelou2013process}.
-
 \begin{description}
-\item[\alpha-algorithm:] This algorithm is based on the causality relationship that can be discovered from the event logs and proposed by van der Aalst et al. \cite{van2004workflow}. However, this approach cannot handle loops and extensions like $\alpha$++ algorithm \cite{de2004process} is proposed to overcome this problem. Discovery is focused on extracting process models from event logs. Outputs of this approaches are workflow nets with XOR, AND splits and joins to represent underlying process models.
+\item[$\alpha$-algorithm:] This algorithm is based on the causality relationship that can be discovered from the event logs and proposed by van der Aalst et al. \cite{van2004workflow}. However, this approach cannot handle loops and extensions like $\alpha$++ algorithm \cite{de2004process} is proposed to overcome this problem. Discovery is focused on extracting process models from event logs. Outputs of this approaches are workflow nets with XOR, AND splits and joins to represent underlying process models.
 \item[Inductive Approach:] Methods proposed in this approach \cite{herbst1998integrating} \cite{herbst2000dealing} is based on finding the best Hidden Markov Models (HMMs) that represents the underlying process model. Workflow nets are constructed by using HMM nodes and inductive learning.
 \item[Hierarchical Clustering:] This method \cite{greco2005mining} firstly splits the event logs into clusters and creates a dependency graph. Using this dependency graph, clusters are defined with a hierarchy tree which is then merged into a single workflow model.
 \item[Genetic Approach:] The method provided in this group \cite{van2005genetic} constructs models based on causal matrix of activities and tries to handle noise, incompleteness, concurrency, hidden and duplicate activities. However, there are many configuration parameters to handle noise and irrelevant data to use this methods. 
@@ -69,8 +68,8 @@ In the study of van der Aalst \cite{van2011business}, using configurable process
 
 Cross-organizational process mining is divided into intra-organizational and inter-organizational with two basic ideas: \textit{collaboration} and \textit{exploiting} commonality \cite{van2011intra}. In his study, van der Aalst defined collaboration for distributed work between multiple organizations and commonality as ability of using same process models and infrastructure between the organizations. In order to exploit these two ideas, two partitioning dimensions are suggested in \cite{van2011intra}:
 \begin{description}
-	\item[Vertical Partitioning:] Process instances, namely cases, distributed over several organizations which collaborate to complete a complex activity. 
-	\item[Horizontal Partitioning:] Process parts, namely tasks or activities, are shared within organizations like jigsaw puzzle parts.
+\item[Vertical Partitioning:] Process instances, namely cases, distributed over several organizations which collaborate to complete a complex activity. 
+\item[Horizontal Partitioning:] Process parts, namely tasks or activities, are shared within organizations like jigsaw puzzle parts.
 \end{description}
 For these orthogonal dimensions, a number of questions and challenges are presented in the study  \cite{van2011intra}. For the vertical partitioning, where organizations are aiming to share infrastructure and knowledge to learn from each other, it is mentioned that supervised learning methods like classification can be used. Notion of this thesis is based on vertical partitioning of cross-organizational process mining with the idea of unsupervised learning where predictor variables related to performances of organizations are used.
  
