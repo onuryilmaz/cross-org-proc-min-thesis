@@ -16,7 +16,6 @@ In this section, important milestones in process mining and current research tre
 \end{figure}
 
 Current challenges in the process mining area can be presented best through mentioning spectrum and its relations. As diagrammed in Figure~\ref{fig:process-mining-spectrum-v2} and presented in the research of van der Aalst \cite{van2011process}, process mining spectrum is extensive and highly inter-related. Starting with the provenance, process mining deals with gathering and keeping event logs as \textit{current data} and \textit{historic data}. In this level, \textit{post mortem data} means the logs and information gathered from completed events whereas \textit{pre mortem data} means information related to ongoing cases. This separation helps us to use historical knowledge to exploit and gain advantage over current business operations. At the very bottom of the diagram, models are presented as \textit{de facto models} and \textit{de jure models}. \textit{De jure models} are created with the aim of describing reality as it should be whereas \textit{de facto models} aims to describe reality as it is. Within each model category a mixture of perspectives, in other words point of views from different information levels, can be mixed. In order to fill the gap between event logs and models, ten different process mining activities are listed under three categories \cite{van2011process} as follows:
-
 \begin{description}
 \item[Cartography:] In this category the main aim is to create maps of the real world activities by using process models. 
 	\begin{description}
@@ -24,7 +23,6 @@ Current challenges in the process mining area can be presented best through ment
 	\item[Enhancing:] Enhancing activities are based on improving \textit{de facto models} with the information hidden in the event logs. 
 	\item[Diagnose:] Diagnose activities stand for identifying the problems caused by directly process models.
 	\end{description}
-
 \item[Auditing:] In this category, activities related to confronting the model and the reality are collected.
 	\begin{description}
 	\item[Detect:] Detection is based on comparing the \textit{de jure models} with the ongoing processes to generate alerts if shifts occur in the reality.
@@ -32,7 +30,6 @@ Current challenges in the process mining area can be presented best through ment
 	\item[Compare:] Comparison of \textit{de facto models} and \textit{de jure models} shows the difference between planned and the reality.
 	\item[Promote:] Promotion includes  partially updating \textit{de jure models} from the information gathered from \textit{de facto models}.
 	\end{description}
-
 \item[Navigation:] In this category, process mining methods are used like a navigation application.
 	\begin{description}
 	\item[Explore:] Event data and models are used in combination to explore business processes.
@@ -48,11 +45,11 @@ Within this framework, the study presented in this thesis is a combination of di
 In this section, process discovery studies will be presented briefly. Within the process mining framework, there are various different process mining algorithms proposed which have the same aim of discovering underlying processes. Considering the approaches undertaken with the proposed algorithms, the following grouping is provided \cite{khodabandelou2013process}.
 
 \begin{description}
-\item[α-algorithm:] This algorithm is based on the causality relationship that can be discovered from the event logs and proposed by van der Aalst et al. \cite{van2004workflow}. However, this approach cannot handle loops and extensions like α++ algorithm \cite{de2004process} is proposed to overcome this problem. Discovery is focused on extracting process models from event logs. Outputs of this approaches are workflow nets with XOR, AND splits and joins to represent underlying process models.
+\item[\alpha-algorithm:] This algorithm is based on the causality relationship that can be discovered from the event logs and proposed by van der Aalst et al. \cite{van2004workflow}. However, this approach cannot handle loops and extensions like \alpha++ algorithm \cite{de2004process} is proposed to overcome this problem. Discovery is focused on extracting process models from event logs. Outputs of this approaches are workflow nets with XOR, AND splits and joins to represent underlying process models.
 \item[Inductive Approach:] Methods proposed in this approach \cite{herbst1998integrating} \cite{herbst2000dealing} is based on finding the best Hidden Markov Models (HMMs) that represents the underlying process model. Workflow nets are constructed by using HMM nodes and inductive learning.
 \item[Hierarchical Clustering:] This method \cite{greco2005mining} firstly splits the event logs into clusters and creates a dependency graph. Using this dependency graph, clusters are defined with a hierarchy tree which is then merged into a single workflow model.
 \item[Genetic Approach:] The method provided in this group \cite{van2005genetic} constructs models based on causal matrix of activities and tries to handle noise, incompleteness, concurrency, hidden and duplicate activities. However, there are many configuration parameters to handle noise and irrelevant data to use this methods. 
-\item[Heuristic Approach:]Heuristic approach for process discovery is an extension of α-algorithm which is based on likelihood calculation of activities and constructs dependency and frequency graphs. In addition, this method can handle noise in the event log and its implementation needs careful configuration.
+\item[Heuristic Approach:]Heuristic approach for process discovery is an extension of \alpha-algorithm which is based on likelihood calculation of activities and constructs dependency and frequency graphs. In addition, this method can handle noise in the event log and its implementation needs careful configuration.
 \end{description}
  
 Proposed methods in process discovery are based on solving different challenges in the process mining area. Considering the scope of this thesis study; process discovery operations are undertaken with inductive methods which is a robust, repeatable and mature set of approaches.
@@ -68,16 +65,13 @@ In the study of Bujis et al. \cite{buijs2012towards}, the authors indicated the 
 \item Which set of organizations can I support with my process model?
 \end{enumerate} While answering these questions, they used \textit{simplification based metrics} to indicate better process models; and \textit{throughput time metrics} to indicate better behaviors. In this study, it is shown how a generic framework can be used to highlight the main idea behind cross-organizational process mining. 
 
-
 In the study of van der Aalst \cite{van2011business}, using configurable process models is proposed for the organizations sharing the same infrastructure and doing the similar work. Configurable process models are defined as a family of process models where each organization can use this family with their configurations according to their business needs. This approach not only creates behaviors needed by each organization but also creates a basis to compare and learn within process mining framework. The configurable process models are formalized by "Causal Nets", which is a notational language based on input and output bindings of each node. Although this study does not answer to all challenges related to cross-organizational-process-mining, a formalism of configurable processes models is presented to address learning and conformance checking.
 
 Cross-organizational process mining is divided into intra-organizational and inter-organizational with two basic ideas: \textit{collaboration} and \textit{exploiting} commonality \cite{van2011intra}. In his study, van der Aalst defined collaboration for distributed work between multiple organizations and commonality as ability of using same process models and infrastructure between the organizations. In order to exploit these two ideas, two partitioning dimensions are suggested in \cite{van2011intra}:
-
 \begin{description}
 	\item[Vertical Partitioning:] Process instances, namely cases, distributed over several organizations which collaborate to complete a complex activity. 
 	\item[Horizontal Partitioning:] Process parts, namely tasks or activities, are shared within organizations like jigsaw puzzle parts.
 \end{description}
-
 For these orthogonal dimensions, a number of questions and challenges are presented in the study  \cite{van2011intra}. For the vertical partitioning, where organizations are aiming to share infrastructure and knowledge to learn from each other, it is mentioned that supervised learning methods like classification can be used. Notion of this thesis is based on vertical partitioning of cross-organizational process mining with the idea of unsupervised learning where predictor variables related to performances of organizations are used.
  
 \section{Process Similarity in Process Mining}
