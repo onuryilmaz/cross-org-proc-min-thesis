@@ -149,8 +149,46 @@ In this thesis study, infrequent behavior capable implementation is used for exp
 
 \section{Process Performance Analysis}
 \label{sec:process-performance-analysis}
-\todo{WRITE}
-% burayı 2.3.2'den performance ile enhance et
+In the auditing branch of proces mining 
+In the main tasks of process mining event logs are used to discover and enhance process models. In addition to these main tasks, process mining enables to discover relationships between event logs and process models for conformance and performance analysis. Within conformance, any deviations from modeled behavior can be discovered, moreover when the logs are replayed on the models bottleneck analysis can be undertaken with the help of timestamps on the event logs. However, in order to replay event logs on the process models there is a need for \texit{alignment} which is formalized in \cite{van2012replaying}. Formalization and notions presented in the study \cite{van2012replaying} are based on the assumption that process models and event logs use the same set of activity labels and therefore they are can be related.
+
+The first notion in alignment of process model and event log is defining the relationship between \texit{moves} in the model and log. This notion is formalized in \cite{van2012replaying} since some moves in the event log cannot be operated with the process model and vice versa. For the event log $L$, $A_{L}^{\bot} = A_{L} \cup \{ \bot\}$ is defined where $x \in A_{L}$ refers to \texit{move x in log} and $\bot$ refers to \texit{no move in log}. In this environment, one step of move and alignment are defined as following:
+
+\theoremstyle{definition}
+\begin{definition}{}
+(Move) One step in alignment is represented as $(x,y) \in A_{L}^{\bot} \times A_{M}^{\bot}$ such that
+\begin{enumerate}
+  \item $(x,y)$ is a \texit{move in log} if $ x \in A_{L}$ and $y=\bot$.
+  \item $(x,y)$ is a \texit{move in model} if $x=\bot$ and $y \in A_{M}$.
+  \item $(x,y)$ is a \texit{move in both} if $x \in A_{L}$ and $y \in A_{M}$.
+  \item $(x,y)$ is an \texit{illegal move} if $x=\bot$ and $y=\bot$.
+\end{enumerate}
+In this environment, \textit{legal moves} are defined as $A_{LM} = \{ (x,y) \in A_{L}^{\bot} \times A_{M}^{\bot} |  x \in A_{L} \vee y \in A_{M} \}$
+\end{definition}
+
+\theoremstyle{definition}
+\begin{definition}{}
+(Alignment) Let $\sigma_{L} \in L$ a trace in event log $L$ and let $\sigma_{M} \in \beta (M)$ a full execution sequence of process model $M$. An alignment of $\sigma_{L}$ and $\sigma_{M}$ can be defined as a sequence $\gamma \in {A_{LM}}^{*}$  where the projection of first element yields $\sigma_{L}$ and the projection of second element yields $\sigma_{M}$. 
+\end{definition}
+
+In order to qualify the alignment operations, distance function on legal moves is defined in \cite{van2012replaying} as following:
+\theoremstyle{definition}
+\begin{definition}{}
+(Distance Function) Distance function is defined on legal moves as $\delta \in A_{LM} \rightarrow \mathbb{N}$ to associate costs to moves in alignment:
+\begin{enumerate}
+  \item If $x \in A_{L}$ and $y=\bot$, then  $\delta(x,y)$ is the cost of \textit{move x in log}.
+  \item If $x=\bot$ and $y \in A_{M}$, then  $\delta(x,y)$ is the cost of \textit{move y in model}.
+  \item If $x \in A_{L}$ and $y \in A_{M}$, then  $\delta(x,y)$ is the cost of \textit{move x in log and move y in model} (This cost generally $\delta(x,y) = 0$ if $x = y$).
+\end{enumerate}
+\end{definition}
+
+According to this distance function definition, various different functions can be defined using costs. For instance, in \cite{van2012replaying} a \textit{standard distance function} is defined as no cost when log and model agree and cost of 1 otherwise. In addition, optional alignment between process model and event logs is defined as following:
+ 
+\begin{definition}{}
+(Optimal Alignment) Let $\sigma_{L} \in L$ be a trace in event log $L$ and $M$ a process model and $\Gamma_{\sigma_{L},M} = \{ \gamma \in {A_{LM}}^{*} \mid \exists_{\sigma_{M} \in \beta (M)}\ \gamma\ is\ an\ alignment\ of\ \sigma_{L}\ and\ \sigma_{M} \}$. An alignment $\gamma \in \Gamma_{\sigma_{L},M}$ is \textit{optimal} for event log trace $\sigma_{L}$ and model $M$ if for any ${\gamma}' \in \Gamma_{\sigma_{L},M} : \delta({\gamma}')\geq \delta(\gamma)$.
+\end{definition}
+
+This optimal alignment can be found with the help of different approaches and within process mining field, proposed methods [X.5] [X.6] are based on A^{*} algorithm which is a path-finding algorithm based on graphs. In principle, any optimization methodology can be used to find the optimal alignment and in this thesis study an A^{*} based implementation in ProM Framework \cite{verbeek2010prom} is used to find optimal alignments and event log replay. Although this thesis study has no direct focus on conformance of process models by event logs, these steps were necessary to replay the event logs over process models. With the help of replay, any performance indicator can be calculated to compare performances of cross-organizational processes. Using the timestamp information or resource utilization in the event logs performance indicators can be discovered while replaying the log after alignment. These performance indicators can include lead time, service time, waiting time in \textit{time dimension}; and utilization, activity costs in \textit{cost dimension} \cite{van2011process}.
 
 \section{Machine Learning and Clustering}
 \label{sec:unsupervised-learning}
