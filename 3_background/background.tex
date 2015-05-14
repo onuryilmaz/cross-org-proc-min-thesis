@@ -42,30 +42,30 @@ Event logs are the main inputs to any process mining methodology including this 
 Event log structure and related notions are formalized in \cite{van2011process} as following:
   \theoremstyle{definition}
   \begin{definition}{}
-  (Event and Event Attributes) Let \textit{E} be the universe of events which include all possible event identifiers. In this universe any event \textit{e} $\in$ \textit{E}. Events are enhanced with contextual information, namely attributes. For any event \textit{e} $\in$ \textit{E} and attribute \textit{A}, $\#_\textit{A}(\textit{e})$ is the value of the attribute \textit{A} for event \textit{e}. Possible attributes for events include timestamps, people and resource assignments, transaction types and other contextual data.
+  (Event and Event Attributes) Let \textit{E} be the universe of events which include all possible event identifiers and in this universe any event \textit{e} $\in$ \textit{E}. Events are enhanced with contextual information, namely attributes. For any event \textit{e} $\in$ \textit{E} and attribute \textit{A}, $\#_\textit{A}(\textit{e})$ is the value of the attribute \textit{A} for event \textit{e}. Possible attributes for events include timestamps, people and resource assignments, transaction types and other contextual data.
   \end{definition}
   \theoremstyle{definition}
   \begin{definition}{}
-  (Case and Case Attributes) Let \textit{C} be the universe of cases which include all possible case identifiers. In this universe any case \textit{c} $\in$ \textit{C}. Like events, cases are also enhanced with contextual information, namely attributes. For any case \textit{c} $\in$ \textit{C} and attribute \textit{A}, $\#_\textit{A}(\textit{c})$ is the value of the attribute \textit{A} for case \textit{c}. Each case has at least one attribute which is trace.
+  (Case and Case Attributes) Let \textit{C} be the universe of cases which include all possible case identifiers and in this universe any case \textit{c} $\in$ \textit{C}. Like events, cases are also enhanced with contextual information, namely attributes. For any case \textit{c} $\in$ \textit{C} and attribute \textit{A}, $\#_\textit{A}(\textit{c})$ is the value of the attribute \textit{A} for case \textit{c}. Each case has at least one attribute which is trace.
   \end{definition}
   \theoremstyle{definition}
   \begin{definition}{}
-  (Trace) Trace is a sequence of event \textit{t} $\in$ $\textit{E}^*$ such that each event is restricted to occur only once.
+  (Trace) Trace is a sequence of event \textit{t} $\in$ ${E}^{*}$ such that each event is restricted to occur only once.
   \end{definition}
   \theoremstyle{definition}
   \begin{definition}{}
-  (Event Log) Event log is set of cases \textit{L} $\subseteq$ \textit{C} such that each event occurs at most one in the event log.
+  (Event Log) Event log is set of cases \textit{L} $\subseteq$ \textit{C} such that each event occurs at most once in the event log.
   \end{definition}
 
-In this study, event logs from different organizations are exploited, thus organization related attributes are used for cases. Within these event logs, traces of cases for each organizational is used to discover underlying process models. In addition, timestamps and resource related attributes of events are used to collect performance related data for further analysis.
+In this study, event logs from different organizations are exploited, thus organization related attributes are used for cases. Within these event logs, traces of cases for each organization are used to discover underlying process models. In addition, timestamps and resource related attributes of events are used to collect performance related data for further analysis.
 
 \section{Process Modeling}
 \label{sec:process-modeling}
-Process modeling is the foundation of process management applications and main tools of people in this profession. Although process modeling can be defined with informal process workflows to document procedures, there are a number of formalized notations which are more suitable to cross-applicability and mathematical analysis. In the control-flow view of process modeling, a process model is aimed to give decisions on which activities to take place with their orders. In this study, control-flow of process models are used to find mismatch patterns between different organizations that execute the same activities. Considering the scope of this  thesis, only Petri nets, Workflow Nets and Business Process Modeling Notation(BPMN) will be presented since they are related. 
+Process modeling is the foundation of process management applications and main tools of people in this profession. Although process modeling can be defined with informal process workflows to document procedures, there are a number of formalized notations which are more suitable to cross-applicability and mathematical analysis. In the control-flow view of process modeling, a process model is aimed to give decisions on which activities to take place with their orders. In this study, control-flow of process models are used to find mismatch patterns between different organizations that execute the same activities. Considering the scope of this  thesis, only Petri nets, Workflow Nets and Business Process Modeling Notation (BPMN) will be presented in this section. 
 
 \subsection{Petri Nets}
 \label{sec:petri-nets}
-Petri net is a mathematical modeling language that is aimed to describe concurrent systems. Graphical notation of Petri nets seems intuitive and simple; however, it is powerful in terms of being executable and applicability of analysis techniques \cite{vanderAalst:2011:MBP:2000715}. Petri nets are directed bipartite graphs where nodes \textit{represent} transitions and \textit{places} represent conditions. Structure represented by Petri nets is static and the state of the net is described by placing \textit{tokens}, namely the process of \textit{marking}. Formalization of Petri nets are explained in \cite{reisig1998lectures} as following:
+Petri net is a mathematical modeling language that is aimed to describe concurrent systems. Graphical notation of Petri nets seems intuitive and simple; however, it is powerful in terms of being executable and applicability of analysis techniques \cite{vanderAalst:2011:MBP:2000715}. Petri nets are directed bipartite graphs where \textit{nodes} represent transitions and \textit{places} represent conditions. Structure represented by Petri nets is static and the state of the net is described by placing \textit{tokens}, namely the process of \textit{marking}. Formalization of Petri nets are explained in \cite{reisig1998lectures} as following:
 \theoremstyle{definition}
 \begin{definition}{}
 (Petri Nets) A \textit{Petri net} is a triplet $N = (P, T, F)$ where $P$ is finite set of \textit{places}, $T$ is finite set of \textit{transitions} and $F$ is set of \textit{flow relations} where:
@@ -88,7 +88,7 @@ Process models in the real life have additional properties to be executable and 
 \end{enumerate}
 \end{definition}
 
-In simple terms, a Workflow net is a Petri net with a source place to start the process starts and a sink place to end; furthermore, all nodes are on a path from source place to sink place \cite{van1998application}.  In order to illustrate this formalization, the Workflow net for the event log mentioned in Section~\ref{sec:event-log} is presented in Figure~\ref{fig:loan-petri-net}. In the figure, places are indicated by circles, transitions are indicated by rectangles, and flow relations are represented by arcs. 
+In simple terms, a Workflow net is a Petri net with a source place to start the process and a sink place to end; furthermore, all nodes are on a path from source place to sink place \cite{van1998application}.  In order to illustrate this formalization, the Workflow net for the event log mentioned in Section~\ref{sec:event-log} is presented in Figure~\ref{fig:loan-petri-net}. In the figure, places are indicated by circles, transitions are indicated by rectangles, and flow relations are represented by arcs. 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{3_background/loan-petri-net}
@@ -96,7 +96,7 @@ In simple terms, a Workflow net is a Petri net with a source place to start the 
   \label{fig:loan-petri-net}
 \end{figure}
 
-Workflow nets are representative to real life processes; however, they can result with processes including deadlocks, live-locks and never-reached activities. In order to avoid process models from these problems, soundness definition is suggested in \cite{van1998application} and it is simplified as following with the context of this thesis:
+Workflow nets are representatives of real life processes; however, they can result with processes including deadlocks, live-locks and never-reached activities. In order to avoid process models from these problems, soundness definition is suggested in \cite{van1998application} and it is simplified as following with the context of this thesis:
 \theoremstyle{definition}
 \begin{definition}{}
 (Soundness) Let $N$ be a Workflow net and it is sound if and only if:
@@ -125,7 +125,7 @@ Business Process Modeling Notation (BPMN) is one of the most popular and widely 
 \label{sec:process-discovery}
 In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges. With this reasoning, Inductive Process Mining \cite{leemans2013discovering} is selected as appropriate since it is simple, highly applicable and configurable. In the literature, its derivatives which handles infrequent behaviors \cite{leemans2014discoveringinfrequent}; incomplete logs \cite{leemans2014discoveringincomplete}; and model optimization \cite{weidlich2012profiles} are also available.  
 
-\textit{Inductive Miner (IM)}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a key attribute in this study. Formalization of the key points in the study \cite{leemans2013discovering} are as following:
+\textit{Inductive Miner (IM)}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and well-fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a key attribute in this study. Formalization of the key points in the study \cite{leemans2013discovering} are as following:
 
 \theoremstyle{definition}
 \begin{definition}{}
@@ -144,7 +144,7 @@ Framework developed in the study \cite{leemans2013discovering} uses a divide-and
   \item Recursive Mining: Mine sublogs with these steps until a sublog contains only single activity.
 \end{enumerate}
 
-In the study \cite{leemans2013discovering}, an algorithm based on this framework is presented that guarantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior which is used within this study to address challenges of different event logs. Frequent behavior is caused by the traces in the logs that might follow many different paths. In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \texit{IM}, filtering is applied if the discovered model is a flower model which represents infrequent behavior. Basic idea behind filtering is considering the trace and event frequency with a user-defined threshold between 0 to 1. Using this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
+In the study \cite{leemans2013discovering}, an algorithm based on this framework is presented that guarantees returning a sound and fitting process model in finite time. Therefore, this framework is selected as appropriate and its extension that can handle infrequent behavior is used within this thesis study to address challenges of different event logs. In real life, most of the cases in the events are samples of frequent behavior; however, there are also infrequent behaviors according to the nature of process execution environment. In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \texit{IM}, filtering is applied if the discovered model is a flower model which represents infrequent behavior. Basic idea behind filtering is setting a user-defined threshold between 0 to 1 and with the help of this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
 In this thesis study, infrequent behavior capable implementation is used for experimenting the cross-organizational mining of process models with their implementation of ProM framework \cite{verbeek2010prom}.
 
 \section{Process Performance Analysis}
