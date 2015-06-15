@@ -1,3 +1,32 @@
 \chapter{METHODOLOGY}
 \label{chp:methodology}
 
+
+\subchapter{Approach Overview}
+\label{subchp:approach-overview}
+
+\subchapter{Process Model Mining}
+\label{subchp:process-model-mining}
+In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges.
+
+ In real life, these different paths are used infrequently; however, their effect in discovery is still significant. \textit{Inductive Miner Infrequent (IMi)} is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs. By filtering the infrequent behavior, it is aimed that \textit{IMi} succeeds with improved models discovered. After each recursive step of \textit{IM}, filtering is applied if the discovered model is a flower model which represents infrequent behavior. Basic idea behind filtering is setting a user-defined threshold between 0 to 1 and with the help of this threshold, both log splittings and mining operations are done on a cleaner subset of logs. When the discovered models compared to \textit{IM}, \textit{IMi} results with lower fitness, higher precision and equal generalization.
+
+ 
+
+\subchapter{Performance Indicator Analysis}
+\label{subchp:performance-indicator-analysis}
+	Replay
+	Clustering
+
+\subchapter{Mismatch Pattern Analysis}
+\label{subchp:mismatch-pattern-analysis}
+	BPMN Conversion
+
+
+\subchapter{Recommendation Generation}
+\label{subchp:recommendation-generation}
+
+
+
+\subchapter{Implementation}
+\label{subchp:implementation}
