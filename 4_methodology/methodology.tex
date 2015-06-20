@@ -1,16 +1,15 @@
 \chapter{METHODOLOGY}
 \label{chp:methodology}
 
-\TODO{write}
+\todo{write}
 
 \section{Approach Overview}
 \label{sec:approach-overview}
-\TODO{write}
+\todo{write}
 buraya akış şeması çiz
 
-\section{Process Model Mining}0
+\section{Process Model Mining}
 \label{sec:process-model-mining}
-
 Process model mining stage in the proposed approach has the aim of creating reproducible and generalized process models from event logs. In order to achieve this aim, implementation of \textit{Inductive Miner Infrequent (IMi)}, which is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs, is used in this study. 
 The selected implementation has the ability of pruning data to handle noise in the event logs. Like the other data mining approaches, event logs include data related to the infrequent behaviors occurred in real life. Although these infrequent behaviors might be caused by important structural or case related issues that should be analyzed; they make the process of mining and results more complex. In the scope of this study, without cleaning the data, most of the process model mining approaches result with \textit{spaghetti-like models}\cite{van2011process} which are difficult to further analyze. Since this thesis focuses on learning from the cross-organizational process mining rather than creating the best-fitting process models, data cleaning and noise handling is a necessary step. Therefore preprocessing steps are undertaken with a compatible approach of \textit{Inductive Miner Infrequent (IMi)}, where data is cleaned in every inductive step.
 Considering the scope of this study, instead of computational details of \textit{Inductive Miner Infrequent (IMi)} black-box approach is used to explain its usage in the methodology. In order to provide a filtering threshold, a user-provided value between 0 to 1 is added as input to method with the event logs. As a result, workflow net is produced which is a sound and properly completed Petri net without deadlocks. Black-box of this stage is illustrated in Figure~\ref{fig:process-model-mining-blackbox} and this stage is called for every organization's event logs to create their own process models in Workflow net formalization.
@@ -32,10 +31,8 @@ Performance indicator analysis stage focuses on calculating and analyzing the pe
 \end{inparaenum}
 In order to evaluate the performance of an organization based on their process models and past activities; there are a number of indicators in time dimension, cost dimension and utilization \cite{van2011process}. However, in this study, process related performance values are considered since differences in the process models are studied in the next stages. With this reasoning, the following performance indicators are calculated and analyzed in this stage of methodology:
 \begin{description}
-  \item[Average Time Between Activities] For each activity in the process model, average time to reach other activity is calculated. This is a simple but powerful performance metric for organizations since it can yield the average time to complete one task based on a starting point. From the performance perspective, organizations want to minimize average time between activities to increase their throughput. [REFERANS]
-  \todo{formül ekle}
-  \item[Standard Deviation of Time Between Activities] Time between activities in real life is not stable and they deviate due to various reasons such as people responsible of tasks, size and the content of tasks or seasonality [REFERANS]. On the other hand, organizations want to be confident about their processes and therefore they want to minimize the deviation in the time between activities. Minimized deviation in time helps organizations to plan, act and re-organize the activities in the processes with high accuracy. [REFERANS]  
-  \todo{formül ekle}
+  \item[Average Time Between Activities $AvgTime_{A\rightarrow B}$] For each activity in the process model, average time to reach other activity is calculated. This is a simple but powerful performance metric for organizations since it can yield the average time to complete one task based on a starting point. From the performance perspective, organizations want to minimize average time between activities to increase their throughput. \todo{REFERANS}
+  \item[Standard Deviation of Time Between Activities $StdDevTime_{A\rightarrow B}$] Time between activities in real life is not stable and they deviate due to various reasons such as people responsible of tasks, size and the content of tasks or seasonality \todo{REFERANS}. On the other hand, organizations want to be confident about their processes and therefore they want to minimize the deviation in the time between activities. Minimized deviation in time helps organizations to plan, act and re-organize the activities in the processes with high accuracy. \todo{REFERANS}
 \end{description}
 In addition to average and standard deviation, minimum and maximum times between activities can also be analyzed. However, these performance values are mostly result of rare cases in the event logs and these rare occurrences have the probability of being eliminated as noise in process mining stage. Therefore, the minimum and maximum values have the risk of not representing the actual performances. Thus, only average and standard deviation of the time between activities are selected in the study. 
 
@@ -71,6 +68,7 @@ In order to use replay as an intermediate stage in this thesis, some of the ment
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
 BPMN Conversion
+Her biri için tek tek algoritma yazılabilir
 
 
 \section{Recommendation Generation}
