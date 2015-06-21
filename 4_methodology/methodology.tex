@@ -91,17 +91,24 @@ Performance summary calculation step at the end of this stage is used to create 
 \subsection{Performance Indicator Clustering}
 \label{subsec:performance-indicator-clustering}
 
-kmeans öv
+Clustering is based on the idea of collecting the set of observations into clusters so that observations within the same cluster are similar whereas the observations from different clusters are dissimilar. Being a unsupervised learning method, it aims to find hidden structures in unlabeled data. In this thesis study, clustering is used to cluster organizations based on their performance indicator data. In other words, organizations will be set into groups based on how much time in average and with variation takes to complete an activity given a starting point.
 
-quality of clustering yaz
+Within clustering analysis, various algorithms are proposed to find clusters based on the idea of decreasing in-cluster distances, increasing space density or fitting to particular statistical distributions. However, in this study, a more generic approach based on centroid-based clustering is exploited. For the fixed number of \textit{k} clusters, the approach is well-known as \textit{k-means clustering}. Considering the popularity of this approach and its extensions, random initialization based \textit{k-means++} approach from the study of Arthur and Vassilvitskii \cite{arthur2007} is used to cluster organizations. 
 
- 
-öncelikle performance summary merge & clean 
-her i için clustering yapılıyor 
-kullanıcıya cluster size seçtiriliyor
+Clustering methods can be evaluated by the internal and external methods. Internal methods are based on the data that is clustered itself whereas external methods use the additional data such as labels or benchmarks. Although there are very strong metrics such as Rand Measure, F-measure, Jaccard index or Confusion Matrices; in this thesis study there is no pre-labeled organizations based on their performance indicators. Therefore, internal evaluation methods are used to assess the quality of clusters. Considering the fact that actual data to cluster is \textit{time interval} in this study and centroid-based clustering is applied, a metric based on decreasing the in-cluster distances is selected. With this consideration, Sum of Squared Error (SSE) is calculated with the following definition.
 
-Blackbox olarak çiz
-	
+\todo{SSE formülü ve tanımı yaz}
+
+For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting k from 1 to the number of organizations. For each clustering with different cluster sizes, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:process-model-mining-blackbox}.
+
+\todo{çiz!}
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{4_methodology/process-model-mining-blackbox}
+  \caption{Process Model Mining Stage as Black-box }
+  \label{fig:process-model-mining-blackbox}
+\end{figure}
+
 
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
