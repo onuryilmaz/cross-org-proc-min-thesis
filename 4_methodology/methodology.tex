@@ -50,7 +50,7 @@ In order to appropriately apply $A^{*}$ algorithm, there are number of manual an
 		\item synchronous move.
 	\end{inparaenum}
 \end{description}
-In order to use replay as an intermediate stage in this thesis, some of the mentioned steps are automatized with the help of the assumptions in the prior and post stages of methodology. With this reasoning, initial and final markings are created with the first and last activities in the process models. In addition, since there is no explicit priority of process model over event log or vice versa, cost values are set to 1 for both \textit{move on process model} and \textit{move on event log}. Since there is no penalty for \textit{synchronous moves}, their cost value is set to 0. However, since each event log has different set of transition labels, manual user input is still necessary to map label patterns between process model and event log. With the user inputs and generated inputs, usage of replay and performance indicator calculation in the methodology can be visualized in Figure~\ref{fig:replay-and-performance-indicator-calculation}.
+In order to use replay as an intermediate stage in this thesis, some of the mentioned steps are automatized with the help of the assumptions in the prior and post stages of methodology. With this reasoning, initial and final markings are created with the first and last activities in the process models. In addition, since there is no explicit priority of process model over event log or vice versa, cost values are set to 1 for both \textit{move on process model} and \textit{move on event log}. Since there is no penalty for \textit{synchronous moves}, their cost value is set to 0. However, since each event log has different set of transition labels, manual user input is still necessary to map label patterns between process model and event log. With the user inputs and generated inputs, usage of replay and performance indicator calculation in the methodology can be visualized in Figure~\ref{fig:replay-and-performance-indicator-calculation}. For each organization, the steps in the diagram are followed with the corresponding event logs and process models, resulting process summaries are used for further analysis.
 
 \begin{figure}
   \centering
@@ -59,8 +59,15 @@ In order to use replay as an intermediate stage in this thesis, some of the ment
   \label{fig:replay-and-performance-indicator-calculation}
 \end{figure}
 
-\subsection{Performance Clustering}
-\label{subsec:performance-clustering}
+\subsection{Performance Indicator Clustering}
+\label{subsec:performance-indicator-clustering}
+
+1)	Merge performance summaries
+	
+2)	Cluster for each case, how to analyze cluster quality
+
+3) İnsan seçsin
+
 	buraya algoritma olarak yaz, kullanıcıdan i falan da alınıyor
 	Blackbox olarak çiz
 	
