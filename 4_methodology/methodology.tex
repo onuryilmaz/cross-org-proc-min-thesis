@@ -80,7 +80,7 @@ In order to use replay as an intermediate stage in this thesis, some of the ment
 Performance summary calculation step at the end of this stage is used to create a summary of data consists of average and standard deviation of time between activities. Resulting data can be defined as following:
 	\theoremstyle{definition}
 	\begin{definition}{} Performance Summary data for any organization is 
-	
+
 	$PerformanceSummary_{Organization_{i}}= \{AvgTimeSum_{Organization_{i}}\ \cup\ StdDevTimeSum_{Organization_{i}}\}$ where
 		\begin{enumerate}
 			\item $AvgTimeSum_{Organization_{i}} = \{ AvgTime_{Activity_{A}\rightarrow Activity_{B}}^{Organization_{i}} | Activity_{A},Activity_{B}  \in Event\ Log_{i}\}$
@@ -99,6 +99,7 @@ Within clustering analysis, various algorithms are proposed to find clusters bas
 Clustering methods can be evaluated by the internal and external methods. Internal methods are based on the data that is clustered itself whereas external methods use the additional data such as labels or benchmarks. Although there are very strong metrics such as Rand Measure, F-measure, Jaccard index or Confusion Matrices; in this thesis study there is no pre-labeled organizations based on their performance indicators. Therefore, internal evaluation methods are used to assess the quality of clusters. Considering the fact that actual data to cluster is \textit{time interval} in this study and centroid-based clustering is applied, a metric based on decreasing the in-cluster distances is selected. With this consideration, Sum of Squared Error (SSE) is calculated with the following definition.
 
 \todo{SSE formülü ve tanımı yaz}
+http://www.cs.uky.edu/~jzhang/CS689/PPDM-Chapter3.pdf / 25
 
 For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting k from 1 to the number of organizations. For each clustering with different cluster sizes, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:process-model-mining-blackbox}.
 
@@ -113,6 +114,9 @@ For each organization, \textit{Performance Summary} data is used as the data sou
 
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
+neden yapıldığı, hangilerine bakıldığını yaz.
+
+
 BPMN Conversion
 Her biri için tek tek algoritma yazılabilir
 
