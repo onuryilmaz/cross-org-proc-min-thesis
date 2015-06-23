@@ -96,10 +96,16 @@ Clustering is based on the idea of collecting the set of observations into clust
 
 Within clustering analysis, various algorithms are proposed to find clusters based on the idea of decreasing in-cluster distances, increasing space density or fitting to particular statistical distributions. However, in this study, a more generic approach based on centroid-based clustering is exploited. For the fixed number of \textit{k} clusters, the approach is well-known as \textit{k-means clustering}. Considering the popularity of this approach and its extensions, random initialization based \textit{k-means++} approach from the study of Arthur and Vassilvitskii \cite{arthur2007} is used to cluster organizations. 
 
-Clustering methods can be evaluated by the internal and external methods. Internal methods are based on the data that is clustered itself whereas external methods use the additional data such as labels or benchmarks. Although there are very strong metrics such as Rand Measure, F-measure, Jaccard index or Confusion Matrices; in this thesis study there is no pre-labeled organizations based on their performance indicators. Therefore, internal evaluation methods are used to assess the quality of clusters. Considering the fact that actual data to cluster is \textit{time interval} in this study and centroid-based clustering is applied, a metric based on decreasing the in-cluster distances is selected. With this consideration, Sum of Squared Error (SSE) is calculated with the following definition.
+Clustering methods can be evaluated by the internal and external methods. Internal methods are based on the data that is clustered itself whereas external methods use the additional data such as labels or benchmarks. Although there are very strong metrics such as Rand Measure, F-measure, Jaccard index or Confusion Matrices; in this thesis study there is no pre-labeled organizations based on their performance indicators. Therefore, internal evaluation methods are used to assess the quality of clusters. Considering the fact that actual data to cluster is \textit{time interval} in this study and centroid-based clustering is applied, a metric based on decreasing the in-cluster distances is selected. With this consideration, Sum of Squared Error (SSE) is calculated with the following definition. When the clustering results are compared, it is reasonable to choose the one with the least SSE; however, it is a fact that as \textit{k} converges to the number of original sample size SSE value decreases. Therefore, SSE values and number of clusters are plotted and presented to the end user of the methodology to select optimal clustering.
 
-\todo{SSE formülü ve tanımı yaz}
-http://www.cs.uky.edu/~jzhang/CS689/PPDM-Chapter3.pdf / 25
+\theoremstyle{definition}
+\begin{definition}{Sum of Squared Error (SSE)}
+$SSE = \sum_{i=1}^{k} \sum_{x \in c_{i}} EuclideanDistance(mean_{i}, x)^{2}$ where
+\begin{enumerate}
+  \item $x$ is a data point in cluster $c_{i}$.
+  \item $mean_{i}$ is the mean vector of the cluster $c_{i}$.
+\end{enumerate}
+\end{definition}
 
 For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting k from 1 to the number of organizations. For each clustering with different cluster sizes, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:process-model-mining-blackbox}.
 
@@ -114,11 +120,18 @@ For each organization, \textit{Performance Summary} data is used as the data sou
 
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
-neden yapıldığı, hangilerine bakıldığını yaz.
+In order to learn from other organizations, there is a need to spot the differences between process models of different organizations. In this phase of methodology, differences between process models will be revealed by the mismatch patterns which are defined by Dijkman \cite{dijkman2007mismatch}. In the process mining stage, process models are mined to create Workflow nets; however, mismatch pattern definitions are closer to business environment and it is more suitable spot patterns in BPMN notation. Thus, mined process models are converted to BPMN models and then mismatch pattern analysis is applied. After spotting differences, mismatch patterns for activities and control flows average revealed for the organizations.
 
 
-BPMN Conversion
-Her biri için tek tek algoritma yazılabilir
+bpmn tanımla http://bpmcenter.org/wp-content/uploads/reports/2015/BPM-15-01.pdf sf5
+
+conversion tanımla http://bpmcenter.org/wp-content/uploads/reports/2015/BPM-15-01.pdf sf9
+
+For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. For each mismatch pattern analysis, the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. This approach also enables to locate the complete mismatches between process models when starting and ending points are provided as source and sink activities.
+
+are checked one-by-one. 
+algoritmaları tanımla
+
 
 
 \section{Recommendation Generation}
