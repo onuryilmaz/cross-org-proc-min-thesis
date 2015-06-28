@@ -122,21 +122,55 @@ For each organization, \textit{Performance Summary} data is used as the data sou
 \label{sec:mismatch-pattern-analysis}
 In order to learn from other organizations, there is a need to spot the differences between process models of different organizations. In this phase of methodology, differences between process models will be revealed by the mismatch patterns which are defined by Dijkman \cite{dijkman2007mismatch}. In the process mining stage, process models are mined to create Workflow nets; however, mismatch pattern definitions are closer to business environment and it is more suitable spot patterns in BPMN notation. Thus, mined process models are converted to BPMN models and then mismatch pattern analysis is applied. After spotting differences, mismatch patterns for activities and control flows average revealed for the organizations.
 
+Business Process Modeling Notation (BPMN) is one of the widely accepted modeling language in the industry and its a standardized notation by the Object Management Group (OMG) since 2004. Main aim of BPMN is to provide a notation that is easily understood by business stakeholders. In the preceding stages, Petri nets and their subset as Workflow nets are used for mining since they have stronger mathematical background. However, in this stage, BPMN formulation is used since mismatch patterns have roots in real-life business environment \cite{dijkman2007mismatch}. The following definition and conversion are defined in the study \cite{kalenkovaprocess} and they are used in the mismatch pattern analysis. 
 
-bpmn tanımla http://bpmcenter.org/wp-content/uploads/reports/2015/BPM-15-01.pdf sf5
+\theoremstyle{definition}
+\begin{definition}{BPMN Model}
+A BPMN model is a tuple $BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$ where
+\begin{enumerate}
+  \item $N$ is a set of flow nodes,
+  \item $A \subseteq N$ is a set of activities,
+  \item $G_{XOR} \subseteq N$, $G_{AND} \subseteq N$ are sets of exclusive and parallel gateways,
+  \item $e_{start} \in N$ is a start event,
+  \item $E_{end} \in N$ is a set of end events,
+  \item Sets $A, G_{XOR}, G_{AND}, \{e_{start}, E_{end}$ form a partition of N,
+  \item $SF \subseteq N \times N$ is a set of sequence flows,
+  \item $\lambda : N \rightarrow U_{A}$ is a labeling function, where $U_{A}$ is some universe of activity labels,
+  \item Start event $e_{start}$ does not have incoming sequence flows and has not more than one outgoing sequence flows,
+  \item End events $E_{end}$ do not have outgoing sequence flows.  
+\end{enumerate}
+\end{definition}
 
-conversion tanımla http://bpmcenter.org/wp-content/uploads/reports/2015/BPM-15-01.pdf sf9
+\theoremstyle{definition}
+\begin{definition}{Constructing BPMN Model from Petri Nets}
+Conversion of Petri nets, which is $N = (P, T, F)$ where $P$ is finite set of \textit{places}, $T$ is finite set of \textit{transitions} and $F$ is set of \textit{flow relations} to BPMN models consists of the following steps:
+\begin{enumerate}
+  \item Initialize BPMN model with a start node.
+  \item Convert all transitions in the Petri net by creating an activity in BPMN model for each transition in Petri net.
+  \item Convert all places from Petri net to BPMN routing constructs by finding the corresponding sequence flows.
+\end{enumerate}
+\end{definition}
 
 For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. For each mismatch pattern analysis, the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. This approach also enables to locate the complete mismatches between process models when starting and ending points are provided as source and sink activities.
 
-are checked one-by-one. 
-algoritmaları tanımla
+Skipped Activity-> Organization; {Activities}; Start Activity; End Activity
 
+Refined Activity -> Org_1; Org_2; Activity_1; {<Similarity, Activity 2>}
 
+Activities at Different Moments in Processes -> Org_1; Org_2; Activity_Focused; Prev_1; Next_1; Prev_2; Next_2; Start Activity; End Activity
+
+Different Conditions for Occurrence -> Org_1; Org_2; <Activity, Previous Activities, Gateway>; <Activity, Previous Activities, Gateway>; Start Activity; End Activity
+
+Different Dependencies -> 
+
+Additional Dependencies ->
 
 \section{Recommendation Generation}
 \label{sec:recommendation-generation}
+Recommendation generation step in the methodology is the final and core stage where all information retrieved from event logs until now are utilized. Till this point, all event logs are utilized to mine process models of each organization. Then these event logs are replayed on the process models to calculate performance indicators. Following these steps, the organizations are clustered based on their performance indicators and mismatches between their process models are listed. In this stage, clustering results, which are performance indicator vectors for each cluster will be used to generate recommendations for each cluster of organizations based on the differences between their mismatch patterns.
 
+cluster'daki organization'lar için cluster mean'i ile kendi mean'i arasında yüzde x fark var ise
+-> clusterdaki organizasyonlar için, diğer cluster'daki organizasyonlar arasındaki mismach pattern'ları listele
 
 
 \section{Implementation in ProM Framework}
