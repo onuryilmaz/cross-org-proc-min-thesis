@@ -34,8 +34,10 @@ In order to evaluate the performance of an organization based on their process m
   \item[Average Time Between Activities] For each activity in the process model, average time to reach other activity is calculated. This is a simple but powerful performance metric for organizations since it can yield the average time to complete one task based on a starting point. From the performance perspective, organizations want to minimize average time between activities to increase their throughput \cite{van2012replaying}. This notion can be defined as following:
 	\theoremstyle{definition}
 	\begin{definition}{}
-	Average time between $Activity_{A}$ and $Activity_{B}$ in $Organization_{i}$ is: 
-	$AvgTime_{Activity_{A}\rightarrow Activity_{B}}^{Organization_{i}} = \sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(Activity_{A}, Activity_{B}) / Occurences_{Event\ Log_{i}}(Activity_{A}, Activity_{B})$ where
+	Average time between $Activity_{A}$ and $Activity_{B}$ in $Organization_{i}$ is 
+	\begin{equation*}
+	AvgTime_{Activity_{A}\rightarrow Activity_{B}}^{Organization_{i}} = \sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(Activity_{A}, Activity_{B}) / Occurences_{Event\ Log_{i}}(Activity_{A}, Activity_{B}) where
+	\end{equation*}
 		\begin{enumerate}
 			\item $TimeBetween_{c}(Activity_{A}, Activity_{B}) = EndTime_{c}(Activity_{B}) - StartTime_{c}(Activity_{A})$
 			\item $StartTime_{c}(Activity_{A})$ means start time of $Activity_{A}$ in case $c$.
@@ -116,7 +118,6 @@ For each organization, \textit{Performance Summary} data is used as the data sou
   \caption{Process Model Mining Stage as Black-box }
   \label{fig:process-model-mining-blackbox}
 \end{figure}
-
 
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
