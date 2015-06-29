@@ -99,8 +99,13 @@
 \usepackage{paralist}
 \usepackage{amsthm}
 \usepackage{amsmath }
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\newtheorem{theorem}{Theorem}
 \usepackage{booktabs}
 \usepackage{amssymb}
 
