@@ -151,9 +151,35 @@ Conversion of Petri nets, which is $N = (P, T, F)$ where $P$ is finite set of \t
 \end{enumerate}
 \end{definition}
 
-For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. For each mismatch pattern analysis, the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. This approach also enables to locate the complete mismatches between process models when starting and ending points are provided as source and sink activities.
+For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. For each mismatch pattern analysis, the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. This approach also enables to locate the complete mismatches between process models when starting and ending points are provided as source and sink activities. Mismatch patterns are formulated and their importance in the methodology are listed as following:
+\begin{description}
+  \item[Skipped Activity] Skipped activities are the operations that are not undertaken with some of the organizations. In business environment there could be various different reasons for an organization to exclude any activity in their process flows which are followed by other organizations. Therefore, this mismatch pattern should not be utilized solely but taken in to care with the other patterns. In this study, for each organization a list of activities that they do not include are listed as \textit{Skipped Activity} with the following formulation. In addition, these differences are checked for the activities with a particular start and end point. 
+		\theoremstyle{definition}
+		\begin{definition}{Skipped Activity Pattern}
+		Skipped Activity pattern is a tuple ${Skipped\ Activity} = (O, SA, A_{start}, A_{end}) $ where 
+		\begin{enumerate}
+		  \item $O$ is the identifier for organization,
+		  \item BPMN model of organization is $BPMN_{O}$ and $BPMN_{*}$ is the set of all BPMN models in analysis,
+		  \item $SA$ is a set of skipped activities and $SA =  BPMN_{*}(A) \setminus BPMN_{O}(A)$,
+		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O}(A)$.
+		\end{enumerate}
+		\end{definition}
+  \item[Refined Activity] Refined activities exist in one process; however, as equivalent, a collection of activities are undertaken in another organization's process to achieve the same task. Since there is no activity ontology information is kept in event logs and process models, there is no direct method to define whether the tasks can be classified as other tasks' refined state. In this study, assuming the labels of activities are correct and explanatory about their enclosures, similarity between labels are utilized for this aim. Using \textit{Levenshtein distance], which is very popular in information retrieval area and also known as \textit{edit distance}, similarity of activity labels are calculated for each activity in respect to activities of other organizations' process models. This mismatch pattern presents information about the similar but not same activities in different process models which can be used to make organizations learn from each other. With a user-defined threshold for similarity based on the nature of business environment, most similar tasks can be listed for being refined.
+		\theoremstyle{definition}
+		\begin{definition}{Refined Activity Pattern}
+		Refined Activity pattern is a tuple ${Refined\ Activity} = (O_{1}, O_{2}, RA, SimilarityMap A_{start}, A_{end}) $ where 
+		\begin{enumerate}
+		  \item $O_{1}$ is the first organization where the refined activity is undertaken with the BPMN model of $BPMN_{{O}_{1}}$,
+		  \item $O_{2}$ is the second organization where a collection of activities checked for similarity with the BPMN model of $BPMN_{{O}_{2}}$,
+		  \item $RA$ is the refined activity and $RA \in BPMN_{{O}_{1}}(A)$,
+		  \item $SimilarityMap$ is a set of tuples $(SimilarityValue, A)$ where $SimilarityValue$ indicates the similarity between $RA$ and $A \in BPMN_{{O}_{1}}(A)$, 
+		  \item BPMN model of organization is $BPMN_{O}$ and $BPMN_{*}$ is the set of all BPMN models in analysis,
+		  \item $SA$ is a set of skipped activities and $SA =  BPMN_{*}(A) \setminus BPMN_{O}(A)$,
+ 		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
+		\end{enumerate}
+		\end{definition}
+\end{description}
 
-Skipped Activity-> Organization; {Activities}; Start Activity; End Activity
 
 Refined Activity -> Org_1; Org_2; Activity_1; {<Similarity, Activity 2>}
 
@@ -161,9 +187,19 @@ Activities at Different Moments in Processes -> Org_1; Org_2; Activity_Focused; 
 
 Different Conditions for Occurrence -> Org_1; Org_2; <Activity, Previous Activities, Gateway>; <Activity, Previous Activities, Gateway>; Start Activity; End Activity
 
-Different Dependencies -> 
+Different Dependencies -> Org_1; Org_2; <Activity, Previous Activities, Gateway>; <Activity, Previous Activities, Gateway>; Start Activity; End Activity
 
-Additional Dependencies ->
+Additional Dependencies -> 
+
+
+blackbox olarak bak -> 
+\todo{çiz!}
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{4_methodology/process-model-mining-blackbox}
+  \caption{Process Model Mining Stage as Black-box }
+  \label{fig:process-model-mining-blackbox}
+\end{figure}
 
 \section{Recommendation Generation}
 \label{sec:recommendation-generation}
