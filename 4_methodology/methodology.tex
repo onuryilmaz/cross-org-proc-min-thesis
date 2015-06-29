@@ -48,6 +48,7 @@ In order to evaluate the performance of an organization based on their process m
 	\theoremstyle{definition}
 	\begin{definition}{}
 	Standard deviation time between activity $A$ and $B$ in organization $i$ is 
+
 	$StdDevTime_{A\rightarrow B}^{i} = \sqrt{\frac{\sum_{Case\ c \in Event Log_{i}} [TimeBetween_{c}(A, B) - AvgTime_{A\rightarrow B}^{i}]^{2}}{Occurences_{Event\ Log_{i}}(A,B)} }$ 
 	\end{definition}
 \end{description}
@@ -80,6 +81,7 @@ In order to use replay as an intermediate stage in this thesis, some of the ment
 Performance summary calculation step at the end of this stage is used to create a summary of data consists of average and standard deviation of time between activities. Resulting data can be defined as following:
 	\theoremstyle{definition}
 	\begin{definition}{} Performance Summary data for any organization $i$ is 
+
 	$PerfSum_{i}= \{AvgTimeSum_{i}\ \cup\ StdDevTimeSum_{i}\}$ where
 		\begin{enumerate}
 			\item $AvgTimeSum_{i} = \{ AvgTime_{A \rightarrow B}^{i} | A , B  \in Event\ Log_{i}\}$
@@ -97,7 +99,8 @@ Within clustering analysis, various algorithms are proposed to find clusters bas
 Clustering methods can be evaluated by the internal and external methods. Internal methods are based on the data that is clustered itself whereas external methods use the additional data such as labels or benchmarks. Although there are very strong metrics such as Rand Measure, F-measure, Jaccard index or Confusion Matrices; in this thesis study there is no pre-labeled organizations based on their performance indicators. Therefore, internal evaluation methods are used to assess the quality of clusters. Considering the fact that actual data to cluster is \textit{time interval} in this study and centroid-based clustering is applied, a metric based on decreasing the in-cluster distances is selected. With this consideration, Sum of Squared Error (SSE) is calculated with the following definition. When the clustering results are compared, it is reasonable to choose the one with the least SSE; however, it is a fact that as \textit{k} converges to the number of original sample size SSE value decreases. Therefore, SSE values and number of clusters are plotted and presented to the end user of the methodology to select optimal clustering.
 
 \theoremstyle{definition}
-\begin{definition}{Sum of Squared Error (SSE)}
+\begin{definition}
+Sum of Squared Error (SSE) is 
 $SSE = \sum_{i=1}^{k} \sum_{x \in c_{i}} EuclideanDistance(mean_{i}, x)^{2}$ where
 \begin{enumerate}
   \item $x$ is a data point in cluster $c_{i}$.
@@ -122,8 +125,9 @@ In order to learn from other organizations, there is a need to spot the differen
 Business Process Modeling Notation (BPMN) is one of the widely accepted modeling language in the industry and its a standardized notation by the Object Management Group (OMG) since 2004. Main aim of BPMN is to provide a notation that is easily understood by business stakeholders. In the preceding stages, Petri nets and their subset as Workflow nets are used for mining since they have stronger mathematical background. However, in this stage, BPMN formulation is used since mismatch patterns have roots in real-life business environment \cite{dijkman2007mismatch}. The following definition and conversion are defined in the study \cite{kalenkovaprocess} and they are used in the mismatch pattern analysis. 
 
 \theoremstyle{definition}
-\begin{definition}[BPMN Model]
-A BPMN model is a tuple $BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$ where
+\begin{definition}
+A BPMN model is a tuple 
+$BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$ where
 \begin{enumerate}
   \item $N$ is a set of flow nodes,
   \item $A \subseteq N$ is a set of activities,
