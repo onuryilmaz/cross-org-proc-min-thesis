@@ -160,7 +160,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		\theoremstyle{definition}
 		\begin{definition}
 		Skipped Activity pattern is a tuple 
-		
+
 		${Skipped\ Activity} = (O, SA, A_{start}, A_{end}) $ where 
 		\begin{enumerate}
 		  \item $O$ is the identifier for organization,
@@ -174,30 +174,41 @@ For each organization, mined process models are converted to BPMN models and mis
 		\begin{definition}
 		Refined Activity pattern is a tuple 
 
-		${Refined\ Activity} = (O_{1}, O_{2}, RA, SimilarityMap A_{start}, A_{end}) $ where 
+		${Refined\ Activity} = (O_{1}, O_{2}, RA, SimilarityMap, A_{start}, A_{end}) $ where 
 		\begin{enumerate}
 		  \item $O_{1}$ is the first organization where the refined activity is undertaken with the BPMN model of $BPMN_{{O}_{1}}$,
 		  \item $O_{2}$ is the second organization where a collection of activities checked for similarity with the BPMN model of $BPMN_{{O}_{2}}$,
 		  \item $RA$ is the refined activity and $RA \in BPMN_{{O}_{1}}(A)$,
 		  \item $SimilarityMap$ is a set of tuples $(SimilarityValue, A)$ where $SimilarityValue$ indicates the similarity between $RA$ and $A \in BPMN_{{O}_{1}}(A)$, 
-		  \item BPMN model of organization is $BPMN_{O}$ and $BPMN_{*}$ is the set of all BPMN models in analysis,
-		  \item $SA$ is a set of skipped activities and $SA =  BPMN_{*}(A) \setminus BPMN_{O}(A)$,
  		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
 		\end{enumerate}
 		\end{definition}
-\end{description}
+   \item[Activities at Different Moments in Processes] Activities at different moments means that organizations are undertaking activities at different orders in their process flows. This mismatch pattern indicates that the organizations could achieve the same task when they change the order of activities and this information can be used by others to enhance their process models. Therefore, formulation of this pattern includes an activity; and its previous and next tasks at different organizations.
+		\theoremstyle{definition}
+		\begin{definition}
+		Activities at Different Moments in Processes pattern is a tuple 
 
+		${Different\ Moments} = (O_{1}, O_{2}, A, Prev_{1}, Next_{1},Prev_{2}, Next_{2}, A_{start}, A_{end}) $ where 
+		\begin{enumerate}
+		  \item $O_{1}$ is the first organization with the BPMN model of $BPMN_{{O}_{1}}$,
+		  \item $O_{2}$ is the second organization with the BPMN model of $BPMN_{{O}_{2}}$,
+		  \item $A$ is the activity that is undertaken in different order and $A \in BPMN_{{O}_{1}}(A)$,
+		  \item $Prev_{1}, Next_{1},$ are previous and next tasks of $A$ in $O_{1}$ and  $Prev_{1}, Next_{1} \in  BPMN_{{O}_{1}}(A)$,
+  		  \item $Prev_{2}, Next_{2},$ are previous and next tasks of $A$ in $O_{2}$ and  $Prev_{2}, Next_{2} \in  BPMN_{{O}_{2}}(A)$,
+  		  \item In order to ensure different moments $Prev_{1} \neq Prev_{2}$ or $Next_{1} \neq Next_{2}$,
+ 		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
+		\end{enumerate}
+		\end{definition}
+	
+	For the remaining control flow mismatch patterns, common generic definition is developed to use and further customization:
+	
+	Org_1; Org_2; <Activity, Previous Activities, Gateway>; <Activity, Previous Activities, Gateway>; Start Activity; End Activity
 
-Refined Activity -> Org_1; Org_2; Activity_1; {<Similarity, Activity 2>}
-
-Activities at Different Moments in Processes -> Org_1; Org_2; Activity_Focused; Prev_1; Next_1; Prev_2; Next_2; Start Activity; End Activity
-
-Different Conditions for Occurrence -> Org_1; Org_2; <Activity, Previous Activities, Gateway>; <Activity, Previous Activities, Gateway>; Start Activity; End Activity
-
-Different Dependencies -> Org_1; Org_2; <Activity, Previous Activities, Gateway>; <Activity, Previous Activities, Gateway>; Start Activity; End Activity
-
-Additional Dependencies -> 
-
+	\item[Different Conditions for Occurrence]
+	\item[Different Dependencies]
+	\item[Additional Dependencies]
+ \end{description}
+ 
 
 blackbox olarak bak -> 
 \todo{çiz!}
