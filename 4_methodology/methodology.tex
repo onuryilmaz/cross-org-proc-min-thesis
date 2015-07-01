@@ -199,12 +199,29 @@ For each organization, mined process models are converted to BPMN models and mis
  		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
 		\end{enumerate}
 		\end{definition}
-	
-	For the remaining control flow mismatch patterns, common generic definition is developed to use and further customization:
-	
-	Org_1; Org_2; <Activity, Previous Activities, Gateway>; <Activity, Previous Activities, Gateway>; Start Activity; End Activity
 
 	\item[Different Conditions for Occurrence]
+		For the remaining control flow mismatch patterns, common generic definition is developed to use and further customization:
+		\theoremstyle{definition}
+		\begin{definition}
+		Control Flow Mismatch pattern is a tuple 
+
+		${Control\ Flow\ Mismatch} = (O_{1}, O_{2}, A, Prev_{1}, G_{1}, Prev_{2}, G_{2}, A_{start}, A_{end}) $ where 
+		\begin{enumerate}
+		  \item $O_{1}$ is the first organization with the BPMN model of $BPMN_{{O}_{1}}$,
+		  \item $O_{2}$ is the second organization with the BPMN model of $BPMN_{{O}_{2}}$,
+		  \item $A$ is the activity that is in front of control flow and $A \in BPMN_{{O}_{1}}(A)$,
+		  \item $Prev_{1}$ and $Prev_{2}$ are set of tasks that are connected to gateway $G_{1}$ and $G_{2}$ in organizations $O_{1}$ and $O_{2}$ respectively with the following requirements:
+			  \begin{enumerate}
+			  \item $Prev_{1} \subseteq BPMN_{{O}_{1}}(A)$,
+			  \item $Prev_{2} \subseteq BPMN_{{O}_{2}}(A)$,
+			  \item  $G_{1} \in BPMN_{{O}_{1}}(G_{XOR}, G_{AND})$
+  			  \item  $G_{2} \in BPMN_{{O}_{2}}(G_{XOR}, G_{AND})$
+			  \end {enumerate}
+  		  \item In order to ensure different moments $Prev_{1} \neq Prev_{2}$ or $Next_{1} \neq Next_{2}$,
+ 		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
+		\end{enumerate}
+		\end{definition}
 	\item[Different Dependencies]
 	\item[Additional Dependencies]
  \end{description}
