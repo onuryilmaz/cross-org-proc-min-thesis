@@ -200,8 +200,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		\end{enumerate}
 		\end{definition}
 
-	\item[Different Conditions for Occurrence]
-		For the remaining control flow mismatch patterns, common generic definition is developed to use and further customization:
+	\item[Different Conditions for Occurrence] Different conditions for occurrence take place where an activity has the same dependencies in different organizations but with different condition. For instance, an organization needs to complete all dependency task before starting the next one; though another organization checks for the completion of only one of these dependencies. This difference between organizations can lead to loosen or tighten the conditions based on the application of other organizations. Considering the representation of different conditions for occurrence and other control flow mismatch patterns, a generic definition is developed firstly to use and further customize. Different conditions for occurrence pattern definition is developed based on this generic definition as following.
 		\theoremstyle{definition}
 		\begin{definition}
 		Control Flow Mismatch pattern is a tuple 
@@ -213,17 +212,39 @@ For each organization, mined process models are converted to BPMN models and mis
 		  \item $A$ is the activity that is in front of control flow and $A \in BPMN_{{O}_{1}}(A)$,
 		  \item $Prev_{1}$ and $Prev_{2}$ are set of tasks that are connected to gateway $G_{1}$ and $G_{2}$ in organizations $O_{1}$ and $O_{2}$ respectively with the following requirements:
 			  \begin{enumerate}
-			  \item $Prev_{1} \subseteq BPMN_{{O}_{1}}(A)$,
-			  \item $Prev_{2} \subseteq BPMN_{{O}_{2}}(A)$,
-			  \item  $G_{1} \in BPMN_{{O}_{1}}(G_{XOR}, G_{AND})$
-  			  \item  $G_{2} \in BPMN_{{O}_{2}}(G_{XOR}, G_{AND})$
+				  \item $Prev_{1} \subseteq BPMN_{{O}_{1}}(A)$,
+				  \item $Prev_{2} \subseteq BPMN_{{O}_{2}}(A)$,
+				  \item $G_{1} \in BPMN_{{O}_{1}}(G_{XOR}, G_{AND})$,
+	  			  \item $G_{2} \in BPMN_{{O}_{2}}(G_{XOR}, G_{AND})$
 			  \end {enumerate}
   		  \item In order to ensure different moments $Prev_{1} \neq Prev_{2}$ or $Next_{1} \neq Next_{2}$,
  		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
 		\end{enumerate}
 		\end{definition}
-	\item[Different Dependencies]
-	\item[Additional Dependencies]
+
+		\theoremstyle{definition}
+		\begin{definition}
+		Different Conditions for Occurrence pattern is a ${Control\ Flow\ Mismatch}$ where
+		\begin{enumerate}
+			\item $Prev_{1} = Prev_{2}$,
+			\item $G_{1} \neq G_{2}$.
+		\end{enumerate}
+		\end{definition}
+
+	\item[Different Dependencies] When the dependency set of a specific activity is different in organizations, it can be concluded that this activity and the relation between its dependency sets should be reviewed since it can be achieved in both environments. Organizations can learn from each other to eliminate or enhance their process flows by changing these dependency sets. This can include re-organization of activities as well as removing and adding new activities. The idea is structured in the following simplified definition.
+		\theoremstyle{definition}
+		\begin{definition}
+		Different Dependencies pattern is a ${Control\ Flow\ Mismatch}$ where
+		\begin{enumerate}
+			\item $Prev_{1} \neq Prev_{2}$,
+			\item $G_{1} = G_{2}$.
+		\end{enumerate}
+		\end{definition}	
+	\item[Additional Dependencies] Additional dependency pattern is a special case of \textit{Different Dependencies} where additional tasks are required in one organization in order to start an activity. These additional dependencies can include provisional tasks that are related to the original activity such as \textit{checking system} before \textit{starting application}. 
+		\theoremstyle{definition}
+		\begin{definition}
+		Additional Dependencies pattern is a ${Different\ Dependencies Mismatch}$ where $Prev_{1} \subseteq Prev_{2}$ or $Prev_{1} \subseteq Prev_{2}$.
+		\end{definition}
  \end{description}
  
 
