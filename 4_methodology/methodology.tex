@@ -119,8 +119,8 @@ Cluster Analysis Data is a tuple
 $(k, Assignments, Cluster\ Centroids)$ where
 \begin{enumerate}
 	\item $k$ is the number of clusters,
-	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$,
-	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Centroids)$ where $Centroids$ is a union of tuples $(AvgTime_{A \rightarrow B}, Value)$ and $(StdTime_{A \rightarrow B}, Value)$.
+	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$ where $i$ is identifier for organization and $j \leq k$ is identifier for cluster.
+	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Centroids)$ where $Centroids$ is a union of tuples $(AvgTime_{A \rightarrow B}, Value)$ and $(StdTime_{A \rightarrow B}, Value)$ for activities $A$ and $B$.
 \end{enumerate}
 \end{definition}
  
