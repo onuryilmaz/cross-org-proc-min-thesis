@@ -114,9 +114,14 @@ For each organization, \textit{Performance Summary} data is used as the data sou
 \todo{tanımlama yap}
 \theoremstyle{definition}
 \begin{definition}
-Cluster Analysis Data (SSE) is a tuple $aa$ where
+Cluster Analysis Data is a tuple 
+
+$(k, Assignments, Cluster\ Centroids)$ where
 \begin{enumerate}
-	\item 
+	\item $k$ is the number of clusters,
+	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$,
+	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Centroids)$ where  
+						CentroidList -> <Avg, Sayı> <Std, Sayı>
 \end{enumerate}
 \end{definition}
  
