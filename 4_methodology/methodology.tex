@@ -109,16 +109,24 @@ $SSE = \sum_{i=1}^{k} \sum_{x \in c_{i}} EuclideanDistance(mean_{i}, x)^{2}$ whe
 \end{enumerate}
 \end{definition}
 
-For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting k from 1 to the number of organizations. For each clustering with different cluster sizes, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:process-model-mining-blackbox}.
+For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting k from 1 to the number of organizations. For each clustering with different cluster sizes, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:performance-indicator-clustering-blackbox}. Resulting cluster analysis data can be formulated as following:
 
-\todo{çiz!}
+\todo{tanımlama yap}
+\theoremstyle{definition}
+\begin{definition}
+Cluster Analysis Data (SSE) is a tuple $aa$ where
+\begin{enumerate}
+	\item 
+\end{enumerate}
+\end{definition}
+ 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{4_methodology/process-model-mining-blackbox}
-  \caption{Process Model Mining Stage as Black-box }
-  \label{fig:process-model-mining-blackbox}
+  \includegraphics[width=\textwidth]{4_methodology/performance-indicator-clustering-blackbox}
+  \caption{Performance Indicator Clustering Stage as Black-box }
+  \label{fig:performance-indicator-clustering-blackbox}
 \end{figure}
-
+ 
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
 In order to learn from other organizations, there is a need to spot the differences between process models of different organizations. In this phase of methodology, differences between process models will be revealed by the mismatch patterns which are defined by Dijkman \cite{dijkman2007mismatch}. In the process mining stage, process models are mined to create Workflow nets; however, mismatch pattern definitions are closer to business environment and it is more suitable spot patterns in BPMN notation. Thus, mined process models are converted to BPMN models and then mismatch pattern analysis is applied. After spotting differences, mismatch patterns for activities and control flows average revealed for the organizations.
