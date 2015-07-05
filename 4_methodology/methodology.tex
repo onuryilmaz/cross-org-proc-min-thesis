@@ -1,12 +1,26 @@
 \chapter{METHODOLOGY}
 \label{chp:methodology}
 
-\todo{write}
+In this chapter, methodology proposed in this thesis study is presented. Firstly, approach overview is presented from a high-level perspective. Then, each stage in the methodology is mentioned with their importance and place in the study, mathematical representations and definitions; and black-box diagrams. In the last section of this chapter, implementation details of this methodology in ProM framework is explained in detail with a software architecture overview.
 
 \section{Approach Overview}
 \label{sec:approach-overview}
-\todo{write}
-buraya akış şeması çiz
+Approach proposed in this study consists of four main stages as and general information about these stages can be summarized as following:
+\begin{description}
+	\item[Process Model Mining:] Process models are extracted from event logs for each organization with a user specified noise threshold.
+	\item[Performance Indicator Analysis:] Event logs are replayed on process models and performance indicators are calculated for each organization. Using these indicators, organizations are clustered based on how well they are operating.
+	\item[Mismatch Pattern Analysis:] Differences between process models of organization are extracted with a well-established mismatch patterns.
+	\item[Recommendation Generation:] Using the performance indicator clusterings and differences between process models, a set of recommendation for each organization is generated.
+\end{description}
+
+Flow of these stages with the important input and outputs can be visualized in Figure~\ref{fig:approach-overview}. In the following sections, each box will be explained in detail with their mathematical backgrounds.
+\todo{çiz!}
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{4_methodology/approach-overview}
+  \caption{Overview of Methodology}
+  \label{fig:approach-overview}
+\end{figure}
 
 \section{Process Model Mining}
 \label{sec:process-model-mining}
@@ -268,7 +282,8 @@ Mismatch pattern analysis stage in methodology can be visualized as a black-box 
 
 \section{Recommendation Generation}
 \label{sec:recommendation-generation}
-Recommendation generation step in the methodology is the final and core stage where all information retrieved from event logs until now are utilized. Till this point, all event logs are utilized to mine process models of each organization. Then these event logs are replayed on the process models to calculate performance indicators. Following these steps, the organizations are clustered based on their performance indicators and mismatches between their process models are listed. In this stage, clustering results, which are performance indicator vectors for each cluster will be used to generate recommendations for each cluster of organizations based on the differences between their mismatch patterns.
+Recommendation generation step in the methodology is the final and core stage where all information retrieved from event logs until now are utilized. Till this point, all event logs are used to mine process models of each organization. Then these event logs are replayed on the process models to calculate performance indicators. Following these steps, the organizations are clustered based on their performance indicators and mismatches between their process models are listed. In this stage, clustering results, which are performance indicator vectors for each cluster will be used to generate recommendations for each cluster of organizations based on the differences between their mismatch patterns.
+
 \todo{write}
 cluster'daki organization'lar için cluster mean'i ile kendi mean'i arasında yüzde x fark var ise
 -> clusterdaki organizasyonlar için, diğer cluster'daki organizasyonlar arasındaki mismach pattern'ları listele
@@ -277,4 +292,8 @@ cluster'daki organization'lar için cluster mean'i ile kendi mean'i arasında y�
 \section{Implementation in ProM Framework}
 \label{sec:implementation}
 \todo{write}
-buraya arch. çiz
+\begin{enumerate}
+	\item Mention Prom environment
+	\item Draw Architectural concept
+	\item Add screenshots for each step [Missing: Recommendation Generation step screenshots]
+\end{enumerate}
