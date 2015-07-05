@@ -111,7 +111,6 @@ $SSE = \sum_{i=1}^{k} \sum_{x \in c_{i}} EuclideanDistance(mean_{i}, x)^{2}$ whe
 
 For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting k from 1 to the number of organizations. For each clustering with different cluster sizes, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:performance-indicator-clustering-blackbox}. Resulting cluster analysis data can be formulated as following:
 
-\todo{tanımlama yap}
 \theoremstyle{definition}
 \begin{definition}
 Cluster Analysis Data is a tuple 
@@ -119,7 +118,7 @@ Cluster Analysis Data is a tuple
 $(k, Assignments, Cluster\ Centroids)$ where
 \begin{enumerate}
 	\item $k$ is the number of clusters,
-	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$ where $i$ is identifier for organization and $j \leq k$ is identifier for cluster.
+	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$ where $i$ is identifier for organization and $j \leq k$ is identifier for cluster,
 	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Centroids)$ where $Centroids$ is a union of tuples $(AvgTime_{A \rightarrow B}, Value)$ and $(StdTime_{A \rightarrow B}, Value)$ for activities $A$ and $B$.
 \end{enumerate}
 \end{definition}
