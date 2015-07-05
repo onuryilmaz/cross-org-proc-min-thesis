@@ -258,24 +258,23 @@ For each organization, mined process models are converted to BPMN models and mis
 		\end{definition}
  \end{description}
  
-
-blackbox olarak bak -> 
-\todo{çiz!}
+Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent so mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis.
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{4_methodology/process-model-mining-blackbox}
-  \caption{Process Model Mining Stage as Black-box }
-  \label{fig:process-model-mining-blackbox}
+  \includegraphics[width=\textwidth]{4_methodology/mismatch-pattern-analysis-blackbox}
+  \caption{Mismatch Pattern Analysis Stage as Black-box}
+  \label{fig:mismatch-pattern-analysis-blackbox}
 \end{figure}
 
 \section{Recommendation Generation}
 \label{sec:recommendation-generation}
 Recommendation generation step in the methodology is the final and core stage where all information retrieved from event logs until now are utilized. Till this point, all event logs are utilized to mine process models of each organization. Then these event logs are replayed on the process models to calculate performance indicators. Following these steps, the organizations are clustered based on their performance indicators and mismatches between their process models are listed. In this stage, clustering results, which are performance indicator vectors for each cluster will be used to generate recommendations for each cluster of organizations based on the differences between their mismatch patterns.
-
+\todo{write}
 cluster'daki organization'lar için cluster mean'i ile kendi mean'i arasında yüzde x fark var ise
 -> clusterdaki organizasyonlar için, diğer cluster'daki organizasyonlar arasındaki mismach pattern'ları listele
 
 
 \section{Implementation in ProM Framework}
 \label{sec:implementation}
+\todo{write}
 buraya arch. çiz
