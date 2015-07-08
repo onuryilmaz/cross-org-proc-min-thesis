@@ -132,7 +132,12 @@ $(k, Assignments, Cluster\ Centroids)$ where
 \begin{enumerate}
 	\item $k$ is the number of clusters,
 	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$ where $i$ is identifier for organization and $j \leq k$ is identifier for cluster,
-	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Centroids)$ where $Centroids$ is a union of tuples $(AvgTime_{A \rightarrow B}, Value)$ and $(StdTime_{A \rightarrow B}, Value)$ for activities $A$ and $B$.
+	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Centroids)$ where $Centroids$ is a set of tuples $(Type, A_{start}, A_{end}, Value)$ where
+		\begin{enumerate}
+			\item $Type$ is performance indicator type which are $Average$ or $StandardDev$,
+			\item $A_{start}$ and $A_{end}$ are starting and ending points of performance indicator,
+			\item $Value$ is the actual value of performance indicator.	
+		\end{enumerate}	
 \end{enumerate}
 \end{definition}
  
@@ -193,6 +198,11 @@ For each organization, mined process models are converted to BPMN models and mis
 		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O}(A)$.
 		\end{enumerate}
 		\end{definition}
+
+		\theoremstyle{definition}
+		\begin{definition}
+		Skipped Activity Analyzer is a function \textit{SkippedActivityAnalyzer(O, A_{start}, A_{end}) and it returns a set of \textit{Skipped Activity} for the organization $O$ for the activities between $A_{start}$ and $A_{end}$.
+		\end{definition}
   \item[Refined Activity] Refined activities exist in one process; however, as equivalent, a collection of activities are undertaken in another organization's process to achieve the same task. Since there is no activity ontology information is kept in event logs and process models, there is no direct method to define whether the tasks can be classified as other tasks' refined state. In this study, assuming the labels of activities are correct and explanatory about their enclosures, similarity between labels are utilized for this aim. Using \textit{Levenshtein distance}, which is very popular in information retrieval area and also known as \textit{edit distance}, similarity of activity labels are calculated for each activity in respect to activities of other organizations' process models. This mismatch pattern presents information about the similar but not same activities in different process models which can be used to make organizations learn from each other. With a user-defined threshold for similarity based on the nature of business environment, most similar tasks can be listed for being refined.
 		\theoremstyle{definition}
 		\begin{definition}
@@ -207,6 +217,12 @@ For each organization, mined process models are converted to BPMN models and mis
  		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
 		\end{enumerate}
 		\end{definition}
+
+		\theoremstyle{definition}
+		\begin{definition}
+		Refined Activity Analyzer is a function \textit{RefinedActivityAnalyzer(O_{1}, O_{2}, A_{start}, A_{end}) and it returns a set of \textit{Refined Activity} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
+		\end{definition}
+
    \item[Activities at Different Moments in Processes] Activities at different moments means that organizations are undertaking activities at different orders in their process flows. This mismatch pattern indicates that the organizations could achieve the same task when they change the order of activities and this information can be used by others to enhance their process models. Therefore, formulation of this pattern includes an activity; and its previous and next tasks at different organizations.
 		\theoremstyle{definition}
 		\begin{definition}
@@ -298,11 +314,11 @@ ${Recommendation} = (O, A_{start}, A_{end}, Mismatch\ Patterns) $ where
 
 \theoremstyle{definition}
 \begin{definition}
-Recommendation generation is a function that is \textit{RecGen(O, Cluster Analysis Data, Performance Threshold)} and it returns a set of \textit{Recommendation} where
+Recommendation generation is a function that is \textit{RecGen(O, C, P)} and it returns a set of \textit{Recommendation} where
 	\begin{enumerate}
 	  \item $O$ is identifier for organization,
-	  \item \textit{Cluster Analysis Data} is result of cluster analysis stage,
-	  \item \textit{Performance Threshold} is a real number between 0 and 1.
+	  \item $C$ is \textit{Cluster Analysis Data} and result of cluster analysis stage,
+	  \item $P$ is \textit{Performance Threshold} and a real number between 0 and 1.
 	\end{enumerate}
 \end{definition}
 
@@ -310,32 +326,21 @@ Algorithm of recommendation generation function is based on the idea of checking
 
 \todo{write}
 
-RecommendationGeneration(O1, Cluster Analysis Data,  Performance Threshold)
-Recommendations ={}
--> Get cluster of O1,
--> For each performance indicator in cluster analysis data (Get start and end activity)
--> Get cluster mean - cluster difference
--> if threshold > 
 
---- For each other cluster X 
------ For each other organizaiton in cluster X
-------- Check for mismatch patterns with Start Act, End Act add to Mismatch Pattern)
-return recommendation(O,A)
 
-This stage of methodology can be visualized as gathering inputs of mismatch pattern data and cluster analysis data in Figure~\ref{fig:mismatch-pattern-analysis-blackbox}. In addition, a performance difference threshold is gathered from the user to specify how much difference between clusters is necessary to check for mismatch patterns and generate recommendations. This stage generates recommendation data for each organization which contains a set of mismatch patterns.
-\todo{çiz}
+This stage of methodology can be visualized as gathering inputs of mismatch patterns data and cluster analysis data in Figure~\ref{fig:recommendation-generation-blackox}. In addition, a performance difference threshold is gathered from the user to specify how much difference between clusters is necessary to check for mismatch patterns and generate recommendations. This stage generates recommendation data for each organization which contains a set of mismatch patterns.
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{4_methodology/mismatch-pattern-analysis-blackbox}
-  \caption{Mismatch Pattern Analysis Stage as Black-box}
-  \label{fig:mismatch-pattern-analysis-blackbox}
+  \includegraphics[width=\textwidth]{4_methodology/recommendation-generation-blackbox}
+  \caption{Recommendation Generation Stage as Black-box}
+  \label{fig:recommendation-generation-blackox}
 \end{figure}
 
 \section{Implementation in ProM Framework}
 \label{sec:implementation}
-\todo{write}
+\todo{WRITE}
 \begin{enumerate}
-	\item Mention Prom environment
-	\item Draw Architectural concept
-	\item Add screenshots for each step [Missing: Recommendation Generation step screenshots]
+	\item Mention ProM environment
+	\item Draw Architectural concept, explain developed modules: https://github.com/onuryilmaz/thesis-v1
+	\item Add screen-shots for each step [Missing: Recommendation Generation step screen shots]
 \end{enumerate}
