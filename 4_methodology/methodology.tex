@@ -297,6 +297,13 @@ For each organization, mined process models are converted to BPMN models and mis
 			\item $Prev_{1} \neq Prev_{2}$,
 			\item $G_{1} = G_{2}$.
 		\end{enumerate}
+		\end{definition}
+
+		\theoremstyle{definition}
+		\begin{definition}
+		Different Dependency Analyzer is a function 
+
+		$DifferentDependencysAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}	
 	\item[Additional Dependencies] Additional dependency pattern is a special case of \textit{Different Dependencies} where additional tasks are required in one organization in order to start an activity. These additional dependencies can include provisional tasks that are related to the original activity such as \textit{checking system} before \textit{starting application}. 
 		\theoremstyle{definition}
@@ -348,7 +355,45 @@ Recommendation generation is a function that is \textit{RecGen(O, C, P)} and it 
 
 Algorithm of recommendation generation function is based on the idea of checking other clusters for a significant change in performance indicators, where significance is defined by the threshold provided by user. After finding significant difference, all organizations in other clusters are checked against mismatch patterns with the starting and ending activities defined in performance indicators. With this constraining, only mismatches which are located between the activities that causes high level of difference in performance indicators are analyzed. This approach is formalized in the following algorithm:
 
-\todo{write}
+\begin{algorithm}
+\caption{Recommendation Generation}
+\begin{algorithmic}
+\Procedure {RecGen}{$O$, $C$, $P$}
+\State $Recommendations \leftarrow \{\}$ 
+\State $i \leftarrow C(Assignments(O))$ 
+\ForAll{$Centroids_{i} \in C(Cluster Centroids(i)$} 
+    \ForAll{$Centroid_{i} \in  Centroids_{i}$} 
+        \ForAll{$Centroids_{j} \in C(Cluster Centroids(j))$}
+            \ForAll{$Centroid_{j} \in  Centroids_{j}$}  
+                \If{$Centroid_{i}(A_{start}) = Centroid_{j}(A_{start})  Centroid_{i}(A_{end}) = Centroid_{j}(A_{end})$} 
+                    \If{ ($\left |  Centroid_{i}(Value) -  Centroid_{j}(Value)\right | \div Centroid_{i}(Value)) \geq P$  }
+                        \State $A_{start} \leftarrow Centroid_{j}(A_{start})$
+                       \State $A_{end} \leftarrow Centroid_{j}(A_{end})$
+                        \State $MismatchPatterns \leftarrow \{\}$
+                           \ForAll{$O' \in C(Assignments(j))$}
+                            \State $MismatchPatterns$ \leftarrow  MismatchPatternAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+                        \EndFor
+                        \State  $Recommendations$ \leftarrow  Recommendation($O$,$A_{start}$,$A_{end}$, $MismatchPatterns$)
+                    \EndIf
+                 \EndIf
+            \EndFor
+        \EndFor
+    \EndFor
+\EndFor
+\State  \textbf{return} $Recommendations$
+\EndProcedure
+\Procedure {MismatchPatternAnalyzer}{$O$,$O'$,$A_{start}$,$A_{end}$}
+    \State $MismatchPatterns \leftarrow \{\}$ 
+    \State $MismatchPatterns$ \leftarrow  SkippedActivityAnalyzer($O$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  RefinedActivityAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  DifferentMomentsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  DifferentConditionsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  DifferentDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  AdditionalDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State  \textbf{return} $MismatchPatterns$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 
 
