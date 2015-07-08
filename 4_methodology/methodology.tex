@@ -318,13 +318,30 @@ For each organization, mined process models are converted to BPMN models and mis
 		\end{definition}	
  \end{description}
  
-Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent so mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis.
+Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent so mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis as presented in Algorithm~\ref{alg:mismatch}.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{4_methodology/mismatch-pattern-analysis-blackbox}
   \caption{Mismatch Pattern Analysis Stage as Black-box}
   \label{fig:mismatch-pattern-analysis-blackbox}
 \end{figure}
+
+\begin{algorithm}
+\caption{Mismatch Pattern Analysis}
+\label{alg:mismatch}
+\begin{algorithmic}[1]
+\Procedure {MismatchPatternAnalyzer}{$O$,$O'$,$A_{start}$,$A_{end}$}
+    \State $MismatchPatterns \leftarrow \{\}$ 
+    \State $MismatchPatterns$ \leftarrow  SkippedActivityAnalyzer($O$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  RefinedActivityAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  DifferentMomentsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  DifferentConditionsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  DifferentDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State $MismatchPatterns$ \leftarrow  AdditionalDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
+    \State  \textbf{return} $MismatchPatterns$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 \section{Recommendation Generation}
 \label{sec:recommendation-generation}
@@ -353,11 +370,12 @@ Recommendation generation is a function that is \textit{RecGen(O, C, P)} and it 
 	\end{enumerate}
 \end{definition}
 
-Algorithm of recommendation generation function is based on the idea of checking other clusters for a significant change in performance indicators, where significance is defined by the threshold provided by user. After finding significant difference, all organizations in other clusters are checked against mismatch patterns with the starting and ending activities defined in performance indicators. With this constraining, only mismatches which are located between the activities that causes high level of difference in performance indicators are analyzed. This approach is formalized in the following algorithm:
+Algorithm of recommendation generation function is based on the idea of checking other clusters for a significant change in performance indicators, where significance is defined by the threshold provided by user. After finding significant difference, all organizations in other clusters are checked against mismatch patterns with the starting and ending activities defined in performance indicators. With this constraining, only mismatches which are located between the activities that causes high level of difference in performance indicators are analyzed. This approach is formalized in Algorithm~\ref{alg:recgen}.
 
 \begin{algorithm}
 \caption{Recommendation Generation}
-\begin{algorithmic}
+\label{alg:recgen}
+\begin{algorithmic}[1]
 \Procedure {RecGen}{$O$, $C$, $P$}
 \State $Recommendations \leftarrow \{\}$ 
 \State $i \leftarrow C(Assignments(O))$ 
@@ -381,16 +399,6 @@ Algorithm of recommendation generation function is based on the idea of checking
     \EndFor
 \EndFor
 \State  \textbf{return} $Recommendations$
-\EndProcedure
-\Procedure {MismatchPatternAnalyzer}{$O$,$O'$,$A_{start}$,$A_{end}$}
-    \State $MismatchPatterns \leftarrow \{\}$ 
-    \State $MismatchPatterns$ \leftarrow  SkippedActivityAnalyzer($O$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  RefinedActivityAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  DifferentMomentsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  DifferentConditionsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  DifferentDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  AdditionalDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State  \textbf{return} $MismatchPatterns$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
