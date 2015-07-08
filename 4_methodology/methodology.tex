@@ -132,11 +132,12 @@ $(k, Assignments, Cluster\ Centroids)$ where
 \begin{enumerate}
 	\item $k$ is the number of clusters,
 	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$ where $i$ is identifier for organization and $j \leq k$ is identifier for cluster,
-	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Centroids)$ where $Centroids$ is a set of tuples $(Type, A_{start}, A_{end}, Value)$ where
+	\item $Cluster\ Centroids$ is a set of tuple $(Cluster_{j}, Type, A_{start}, A_{end}, Value)$ where
 		\begin{enumerate}
 			\item $Type$ is performance indicator type which are $Average$ or $StandardDev$,
 			\item $A_{start}$ and $A_{end}$ are starting and ending points of performance indicator,
-			\item $Value$ is the actual value of performance indicator.	
+			\item $Value$ is the actual value of performance indicator,
+			\item $Cluster\ Centroids_{j}$ is a function that returns set of $Centroid$ which are tuples of $(Type, A_{start}, A_{end}, Value)$.
 		\end{enumerate}	
 \end{enumerate}
 \end{definition}
@@ -316,7 +317,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		\end{definition}	
  \end{description}
  
-Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent so mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis as presented in Algorithm~\ref{alg:mismatch}.
+Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent so mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis as presented in Algorithm~\ref{algo:mismatch}.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{4_methodology/mismatch-pattern-analysis-blackbox}
@@ -368,8 +369,33 @@ Recommendation generation is a function that is \textit{RecGen(O, C, P)} and it 
 	\end{enumerate}
 \end{definition}
 
-Algorithm of recommendation generation function is based on the idea of checking other clusters for a significant change in performance indicators, where significance is defined by the threshold provided by user. After finding significant difference, all organizations in other clusters are checked against mismatch patterns with the starting and ending activities defined in performance indicators. With this constraining, only mismatches which are located between the activities that causes high level of difference in performance indicators are analyzed. This approach is formalized in Algorithm~\ref{alg:recgen}.
+Algorithm of recommendation generation function is based on the idea of checking other clusters for a significant change in performance indicators, where significance is defined by the threshold provided by user. After finding significant difference, all organizations in other clusters are checked against mismatch patterns with the starting and ending activities defined in performance indicators. With this constraining, only mismatches which are located between the activities that causes high level of difference in performance indicators are analyzed. This approach is formalized in Algorithm~\ref{algo:recgen}.
  
+\begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
+\KwIn{$O$ organization, $C$ Cluster Analysis Data, $P$ performance difference threshold}
+\KwOut{$Recommendations$ a set of recommendations}
+$Recommendations \leftarrow \{\}$ \;
+$i \leftarrow C(Assignments(O))$ \;
+\For{$Centroid \in C(Cluster Centroids(i))$} { 
+	\For{$Centroid' \in C(Cluster Centroids(j))\ i\neq j$} { 
+		\If{$Centroid(A_{start}) = Centroid'(A_{start}) \& Centroid(A_{end}) = Centroid'(A_{end})$} {
+			\If{ ($\left |  Centroid(Value) -  Centroid'(Value)\right | \div Centroid(Value)) \geq P$  } {
+				$A_{start} \leftarrow Centroid(A_{start})$ \;
+				$A_{end} \leftarrow Centroid(A_{end})$ \;
+				$MismatchPatterns \leftarrow \{\}$ \;
+				\For{$O' \in C(Assignments(j))$} {
+					$MismatchPatterns$ \leftarrow  Mismatch Pattern Analysis($O$,$O'$,$A_{start}$,$A_{end}$) \;
+				}
+				$Recommendations$ \leftarrow  Recommendation($O$,$A_{start}$,$A_{end}$, $MismatchPatterns$) \;
+			}
+		}
+	}
+}
+\Return{$Recommendations$} \;
+\caption{Recommendation Generation}
+\label{algo:recgen}
+\end{algorithm}
 
 
 This stage of methodology can be visualized as gathering inputs of mismatch patterns data and cluster analysis data in Figure~\ref{fig:recommendation-generation-blackox}. In addition, a performance difference threshold is gathered from the user to specify how much difference between clusters is necessary to check for mismatch patterns and generate recommendations. This stage generates recommendation data for each organization which contains a set of mismatch patterns.
