@@ -303,6 +303,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		\theoremstyle{definition}
 		\begin{definition}
 		Different Dependency Analyzer is a function 
+
 		$DifferentDependencysAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}	
 	\item[Additional Dependencies] Additional dependency pattern is a special case of \textit{Different Dependencies} where additional tasks are required in one organization in order to start an activity. These additional dependencies can include provisional tasks that are related to the original activity such as \textit{checking system} before \textit{starting application}. 
@@ -313,6 +314,7 @@ For each organization, mined process models are converted to BPMN models and mis
 
 		\begin{definition}
 		Additional Dependency Analyzer is a function 
+
 		$AdditionalDependencysAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Additional Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}	
  \end{description}
@@ -370,15 +372,14 @@ Recommendation generation is a function that is \textit{RecGen(O, C, P)} and it 
 \end{definition}
 
 Algorithm of recommendation generation function is based on the idea of checking other clusters for a significant change in performance indicators, where significance is defined by the threshold provided by user. After finding significant difference, all organizations in other clusters are checked against mismatch patterns with the starting and ending activities defined in performance indicators. With this constraining, only mismatches which are located between the activities that causes high level of difference in performance indicators are analyzed. This approach is formalized in Algorithm~\ref{algo:recgen}.
- 
-\begin{algorithm}
+ \begin{algorithm}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
 \KwIn{$O$ organization, $C$ Cluster Analysis Data, $P$ performance difference threshold}
 \KwOut{$Recommendations$ a set of recommendations}
 $Recommendations \leftarrow \{\}$ \;
 $i \leftarrow C(Assignments(O))$ \;
-\For{$Centroid \in C(Cluster Centroids(i))$} { 
-	\For{$Centroid' \in C(Cluster Centroids(j))\ i\neq j$} { 
+\For{$Centroid \in C(Cluster Centroids_{i})$} { 
+	\For{$Centroid' \in C(Cluster Centroids_{j}))\ i\neq j$} { 
 		\If{$Centroid(A_{start}) = Centroid'(A_{start}) \& Centroid(A_{end}) = Centroid'(A_{end})$} {
 			\If{ ($\left |  Centroid(Value) -  Centroid'(Value)\right | \div Centroid(Value)) \geq P$  } {
 				$A_{start} \leftarrow Centroid(A_{start})$ \;
@@ -396,7 +397,6 @@ $i \leftarrow C(Assignments(O))$ \;
 \caption{Recommendation Generation}
 \label{algo:recgen}
 \end{algorithm}
-
 
 This stage of methodology can be visualized as gathering inputs of mismatch patterns data and cluster analysis data in Figure~\ref{fig:recommendation-generation-blackox}. In addition, a performance difference threshold is gathered from the user to specify how much difference between clusters is necessary to check for mismatch patterns and generate recommendations. This stage generates recommendation data for each organization which contains a set of mismatch patterns.
 \begin{figure}
