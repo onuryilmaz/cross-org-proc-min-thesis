@@ -302,7 +302,6 @@ For each organization, mined process models are converted to BPMN models and mis
 		\theoremstyle{definition}
 		\begin{definition}
 		Different Dependency Analyzer is a function 
-
 		$DifferentDependencysAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}	
 	\item[Additional Dependencies] Additional dependency pattern is a special case of \textit{Different Dependencies} where additional tasks are required in one organization in order to start an activity. These additional dependencies can include provisional tasks that are related to the original activity such as \textit{checking system} before \textit{starting application}. 
@@ -313,7 +312,6 @@ For each organization, mined process models are converted to BPMN models and mis
 
 		\begin{definition}
 		Additional Dependency Analyzer is a function 
-
 		$AdditionalDependencysAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Additional Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}	
  \end{description}
@@ -327,21 +325,21 @@ Mismatch pattern analysis stage in methodology can be visualized as a black-box 
 \end{figure}
 
 \begin{algorithm}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead 
+\KwIn{$O$ first organization, $O'$ second organization, $A_{start}$ starting activity, $A_{end}$ ending activity}
+\KwOut{$MismatchPatterns$ a set of mismatch patterns}
+$MismatchPatterns \leftarrow \{\}$ \;
+$MismatchPatterns$ \leftarrow  SkippedActivityAnalyzer($O$,$A_{start}$,$A_{end}$) \;
+$MismatchPatterns$ \leftarrow  RefinedActivityAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$) \;
+$MismatchPatterns$ \leftarrow  DifferentMomentsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$) \;
+$MismatchPatterns$ \leftarrow  DifferentConditionsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$) \;
+$MismatchPatterns$ \leftarrow  DifferentDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$) \;
+$MismatchPatterns$ \leftarrow  AdditionalDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$) \;
+\Return{$MismatchPatterns$}\;
 \caption{Mismatch Pattern Analysis}
-\label{alg:mismatch}
-\begin{algorithmic}[1]
-\Procedure {MismatchPatternAnalyzer}{$O$,$O'$,$A_{start}$,$A_{end}$}
-    \State $MismatchPatterns \leftarrow \{\}$ 
-    \State $MismatchPatterns$ \leftarrow  SkippedActivityAnalyzer($O$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  RefinedActivityAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  DifferentMomentsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  DifferentConditionsAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  DifferentDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State $MismatchPatterns$ \leftarrow  AdditionalDependencysAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-    \State  \textbf{return} $MismatchPatterns$
-\EndProcedure
-\end{algorithmic}
+\label{algo:mismatch}
 \end{algorithm}
+
 
 \section{Recommendation Generation}
 \label{sec:recommendation-generation}
@@ -371,38 +369,7 @@ Recommendation generation is a function that is \textit{RecGen(O, C, P)} and it 
 \end{definition}
 
 Algorithm of recommendation generation function is based on the idea of checking other clusters for a significant change in performance indicators, where significance is defined by the threshold provided by user. After finding significant difference, all organizations in other clusters are checked against mismatch patterns with the starting and ending activities defined in performance indicators. With this constraining, only mismatches which are located between the activities that causes high level of difference in performance indicators are analyzed. This approach is formalized in Algorithm~\ref{alg:recgen}.
-
-\begin{algorithm}
-\caption{Recommendation Generation}
-\label{alg:recgen}
-\begin{algorithmic}[1]
-\Procedure {RecGen}{$O$, $C$, $P$}
-\State $Recommendations \leftarrow \{\}$ 
-\State $i \leftarrow C(Assignments(O))$ 
-\ForAll{$Centroids_{i} \in C(Cluster Centroids(i)$} 
-    \ForAll{$Centroid_{i} \in  Centroids_{i}$} 
-        \ForAll{$Centroids_{j} \in C(Cluster Centroids(j))$}
-            \ForAll{$Centroid_{j} \in  Centroids_{j}$}  
-                \If{$Centroid_{i}(A_{start}) = Centroid_{j}(A_{start})  Centroid_{i}(A_{end}) = Centroid_{j}(A_{end})$} 
-                    \If{ ($\left |  Centroid_{i}(Value) -  Centroid_{j}(Value)\right | \div Centroid_{i}(Value)) \geq P$  }
-                        \State $A_{start} \leftarrow Centroid_{j}(A_{start})$
-                       \State $A_{end} \leftarrow Centroid_{j}(A_{end})$
-                        \State $MismatchPatterns \leftarrow \{\}$
-                           \ForAll{$O' \in C(Assignments(j))$}
-                            \State $MismatchPatterns$ \leftarrow  MismatchPatternAnalyzer($O$,$O'$,$A_{start}$,$A_{end}$)
-                        \EndFor
-                        \State  $Recommendations$ \leftarrow  Recommendation($O$,$A_{start}$,$A_{end}$, $MismatchPatterns$)
-                    \EndIf
-                 \EndIf
-            \EndFor
-        \EndFor
-    \EndFor
-\EndFor
-\State  \textbf{return} $Recommendations$
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
+ 
 
 
 This stage of methodology can be visualized as gathering inputs of mismatch patterns data and cluster analysis data in Figure~\ref{fig:recommendation-generation-blackox}. In addition, a performance difference threshold is gathered from the user to specify how much difference between clusters is necessary to check for mismatch patterns and generate recommendations. This stage generates recommendation data for each organization which contains a set of mismatch patterns.
