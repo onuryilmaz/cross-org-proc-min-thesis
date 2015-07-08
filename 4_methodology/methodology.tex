@@ -201,7 +201,9 @@ For each organization, mined process models are converted to BPMN models and mis
 
 		\theoremstyle{definition}
 		\begin{definition}
-		Skipped Activity Analyzer is a function \textit{SkippedActivityAnalyzer(O, A_{start}, A_{end})} and it returns a set of \textit{Skipped Activity} for the organization $O$ for the activities between $A_{start}$ and $A_{end}$.
+		Skipped Activity Analyzer is a function 
+
+		$SkippedActivityAnalyzer(O, A_{start}, A_{end})$ and it returns a set of \textit{Skipped Activity} for the organization $O$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}
   \item[Refined Activity] Refined activities exist in one process; however, as equivalent, a collection of activities are undertaken in another organization's process to achieve the same task. Since there is no activity ontology information is kept in event logs and process models, there is no direct method to define whether the tasks can be classified as other tasks' refined state. In this study, assuming the labels of activities are correct and explanatory about their enclosures, similarity between labels are utilized for this aim. Using \textit{Levenshtein distance}, which is very popular in information retrieval area and also known as \textit{edit distance}, similarity of activity labels are calculated for each activity in respect to activities of other organizations' process models. This mismatch pattern presents information about the similar but not same activities in different process models which can be used to make organizations learn from each other. With a user-defined threshold for similarity based on the nature of business environment, most similar tasks can be listed for being refined.
 		\theoremstyle{definition}
@@ -220,7 +222,9 @@ For each organization, mined process models are converted to BPMN models and mis
 
 		\theoremstyle{definition}
 		\begin{definition}
-		Refined Activity Analyzer is a function \textit{RefinedActivityAnalyzer(O_{1}, O_{2}, A_{start}, A_{end}) and it returns a set of \textit{Refined Activity} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
+		Refined Activity Analyzer is a function 
+
+		$RefinedActivityAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Refined Activity} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}
 
    \item[Activities at Different Moments in Processes] Activities at different moments means that organizations are undertaking activities at different orders in their process flows. This mismatch pattern indicates that the organizations could achieve the same task when they change the order of activities and this information can be used by others to enhance their process models. Therefore, formulation of this pattern includes an activity; and its previous and next tasks at different organizations.
@@ -238,6 +242,13 @@ For each organization, mined process models are converted to BPMN models and mis
   		  \item In order to ensure different moments $Prev_{1} \neq Prev_{2}$ or $Next_{1} \neq Next_{2}$,
  		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{O,1}(A)$.
 		\end{enumerate}
+		\end{definition}
+
+		\theoremstyle{definition}
+		\begin{definition}
+		Different Moments Analyzer is a function 
+
+		$DifferentMomentsAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Moments} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}
 
 	\item[Different Conditions for Occurrence] Different conditions for occurrence take place where an activity has the same dependencies in different organizations but with different condition. For instance, an organization needs to complete all dependency task before starting the next one; though another organization checks for the completion of only one of these dependencies. This difference between organizations can lead to loosen or tighten the conditions based on the application of other organizations. Considering the representation of different conditions for occurrence and other control flow mismatch patterns, a generic definition is developed firstly to use and further customize. Different conditions for occurrence pattern definition is developed based on this generic definition as following.
@@ -271,6 +282,13 @@ For each organization, mined process models are converted to BPMN models and mis
 		\end{enumerate}
 		\end{definition}
 
+		\theoremstyle{definition}
+		\begin{definition}
+		Different Conditions Analyzer is a function 
+
+		$DifferentConditionsAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Conditions for Occurrence} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
+		\end{definition}	
+
 	\item[Different Dependencies] When the dependency set of a specific activity is different in organizations, it can be concluded that this activity and the relation between its dependency sets should be reviewed since it can be achieved in both environments. Organizations can learn from each other to eliminate or enhance their process flows by changing these dependency sets. This can include re-organization of activities as well as removing and adding new activities. The idea is structured in the following simplified definition.
 		\theoremstyle{definition}
 		\begin{definition}
@@ -285,6 +303,12 @@ For each organization, mined process models are converted to BPMN models and mis
 		\begin{definition}
 		Additional Dependencies pattern is a \textit{Different Dependencies Mismatch} where $Prev_{1} \subseteq Prev_{2}$ or $Prev_{1} \subseteq Prev_{2}$.
 		\end{definition}
+
+		\begin{definition}
+		Additional Dependency Analyzer is a function 
+
+		$AdditionalDependencysAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Additional Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
+		\end{definition}	
  \end{description}
  
 Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent so mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis.
