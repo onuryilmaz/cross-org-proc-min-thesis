@@ -152,7 +152,7 @@ Cluster Analysis Data is a tuple $(k, Assignments, Cluster\ Centroids)$ where
  
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
-In order to learn from other organizations, there is a need to spot the differences between process models of different organizations. In this phase of methodology, differences between process models will be revealed by the mismatch patterns which are defined by Dijkman \cite{dijkman2007mismatch}. In the process mining stage, process models are mined to create Workflow nets; however, mismatch pattern definitions are closer to business environment and it is more suitable spot patterns in BPMN notation. Thus, mined process models are converted to BPMN models and then mismatch pattern analysis is applied. After spotting differences, mismatch patterns for activities and control flows average revealed for the organizations.
+In order to learn from other organizations, it is necessary to spot the differences between process models of different organizations. In this phase of methodology, differences between process models will be revealed by the mismatch patterns which are defined by Dijkman \cite{dijkman2007mismatch}. In the process mining stage, process models are mined to create Workflow nets; however, mismatch pattern definitions are closer to business environment and it is more suitable spot patterns in BPMN notation. Thus, mined process models are converted to BPMN models and then mismatch pattern analysis is applied. After spotting differences, mismatch patterns for activities and control flows average revealed for the organizations.
 
 Business Process Modeling Notation (BPMN) is one of the widely accepted modeling language in the industry and its a standardized notation by the Object Management Group (OMG) since 2004. Main aim of BPMN is to provide a notation that is easily understood by business stakeholders. In the preceding stages, Petri nets and their subset as Workflow nets are used for mining since they have stronger mathematical background. However, in this stage, BPMN formulation is used since mismatch patterns have roots in real-life business environment \cite{dijkman2007mismatch}. The following definition and conversion are defined in the study \cite{kalenkovaprocess} and they are used in the mismatch pattern analysis. 
 
@@ -167,7 +167,7 @@ $BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$ where
   \item $G_{XOR} \subseteq N$, $G_{AND} \subseteq N$ are sets of exclusive and parallel gateways,
   \item $e_{start} \in N$ is a start event,
   \item $E_{end} \in N$ is a set of end events,
-  \item Sets $A, G_{XOR}, G_{AND}, \{e_{start}, E_{end}$ form a partition of N,
+  \item Sets $A, G_{XOR}, G_{AND}, \{e_{start}\}, E_{end}$ form a partition of N,
   \item $SF \subseteq N \times N$ is a set of sequence flows,
   \item $\lambda : N \rightarrow U_{A}$ is a labeling function, where $U_{A}$ is some universe of activity labels,
   \item Start event $e_{start}$ does not have incoming sequence flows and has not more than one outgoing sequence flows,
@@ -179,13 +179,13 @@ $BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$ where
 \begin{definition}
 Constructing BPMN Model from Petri nets, which are $N = (P, T, F)$ where $P$ is finite set of \textit{places}, $T$ is finite set of \textit{transitions} and $F$ is set of \textit{flow relations} to BPMN models consists of the following steps:
 \begin{enumerate}
-  \item Initialize BPMN model with a start node.
-  \item Convert all transitions in the Petri net by creating an activity in BPMN model for each transition in Petri net.
-  \item Convert all places from Petri net to BPMN routing constructs by finding the corresponding sequence flows.
+  \item Initialize BPMN model with a start node $e_{start}$.
+  \item Convert all transitions, $T$, in the Petri net by creating an activity in BPMN model for each transition in Petri net.
+  \item Convert all places, $P$, from Petri net to BPMN routing constructs by finding the corresponding sequence flows.
 \end{enumerate}
 \end{definition}
 
-For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. For each mismatch pattern analysis, the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. This approach also enables to locate the complete mismatches between process models when starting and ending points are provided as source and sink activities. Mismatch patterns are formulated and their importance in the methodology are listed as following:
+For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. For each mismatch pattern analysis, the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. This approach also enables to locate the whole set of mismatches between process models when starting and ending points are provided as source and sink activities. Mismatch patterns are formulated and their importance in the methodology are listed as following:
 \begin{description}
   \item[Skipped Activity] Skipped activities are the operations that are not undertaken with some of the organizations. In business environment there could be various different reasons for an organization to exclude any activity in their process flows which are followed by other organizations. Therefore, this mismatch pattern should not be utilized solely but taken in to care with the other patterns. In this study, for each organization a list of activities that they do not include are listed as \textit{Skipped Activity} with the following formulation. In addition, these differences are checked for the activities with a particular start and end point. 
 		\theoremstyle{definition}
@@ -407,6 +407,7 @@ This stage of methodology can be visualized as gathering inputs of mismatch patt
   \label{fig:recommendation-generation-blackox}
 \end{figure}
 
+\pagebreak
 \section{Implementation in ProM Framework}
 \label{sec:implementation}
 \todo{WRITE}
