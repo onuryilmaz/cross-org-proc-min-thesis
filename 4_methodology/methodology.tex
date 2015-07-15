@@ -384,7 +384,7 @@ $i \leftarrow C(Assignments(O))$ \;
 				$A_{start} \leftarrow Centroid(A_{start})$ \;
 				$A_{end} \leftarrow Centroid(A_{end})$ \;
 				$MismatchPatterns \leftarrow \{\}$ \;
-				\For{$O' \in C(Assignments(j))$} {
+		 		\For{$O' \in C(Assignments(j))$} {
 					$MismatchPatterns$ \leftarrow  Mismatch Pattern Analysis($O$,$O'$,$A_{start}$,$A_{end}$) \;
 				}
 				$Recommendations$ \leftarrow  Recommendation($O$,$A_{start}$,$A_{end}$, $MismatchPatterns$) \;
@@ -405,15 +405,31 @@ This stage of methodology can be visualized as gathering inputs of mismatch patt
   \label{fig:recommendation-generation-blackox}
 \end{figure}
 
-\pagebreak
-\pagebreak
 \section{Implementation in ProM Framework}
 \label{sec:implementation}
 \todo{WRITE}
-\begin{enumerate}
-	\item Mention ProM environment
-	\item Draw Architectural concept, explain developed modules: 
 
-		https://github.com/onuryilmaz/thesis-v1
-	\item Add screen-shots for each step [Missing: Recommendation Generation step screen shots]
-\end{enumerate}
+Methodology of this thesis study is implemented in ProM Framework \cite{verbeek2010prom}, which is an extensible framework that supports a wide variety of process mining techniques in the form of plugins. Approach of this thesis study is implemented with its each stage as a standalone plugin that enables extensions for further studies. Developed set of plugins are packaged with the name of \textit{CrossOrgProcMin} and it is available in the latest version of ProM release. 
+
+PROM öv
+
+Implementation details are presented from two perspectives in this section. Firstly, software architecture of methodology implementation will be explained with the relationships and dependencies with other plug-ins and ProM framework. Then, user experience perspective will be presented to show how an end user of this methodology can provide inputs, make analysis and gather results. 
+
+\subsection{Software Architecture}
+\label{subsec:architecture}
+Approach of this study is divided into standalone stages where inputs and outputs between them are defined strictly. With the help of this understanding, each stage is developed as a standalone plugin in ProM framework which can be called separately. For this aim, five plugins are developed which are visualized in Fig~XX to provide a high-level perspective. In addition, a set of utilities are developed to visualize and persistence of data in ProM environment. 
+
+\begin{description}
+  \item[Cross-Organizational Process Mining] is the core plugin which handles management and data flow between other plugins. It basically calls each other plugin and gathers outputs from them to proceed to next plugins. 
+  \item[Process Miner Plugin] is the implementation of Section~\ref{sec:process-model-mining} where \textit{Inductive Miner} \cite{leemans2014discoveringinfrequent} package in the ProM environment is utilized. 
+  \item[Automated Replayer Plugin] is developed to execute the approach in Section~\ref{subsec:replay-and-performance-summary} and it replays the event logs over process models with the minimum manual user input using the libraries in \textit{Peti Net Replayer} package \cite{adriansyah2011towards}. 
+  \item[Cluster Analysis Plugin] is developed to cluster the organizations based on their performance indicators as presented in Section~\ref{subsec:performance-indicator-clustering} and this plugin uses WEKA libraries \cite{hall2009} which are external to the ProM environment. 
+  \item[Mismatch Analysis Plugin] is developed to discover differences between the process models as explained in Section~\ref{sec:mismatch-pattern-analysis}. This plugin is developed from scratch since there is no implementation of mismatch patterns \cite{dijkman2007mismatch} in ProM framework.
+  \item[Utilities] are developed to handle input and output data to the developed set of plugins. Import and export libraries are coded to enable data specific persistence in ProM framework for these plugins. Visualization libraries are developed to represent the recommendation output to the end user in ProM screens.
+\end{description}   
+
+
+\subsection{User Experience}
+\label{subsec:architecture}
+toplama olduğunu, user için gerekenleri bahset
+
