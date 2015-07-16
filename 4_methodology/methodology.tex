@@ -416,9 +416,16 @@ Implementation details are presented from two perspectives in this section. Firs
 
 \subsection{Software Architecture}
 \label{subsec:architecture}
-Approach of this study is divided into standalone stages where inputs and outputs between them are defined strictly. With the help of this understanding, each stage is developed as a standalone plugin in ProM framework which can be called separately. For this aim, five plugins are developed which are visualized in Fig~XX to provide a high-level perspective. In addition, a set of utilities are developed to visualize and persistence of data in ProM environment. 
+Approach of this study is divided into standalone stages where inputs and outputs between them are defined strictly. With the help of this understanding, each stage is developed as a standalone plugin in ProM framework which can be called separately. For this aim, five plugins are developed which are visualized in Figure~\ref{fig:architecture} to provide a high-level perspective. In addition, a set of utilities are developed to visualize and persistence of data in ProM environment. 
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{4_methodology/architecture}
+  \caption{Software Architecture for  Cross-Organizational Process Miner}
+  \label{fig:architecture}
+\end{figure}
+
 \begin{description}
-  \item[Cross-Organizational Process Mining] is the core plugin which handles management and data flow between other plugins. It basically calls each other plugin and gathers outputs from them to proceed to next plugins. 
+  \item[Cross-Organizational Process Miner] is the core plugin which handles management and data flow between other plugins. It basically calls each other plugin and gathers outputs from them to proceed to next plugins. 
   \item[Process Miner Plugin] is the implementation of Section~\ref{sec:process-model-mining} where \textit{Inductive Miner} \cite{leemans2014discoveringinfrequent} package in the ProM environment is utilized. 
   \item[Automated Replayer Plugin] is developed to execute the approach in Section~\ref{subsec:replay-and-performance-summary} and it replays the event logs over process models with the minimum manual user input using the libraries in \textit{PNReplayer} package \cite{adriansyah2011towards}. 
   \item[Cluster Analysis Plugin] is developed to cluster the organizations based on their performance indicators as presented in Section~\ref{subsec:performance-indicator-clustering} and this plugin uses WEKA libraries \cite{hall2009} which are external to the ProM environment. 
@@ -427,7 +434,7 @@ Approach of this study is divided into standalone stages where inputs and output
 \end{description}   
 
 \subsection{User Experience}
-\label{subsec:architecture}
+\label{subsec:user-experience}
 Approach proposed in this study is a composition of different stages and it is very difficult for an end user to be capable of each step's details. Therefore, the plugins are developed with the high level of automation by minimizing the manual inputs required. In addition, each reporting step is well-documented so that user can easily understand and provide inputs without help of another guide. In this section, example screens will be presented to explain the story of end user for the developed plugins. Assuming the user is familiar with the ProM framework, only the steps specific to the developed plugins are illustrated. Intermediate steps are included in Appendix~\ref{sec:appendix-methodology-steps} and result screens are presented in this section.
 
 When the user selects a number of event logs and starts \textit{Cross-Organizational Process Miner}, an informative screen about the plugin and the following steps are presented to the user as shown in Figure~\ref{fig:information-screen}. Following this screen, user is required to provide names for organizations in the event logs in a very simple form as can be seen on Figure~\ref{fig:organization-name-screen}. This step is added to provide user-friendly reports with the names provided in the following stages. In the stage of process mining, for each event log or namely organization, user is required to provide a noise threshold and naming convention which is illustrated in Figure~\ref{fig:proc-miner-threshold-screen} and this screen is an extension of \textit{Inductive Miner} \cite{leemans2014discoveringinfrequent} screens. Following this, the last user input is required for matching activity names in the event logs to process models as shown in Figure~\ref{fig:automated-replayer-screen} and this screen is derived from \textit{PNReplayer} package \cite{adriansyah2011towards} screens.
