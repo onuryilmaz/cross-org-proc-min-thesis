@@ -408,18 +408,15 @@ This stage of methodology can be visualized as gathering inputs of mismatch patt
 \pagebreak
 \section{Implementation in ProM Framework}
 \label{sec:implementation}
-\todo{WRITE}
-
 Methodology of this thesis study is implemented in ProM Framework \cite{verbeek2010prom}, which is an extensible framework that supports a wide variety of process mining techniques in the form of plugins. Approach of this thesis study is implemented with its each stage as a standalone plugin that enables extensions for further studies. Developed set of plugins are packaged with the name of \textit{CrossOrgProcMin} and it is available in the latest version of ProM release. 
 
-PROM öv
+\todo{PROM}
 
 Implementation details are presented from two perspectives in this section. Firstly, software architecture of methodology implementation will be explained with the relationships and dependencies with other plug-ins and ProM framework. Then, user experience perspective will be presented to show how an end user of this methodology can provide inputs, make analysis and gather results. 
 
 \subsection{Software Architecture}
 \label{subsec:architecture}
 Approach of this study is divided into standalone stages where inputs and outputs between them are defined strictly. With the help of this understanding, each stage is developed as a standalone plugin in ProM framework which can be called separately. For this aim, five plugins are developed which are visualized in Fig~XX to provide a high-level perspective. In addition, a set of utilities are developed to visualize and persistence of data in ProM environment. 
-
 \begin{description}
   \item[Cross-Organizational Process Mining] is the core plugin which handles management and data flow between other plugins. It basically calls each other plugin and gathers outputs from them to proceed to next plugins. 
   \item[Process Miner Plugin] is the implementation of Section~\ref{sec:process-model-mining} where \textit{Inductive Miner} \cite{leemans2014discoveringinfrequent} package in the ProM environment is utilized. 
@@ -428,7 +425,6 @@ Approach of this study is divided into standalone stages where inputs and output
   \item[Mismatch Analysis Plugin] is developed to discover differences between the process models as explained in Section~\ref{sec:mismatch-pattern-analysis}. This plugin is developed from scratch since there is no implementation of mismatch patterns \cite{dijkman2007mismatch} in ProM framework.
   \item[Utilities] are developed to handle input and output data to the developed set of plugins. Import and export libraries are coded to enable data specific persistence in ProM framework for these plugins. Visualization libraries are developed to represent the recommendation output to the end user in ProM screens.
 \end{description}   
-
 
 \subsection{User Experience}
 \label{subsec:architecture}
