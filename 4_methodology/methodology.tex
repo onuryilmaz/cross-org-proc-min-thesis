@@ -434,10 +434,20 @@ Approach proposed in this study is a composition of different stages and it is v
 
 When the user selects a number of event logs and starts \textit{Cross-Organizational Process Miner}, an informative screen about the plugin and the following steps are presented to the user as shown in Figure~\ref{fig:information-screen}. Following this screen, user is required to provide names for organizations in the event logs in a very simple form as can be seen on Figure~\ref{fig:organization-name-screen}. This step is added to provide user-friendly reports with the names provided in the following stages. In the stage of process mining, for each event log or namely organization, user is required to provide a noise threshold and naming convention which is illustrated in Figure~\ref{fig:proc-miner-threshold-screen} and this screen is an extension of \textit{Inductive Miner} \cite{leemans2014discoveringinfrequent} screens. Following this, the last user input is required for matching activity names in the event logs to process models as shown in Figure~\ref{fig:automated-replayer-screen} and this screen is derived from \textit{PNReplayer} package \cite{adriansyah2011towards} screens.
 
-With the successful execution of plugin, recommendation outputs are presented to the end user at the end. Recommendations are visualized in two ways to create comparable outputs with and without performance clustering. When the user selects to check mismatch patterns without performance clustering, an organization should be selected at the left top of the screen in Fig XX. For the selected organization, all other organizations are compared and mismatch patterns are listed in separate tabs as shown in the main panel of Fig XX. Main idea behind adding this visualization is to provide an insight to user that how much mismatch patterns can be discovered between organizations.
+With the successful execution of plugin, recommendation outputs are presented to the end user at the end. Recommendations are visualized in two ways to create comparable outputs with and without performance clustering. When the user selects to check mismatch patterns without performance clustering, an organization should be selected at the left top of the screen in Figure~\ref{fig:result-without-clustering-screen}. For the selected organization, all other organizations are compared and mismatch patterns are listed in separate tabs as shown in the main panel of Fig XX. Main idea behind adding this visualization is to provide an insight to user that how much mismatch patterns can be discovered between organizations.
 
-w/o clustering screen + annotated
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{4_methodology/result-without-clustering-screen}
+	\caption{ Mismatch Patterns without Clustering Screen of Cross-Organizational Process Miner Plugin}
+  \label{fig:result-without-clustering-screen}
+\end{figure}
 
-When the user selects to check mismatch patterns with performance clustering, in addition to organization an \textit{performance difference threshold} should be selected. For the selected organization's cluster, all performance indicators are listed as tabs in the main panel. For each performance indicator, difference percentages between clusters are tabulated and highlighted if there is any other cluster perform better than the threshold. For the other clusters performing better than threshold, mismatch patterns between the organizations of these clusters are listed in the second level tabs. This visualization aims to list mismatch patterns for an organization, compared to other clusters which are perform better than the difference threshold.
+When the user selects to check mismatch patterns with performance clustering, in addition to organization an \textit{performance difference threshold} should be selected. For the selected organization's cluster, all performance indicators are listed as tabs in the main panel as visualized in Figure~\ref{fig:result-with-clustering-screen}. For each performance indicator, difference percentages between clusters are tabulated and highlighted if there is any other cluster perform better than the threshold. For the other clusters performing better than threshold, mismatch patterns between the organizations of these clusters are listed in the second level tabs. This visualization aims to list mismatch patterns for an organization, compared to other clusters which are perform better than the difference threshold.
 
-w/ clustering screen + annotated
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{4_methodology/result-with-clustering-screen}
+	\caption{ Mismatch Patterns with Clustering Screen of Cross-Organizational Process Miner Plugin}
+  \label{fig:result-with-clustering-screen}
+\end{figure}
