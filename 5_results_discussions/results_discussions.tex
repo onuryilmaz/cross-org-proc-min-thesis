@@ -1,11 +1,7 @@
 \chapter{RESULTS AND DISCUSSIONS}
 \label{chp:results-and-discussions}
 
-In this chapter, methodology presented in this thesis study is applied on datasets and results are presented. Firstly, evaluation metrics are defined for each stage of methodology to evaluate performance of approach. 
-
-In this chapter, methodology proposed in this thesis study is presented. Firstly, approach overview is described from a high-level perspective. Then, each stage in the methodology is presented together with their importance in the study, mathematical representations and definitions; and black-box diagrams. In the last section of this chapter, implementation details of this methodology in ProM framework is explained in detail with a software architecture overview.
-
-
+In this chapter, methodology presented in this thesis study is applied on datasets and results are presented. Firstly, evaluation metrics are defined for each stage of methodology to evaluate performance of the approach. Following this, methodology is applied on two datasets and results are explained with discussions.
 
 \section{Evaluation Metrics}
 \label{sec:evaluation-metrics}
@@ -55,8 +51,8 @@ In the recommendation generation stage, set of mismatch patterns are presented t
 Cross-organizational mining aims to find cross-correlation of workflows and activities in different organizations and this yields the necessity of organizations that do the same main activity with a comparable process flows. In business life, this includes aligning the tasks from different organizations with different business needs, priorities and organizational structures and culture. Considering these characteristics, there are few dataset available in the literature that are well-structured, documented and valuable. In this thesis study, one synthetic and one real-life event log datasets  are presented and used in the following sections to evaluate the performance of the proposed methodology.
 
 \begin{description}
-  \item[Loan Application Process \cite{ec392c32-4620-44ac-9b8c-e48890e4bcfa}] This synthetically created event log describes the process of a simple loan application in a financial institute. In summary, a customer fills a form and starts a request over website and it starts the different approaches of variants in different organizations that ends with notifying the customer about the acceptance of application. This dataset includes artificial event logs of 4 variants where each variant includes different sets of approaches such as parallelism, choices and sequential tasks. These event logs are used to test different approaches of discovering a configurable process model from a collection of event logs in study \cite{buijs2014flexible}.
-  \item[Environmental Permit Application Process \cite{ae6fb88e-1b85-4a11-94e4-ff9ac5b1fe0a}] This dataset originates from the Configurable Services for Local Governments (CoSeLoG) project \cite{van2011business} which investigates the similarities and dissimilarities between several processes of different municipalities in the Netherlands.  Dataset contains the records of the execution of the receiving phase of the building permit application process in 5 municipalities, which are comparable since activity labels in the different event logs refer to the same activities performed in the five municipalities. This data set is also mentioned in the literature as \textit{\"Processing applications for building and/or environmental permits ('Wet Algemene Bepalingen omgevingsrecht (WABO)' in Dutch)\"}.
+  \item[Loan Application Process \cite{loan-app-data}] This synthetically created dataset consists of event log variants of a simple loan application in a financial institute. In summary, a customer fills a form and starts a request over website and it starts the different approaches of variants in different organizations that ends with notifying the customer about the acceptance of application. This dataset includes artificial event logs of 4 variants where each variant includes different sets of approaches such as parallelism, choices and sequential tasks. These event logs are used to test different approaches of discovering a configurable process model from a collection of event logs in study \cite{buijs2014flexible}.
+  \item[Environmental Permit Application Process \cite{coselog-data}] This dataset originates from the "Configurable Services for Local Governments (CoSeLoG)" project \cite{van2011business} which investigates the similarities and dissimilarities between several processes of different municipalities in the Netherlands.  Dataset contains the records of the execution of the receiving phase of the building permit application process in 5 municipalities, which are comparable since activity labels in the different event logs refer to the same activities performed in the five municipalities. This data set is also mentioned in the literature as \textit{"Processing applications for building and/or environmental permits (Wet Algemene Bepalingen omgevingsrecht (WABO) in Dutch)"}.
 
   When the organizations that have similar processes are considered, municipalities are one of the prominent candidates. In Netherlands there are more than 400 municipalities and they offer between 400 and 500 different products and services with their own processes. Unlike corporations, municipalities have the advantage that they can seek for collaboration since they are not direct competitions \cite{buijs2012towards} and this advantage makes them valuable for cross-organizational analysis. CoSeLoG research project aims to develop a shared business process management system within a shared Software-as-a-Service environment using the commonalities between the processes of municipalities \cite{buijs2014flexible}. In the scope of CoSeLoG research, five different processes of municipalities are analyzed and at the time of this thesis study only \textit{Environmental Permit Application Process} dataset is publicly shared in the literature.
 \end{description}
@@ -64,7 +60,9 @@ Cross-organizational mining aims to find cross-correlation of workflows and acti
 
 \section{Loan Application Process}
 \label{sec:environmental-permit-application-process}
-In this section, methodology proposed in this thesis study will be applied on the \textit{Loan Application Process} dataset \cite{ec392c32-4620-44ac-9b8c-e48890e4bcfa} and evaluation results will be presented. Statistical information about this dataset can be tabulated in ...
+In this section, methodology proposed in this thesis study will be applied on the \textit{Loan Application Process} dataset \cite{loan-app-data} and evaluation results will be presented. Statistical information about this dataset can be tabulated in ...
+
+% loan application example'a bakarken yukardakine de bak, variation image'ı figure 3.2
 
 * Event log statistics
 * Methodology Stages
