@@ -17,34 +17,25 @@ Process model mining stage takes input as event logs of organizations and create
 \end{description}
 
 In this thesis study, process model mining stage will be evaluated by the \textit{Fitness} and \textit{Appropriateness} of the mined process models for each organization. In ProM  It is expected to have higher \textit{fitness}, closer to 1, and a high level of appropriateness to continue to the next stages with the high quality process models. While evaluating, \textit{fitness} will be more dominant since \textit{appropriateness} without \textit{fitness} means less.
-
 %	conformance plugin'i çağır, filtre ekranında var, 
 %	structural olanı elle hesapla -> http://wwwis.win.tue.nl/~wvdaalst/publications/p436.pdf pg21
-
 \subsection{Performance Indicator Analysis}
 \label{subsec:performance-indicator-analysis-eval}
 Performance indicator analysis stage consists of two parts as replaying event logs over process models and clustering organizations based on the performance indicators. In the replay phase, main operation is to \textit{align} \cite{van2012replaying} event logs and process models. This alignment is the based on the idea of finding the optimal alignment where total cost of \textit{move on process model} and \textit{move on event log} are minimized. Since there is no baseline information for alignment costs of organizational logs, total cost information will be used together with the process model mining evaluation metrics. In other words, for the event logs and process models with known conformance metrics, total cost of alignments will create a secondary check if there are any problems related to replaying events over process models. It is expected to have less total cost of alignment for the organizations with higher conformance since it is easy to align event logs and processes with high superior fitness values.
-
 % Şu pluginle bak: Check compliance using conformance checking ->
-
 For the second stage of performance indicator analysis, there is a need to evaluate performance of clustering organizations. In this stage, organizations are clustered  based on their performance indicator values that are calculated over replaying. Since there is no labeled data in the context of this thesis study, any cross-validation techniques could not be applied and thus internal evaluation metrics are exploited. As mentioned in the Section~\ref{subsec:performance-indicator-clustering}, within SSE values between clusters are plotted to the end user to select an appropriate number of clusters. It is expected that within SSE values decreases as number of clusters increases; however, number of clusters should be selected without causing overfitting.
-
 % clustering evaluation
 % wekadan gelen within sse 
- 
 
 \subsection{Mismatch Pattern Analysis}
 \label{subsec:mismatch-pattern-analysis-eval}
 Mismatch pattern analysis stage aims to find differences between the process models of different organizations. In this thesis study mismatch patterns defined in \cite{dijkman2007mismatch} are mathematically defined and analyzers are developed to locate these patterns. At the time of this study, it is known to be first to use mismatch patterns in a generic method, therefore evaluation is based on comparing with well-defined prior similarity metrics.
 
 Structural similarity between process models is presented in \cite{dijkman2011similarity} by the \textit{graph-edit distance} notion. In graph theory, \textit{graph-edit distance} is the minimum number of \textit{graph-edit operations} necessary to get one from graph to another. In the process mining field, \textit{graph-edit operations} are simply node addition, deletion or substitution. In the study \cite{dijkman2011similarity}, both \textit{graph-edit distance} and \textit{graph-edit similarity} definitions are provided with their mathematical background. In this study, mismatch pattern analysis stage is evaluated by comparing the number of mismatch patterns and the \textit{graph-edit similarity} of process models. Without any performance indicator clustering, it is expected to have larger number of mismatch patterns when the similarity between process models is low. This will ensure the performance and suitability using mismatch pattern analysis instead in the methodology.
-
  % BartHompes paketi ile ikili ikili çalıştır- run
-
 \subsection{Recommendation Generation}
 \label{subsec:recommendation-generation-eval}
 In the recommendation generation stage, set of mismatch patterns are presented to the end user based on the selected organization and performance difference threshold. This stage aims to list whole mismatch patterns that can cause the other organizations perform better than a difference threshold. Idea of using performance threshold should be evaluated in this stage with its responsiveness. In other words, it is expected that this stage will help the end user to focus on the most important performance improvements for the organization analyzed. Therefore, different threshold values will be tried to check how many mismatch patterns are generated for organizations and how they could be used for focused analysis. In addition, quality and applicability of the recommendations should be analyzed and this requires a high level of knowledge starting from the collecting event logs in the organizations. This knowledge should include know-how about process changes, domain knowledge about the field of organizations' activity and structural attributions of the organizations.
-
 
 \section{Dataset Selection}
 \label{sec:dataset-selection}
@@ -57,16 +48,35 @@ Cross-organizational mining aims to find cross-correlation of workflows and acti
   When the organizations that have similar processes are considered, municipalities are one of the prominent candidates. In Netherlands there are more than 400 municipalities and they offer between 400 and 500 different products and services with their own processes. Unlike corporations, municipalities have the advantage that they can seek for collaboration since they are not direct competitions \cite{buijs2012towards} and this advantage makes them valuable for cross-organizational analysis. CoSeLoG research project aims to develop a shared business process management system within a shared Software-as-a-Service environment using the commonalities between the processes of municipalities \cite{buijs2014flexible}. In the scope of CoSeLoG research, five different processes of municipalities are analyzed and at the time of this thesis study only \textit{Environmental Permit Application Process} dataset is publicly shared in the literature.
 \end{description}
 
-
 \section{Loan Application Process}
-\label{sec:environmental-permit-application-process}
-In this section, methodology proposed in this thesis study will be applied on the \textit{Loan Application Process} dataset \cite{loan-app-data} and evaluation results will be presented. Statistical information about this dataset can be tabulated in ...
+\label{sec:loan-app-process}
+In this section, methodology proposed in this thesis study will be applied on the \textit{Loan Application Process} dataset \cite{loan-app-data} and evaluation results will be presented. Statistical information about this dataset is presented in Table~\ref{table:loan-app-process-summary}.
+%\caption{Statistical summary of Loan Application Process Dataset}
+%\label{table:loan-app-process-summary}
+\begin{table}[]
+\centering
+\caption{Statistical summary of Loan Application Process Dataset}
+\label{table:loan-app-process-summary}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+                  & {\bf Cases} & {\bf Events} & {\bf Percentage} \\ \midrule
+{\bf Variant \#1} & 100         & 590          & 24 \%            \\ \midrule
+{\bf Variant \#2} & 70          & 420          & 17 \%            \\ \midrule
+{\bf Variant \#3} & 200         & 800          & 33 \%            \\ \midrule
+{\bf Variant \#4} & 105         & 630          & 26 \%            \\ \midrule
+\rowcolor[HTML]{C0C0C0} 
+Total             & {\bf 475}   & {\bf 2440}   & {\bf }           \\ \bottomrule
+\end{tabular}
+\end{table}
 
+As shown in Table~\ref{table:loan-app-process-summary}, total of 475 cases and 2440 events included in this dataset with a fairly even distribution between variants. In the following sections, these variants will be used as organizational logs and the methodology presented in this thesis study will be applied.
+
+\subsection{Methodology Stage}
+\label{sec:loan-app-methodology}
 % loan application example'a bakarken yukardakine de bak, variation image'ı figure 3.2
 
-* Event log statistics
-* Methodology Stages
-* Results
+\subsection{Results}
+\label{sec:loan-app-results}
 
 
 \section{Environmental Permit Application Process}
