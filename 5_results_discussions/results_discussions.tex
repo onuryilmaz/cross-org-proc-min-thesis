@@ -24,7 +24,6 @@ In this thesis study, process model mining stage will be evaluated by the \texti
 Performance indicator analysis stage consists of two parts as replaying event logs over process models and clustering organizations based on the performance indicators. In the replay phase, main operation is to \textit{align} \cite{van2012replaying} event logs and process models. This alignment is the based on the idea of finding the optimal alignment where total cost of \textit{move on process model} and \textit{move on event log} are minimized. Since there is no baseline information for alignment costs of organizational logs, total cost information will be used together with the process model mining evaluation metrics. In other words, for the event logs and process models with known conformance metrics, total cost of alignments will create a secondary check if there are any problems related to replaying events over process models. It is expected to have less total cost of alignment for the organizations with higher conformance since it is easy to align event logs and processes with high superior fitness values.
 % Şu pluginle bak: Check compliance using conformance checking ->
 For the second stage of performance indicator analysis, there is a need to evaluate performance of clustering organizations. In this stage, organizations are clustered  based on their performance indicator values that are calculated over replaying. Since there is no labeled data in the context of this thesis study, any cross-validation techniques could not be applied and thus internal evaluation metrics are exploited. As mentioned in the Section~\ref{subsec:performance-indicator-clustering}, within SSE values between clusters are plotted to the end user to select an appropriate number of clusters. It is expected that within SSE values decreases as number of clusters increases; however, number of clusters should be selected without causing overfitting.
-% clustering evaluation
 % wekadan gelen within sse 
 
 \subsection{Mismatch Pattern Analysis}
@@ -121,9 +120,11 @@ In \textit{Process Model Mining} stage, variants of the dataset are used as orga
 \label{fig:loan-application-process-models}
 \end{figure} 
 
-In \textit{Performance Indicator Analysis} stage, firstly event logs are replayed over process models and performance indicators are calculated. For replaying step, alignment costs are presented with the process model mining evaluation metrics in Table Y. yorumla
+In \textit{Performance Indicator Analysis} stage, firstly event logs are replayed over process models and performance indicators are calculated. For replaying step, alignment costs should be checked with respect to process model mining evaluation metrics; however, since all fitness values of variants are 100 \% in Table~\ref{table:loan-app-process-process-model-mining}, alignment costs are 0 for all variants in this dataset. This ensures that event logs are successfully replayed over process models and performance indicators are calculated. With these performance indicators, organizational logs will be clustered
 
-TABLE Y
+% mismatch pattern analysis
+
+% recommendation generation analysis
 
 \subsection{Results}
 \label{sec:loan-app-results}
