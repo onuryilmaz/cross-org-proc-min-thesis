@@ -123,7 +123,6 @@ In \textit{Process Model Mining} stage, variants of the dataset are used as orga
 In \textit{Performance Indicator Analysis} stage, firstly event logs are replayed over process models and performance indicators are calculated. For replaying step, alignment costs should be checked with respect to process model mining evaluation metrics; however, since all fitness values of variants are 100 \% in Table~\ref{table:loan-app-process-process-model-mining}, alignment costs are 0 for all variants in this dataset. This ensures that event logs are successfully replayed over process models and performance indicators are calculated. With these performance indicators, organizational logs will be clustered
 
 In \textit{Mismatch Pattern Analysis} stage, number of mismatch patterns are analyzed with the \textit{graph-edit similarity} between each two organization. As the similarity between process models decreases our method spots more mismatch patterns for most of the variant comparisons and it ensures that the developed mismatch pattern analyzers work as expected for this dataset. Correlation between \textit{graph-edit similarity} and number of mismatch patterns are plotted in Figure~\ref{fig:loan-mismatch-pattern-analysis-results}.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/loan-application-process/mismatch-pattern-analysis-results}
@@ -131,8 +130,7 @@ In \textit{Mismatch Pattern Analysis} stage, number of mismatch patterns are ana
   \label{fig:loan-mismatch-pattern-analysis-results}
 \end{figure}
 
-When the mismatch patterns are analyzed according to their types as plotted in Figure , Skipped Activity and Activities at Different Moments patterns are spotted mostly and no Different Conditions for Occurrence or Additional Dependencies patterns are spotted. Considering the small amount of this dataset, these numbers and distribution can be counted as acceptable.
-
+When the mismatch patterns are analyzed according to their types as plotted in Figure~\ref{fig:loan-mismatch-pattern-types}, \textit{Skipped Activity} and \textit{Activities at Different Moments} patterns are spotted mostly and no \textit{Different Conditions for Occurrence} or \textit{Additional Dependencies} patterns are discovered. Considering the small amount of this dataset, these numbers and distribution can be counted as acceptable in this stage of methodology.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/loan-application-process/mismatch-pattern-types}
