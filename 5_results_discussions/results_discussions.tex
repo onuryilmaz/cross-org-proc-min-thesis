@@ -42,126 +42,27 @@ Cross-organizational mining aims to find cross-correlation of workflows and acti
 
 \begin{description}
   \item[Loan Application Process \cite{loan-app-data}] This synthetically created dataset consists of event log variants of a simple loan application in a financial institute. In summary, a customer fills a form and starts a request over website and it starts the different approaches of variants in different organizations that ends with notifying the customer about the acceptance of application. This dataset includes artificial event logs of 4 variants where each variant includes different sets of approaches such as parallelism, choices and sequential tasks. These event logs are used to test different approaches of discovering a configurable process model from a collection of event logs in study \cite{buijs2014flexible}.
-  \item[Environmental Permit Application Process \cite{coselog-data}] This dataset originates from the "Configurable Services for Local Governments (CoSeLoG)" project \cite{van2011business} which investigates the similarities and dissimilarities between several processes of different municipalities in the Netherlands.  Dataset contains the records of the execution of the receiving phase of the building permit application process in 5 municipalities, which are comparable since activity labels in the different event logs refer to the same activities performed in the five municipalities. This data set is also mentioned in the literature as \textit{"Processing applications for building and/or environmental permits (Wet Algemene Bepalingen omgevingsrecht (WABO) in Dutch)"}.
+  \item[Environmental Permit Application Process \cite{coselog-data}] This dataset originates from the "Configurable Services for Local Governments (CoSeLoG)" project \cite{van2011business} which investigates the similarities and dissimilarities between several processes of different municipalities in the Netherlands.  Dataset contains the records of the execution of the receiving phase of the building permit application process in 5 municipalities, which are comparable since activity labels in the different event logs refer to the same activities performed in five municipalities. This data set is also mentioned in the literature as \textit{"Processing applications for building and/or environmental permits (Wet Algemene Bepalingen omgevingsrecht (WABO) in Dutch)"}.
 
-  When the organizations that have similar processes are considered, municipalities are one of the prominent candidates. In Netherlands there are more than 400 municipalities and they offer between 400 and 500 different products and services with their own processes. Unlike corporations, municipalities have the advantage that they can seek for collaboration since they are not direct competitions \cite{buijs2012towards} and this advantage makes them valuable for cross-organizational analysis. CoSeLoG research project aims to develop a shared business process management system within a shared Software-as-a-Service environment using the commonalities between the processes of municipalities \cite{buijs2014flexible}. In the scope of CoSeLoG research, five different processes of municipalities are analyzed and at the time of this thesis study only \textit{Environmental Permit Application Process} dataset is publicly shared in the literature.
+  When the organizations that have similar processes are considered, municipalities are one of the prominent candidates. In Netherlands there are more than 400 municipalities and they offer between 400 and 500 different products and services with their own processes. Unlike corporations, municipalities have the advantage that they can seek for collaboration since they are not direct competitions \cite{buijs2012towards} and this advantage makes them valuable for cross-organizational analysis. CoSeLoG research project aims to develop a business process management system within a shared Software-as-a-Service environment using the commonalities between the processes of municipalities \cite{buijs2014flexible}. In the scope of CoSeLoG research, five different processes of municipalities are analyzed and at the time of this thesis study only \textit{Environmental Permit Application Process} dataset is publicly shared.
 \end{description}
 
-\section{Loan Application Process}
-\label{sec:loan-app-process}
-In this section, methodology proposed in this thesis study will be applied on the \textit{Loan Application Process} dataset \cite{loan-app-data} and evaluation results will be presented. Statistical information about this dataset is presented in Table~\ref{table:loan-app-process-summary}.
-%\caption{Statistical summary of Loan Application Process Dataset}
-%\label{table:loan-app-process-summary}
-\begin{table}[]
-\centering
-\caption{Statistical summary of Loan Application Process dataset}
-\label{table:loan-app-process-summary}
-\begin{tabular}{@{}lccc@{}}
-\toprule
-                  & {\bf Cases} & {\bf Events} & {\bf Percentage} \\ \midrule
-{\bf Variant \#1} & 100         & 590          & 24 \%            \\ \midrule
-{\bf Variant \#2} & 70          & 420          & 17 \%            \\ \midrule
-{\bf Variant \#3} & 200         & 800          & 33 \%            \\ \midrule
-{\bf Variant \#4} & 105         & 630          & 26 \%            \\ \midrule
-{\bf Total}       & {\bf 475}   & {\bf 2440}   & {\bf }           \\ \bottomrule
-\end{tabular}
-\end{table}
-
-As shown in Table~\ref{table:loan-app-process-summary}, total of 475 cases and 2440 events included in this dataset with a fairly even distribution between variants. In the following sections, these variants will be used as organizational logs and the methodology presented in this thesis study will be applied.
-
-\subsection{Methodology Stages}
-\label{sec:loan-app-methodology}
-In \textit{Process Model Mining} stage, variants of the dataset are used as organizational event logs and they are used to mine process models. Since dataset is synthetically generated, noise threshold in \textit{Inductive Miner} is set to 0 and perfect log fitness is ensured. Appropriateness and fitness evaluation metrics are summarized in Table~\ref{table:loan-app-process-process-model-mining} and it can be seen that each event log is successful in terms of representing reality and being appropriate as a process model. Especially for the variants other than Variant #1, there is a perfect fitness and appropriateness as it is expected from a  synthetically generated dataset without noise. In addition, process models for each event log is visualized in Figure~\ref{fig:loan-application-process-models}.
-%\caption{Process Model Mining Evaluation of Loan Application Process Dataset}
-%\label{table:loan-app-process-process-model-mining}
-\begin{table}[]
-\centering
-\caption{Process Model Mining Evaluation of Loan Application Process Dataset}
-\label{table:loan-app-process-process-model-mining}
-\begin{tabular}{lcccc}
-\hline
- & {\bf Fitness} & {\bf \begin{tabular}[c]{@{}c@{}}Structural\\ Appropriateness\end{tabular}} & {\bf \begin{tabular}[c]{@{}c@{}}Behavioral\\ Appropriateness\end{tabular}} & {\bf \begin{tabular}[c]{@{}c@{}}Average\\ Appropriateness\end{tabular}} \\ \hline
-{\bf Variant \#1} & 100 \% & 70 \% & 98,5 \% & 84,25 \% \\ \hline
-{\bf Variant \#2} & 100 \% & 100 \% & 100 \% & 100 \% \\ \hline
-{\bf Variant \#3} & 100 \% & 100 \% & 100 \% & 100 \% \\ \hline
-{\bf Variant \#4} & 100 \% & 100 \% & 98,2 \% & 99,1 \% \\ \hline
-{\bf Average} & {\bf 100 \%} & {\bf 92,5 \%} & {\bf 99,7 \%} & {\bf 96,06 \%} \\ \hline
-\end{tabular}
-\end{table}
- \begin{figure}
-\centering
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration1}
-  \caption{Variant #1}
-  \label{fig:loan-application-process-models-1}
-\end{subfigure}%
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration2}
-  \caption{Variant #2}
-  \label{fig:loan-application-process-models-2}
-\end{subfigure} \\
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration3}
-  \caption{Variant #3}
-  \label{fig:loan-application-process-models-3}
-\end{subfigure}%
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration4}
-  \caption{Variant #4}
-  \label{fig:loan-application-process-models-4}
-\end{subfigure}
-\caption{Process models of Loan Application Process dataset}
-\label{fig:loan-application-process-models}
-\end{figure} 
-
-In \textit{Performance Indicator Analysis} stage, firstly event logs are replayed over process models and performance indicators are calculated. For replaying step, alignment costs should be checked with respect to process model mining evaluation metrics; however, since all fitness values of variants are 100 \% in Table~\ref{table:loan-app-process-process-model-mining}, alignment costs are 0 for all variants in this dataset. This ensures that event logs are successfully replayed over process models and performance indicators are calculated. With these performance indicators, organizational logs are be clustered and internal evaluation of clusters are presented with different number of clusters in Figure~\ref{fig:loan-cluster-sse-plot}. As expected, within-SSE value decreases when number of clusters, \textit{k}, increases. Considering the effects of overfitting after the \textit{elbow} point in the plot, number of clusters is selected to be 2 for this dataset.
-\begin{figure}
-	\centering
-	\includegraphics[width=.7\textwidth]{5_results_discussions/loan-application-process/cluster-sse-plot}
-	\caption{Number of Clusters vs. Within-SSE for Loan Application Process Variants}
-  \label{fig:loan-cluster-sse-plot}
-\end{figure}
-
-In \textit{Mismatch Pattern Analysis} stage, number of mismatch patterns are analyzed with the \textit{graph-edit similarity} between each two organization. As the similarity between process models decreases our method spots more mismatch patterns for most of the variant comparisons and it ensures that the developed mismatch pattern analyzers work as expected for this dataset. Correlation between \textit{graph-edit similarity} and number of mismatch patterns are plotted in Figure~\ref{fig:loan-mismatch-pattern-analysis-results}.
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{5_results_discussions/loan-application-process/mismatch-pattern-analysis-results}
-	\caption{Mismatch Patterns vs. Graph-Edit Similarity for Loan Application Process Variants}
-  \label{fig:loan-mismatch-pattern-analysis-results}
-\end{figure}
-When the mismatch patterns are analyzed according to their types as plotted in Figure~\ref{fig:loan-mismatch-pattern-types}, \textit{Skipped Activity} and \textit{Activities at Different Moments} patterns are spotted mostly and no \textit{Different Conditions for Occurrence} or \textit{Additional Dependencies} patterns are discovered. Considering the small amount of this dataset, these numbers and distribution can be counted as acceptable in this stage of methodology.
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{5_results_discussions/loan-application-process/mismatch-pattern-types}
-	\caption{Mismatch Pattern Types for Loan Application Process Variants}
-  \label{fig:loan-mismatch-pattern-types}
-\end{figure}
- 
-In \textit{Recommendation Generation} stage, an organization and performance difference threshold is selected as analysis input. For the selected organization's cluster, all other clusters are checked for performing better than the specified threshold. Instead of all mismatch patterns between organizations, only the mismatch patterns that are potential causes of other organizations to perform better are listed. For different threshold values, number of performance indicators that are performing better for the selected organization and spotted mismatch patterns are plotted in Figure~\ref{fig:loan-recommendation-generation-analysis}. 
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{5_results_discussions/loan-application-process/recommendation-generation-analysis}
-	\caption{Recommendation Generation Analysis for Loan Application Process Dataset}
-  \label{fig:loan-recommendation-generation-analysis}
-\end{figure}
-
-In the analysis of Figure~\ref{fig:loan-recommendation-generation-analysis}, every organization is selected one-by-one with different threshold values. For every analysis, number of performance indicators and average number of mismatch patterns causing them are plotted. In addition, total number of mismatch patterns without clustering for each organization is added to the plot as an upper bound. With the help of this upper bound, responsiveness and degree of helping the user to focus on the performance improvement can be analyzed. As can be seen, for each threshold value average number of mismatch patterns \textit{with performance indicator clustering} are very low compared to \textit{without clustering}. In other words, when user wants to improve its performance with any threshold, there are significantly less number of mismatch patterns on average to check. This shows the methodology proposed in this thesis can help users to focus on differences between organizations given this dataset. 
-
-\subsection{Results}
-\label{sec:loan-app-results}
-When the evaluation of the stages for \textit{Loan Application Example} dataset are gathered together, the following results can be expressed:
-% burada yukarıdaki çıkanları özetle + çıkan önerilerden bir tanesini falan çizerek anlat
+\input{5_results_discussions/loan-application-process/loan-application-process.tex}
 
 \section{Environmental Permit Application Process}
 \label{sec:environmental-permit-application-process}
+In this section, methodology proposed in this thesis study will be applied on the \textit{Environmental Permit Application Process} dataset \cite{coselog-data} and evaluation results will be presented with a similar approach above. Statistical information about this dataset can be summarized in Table~\ref{table:coselog-process-summary}.
+
+%\caption{Statistical summary of Environmental Permit Application Process dataset}
+%\label{table:coselog-process-summary}
  
-* Event log statistics
-* Methodology Stages
-* Results
+% As shown in Table~\ref{table:loan-app-process-summary}, total of 475 cases and 2440 events included in this dataset with a fairly even distribution between variants. In the following sections, these variants will be used as organizational logs and the methodology presented in this thesis study will be applied.
+
+\subsection{Methodology Stages}
+\label{sec:coselog-methodology}
+
+\subsection{Results}
+\label{sec:coselog-results}
 
 \section{Discussions}
 \label{sec:discussions}
