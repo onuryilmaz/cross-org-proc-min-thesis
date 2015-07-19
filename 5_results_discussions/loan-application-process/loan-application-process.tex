@@ -16,7 +16,7 @@ In this section, methodology proposed in this thesis study will be applied on th
 {\bf Variant \#4} & 105         & 630          & 26 \%            \\ \midrule
 {\bf Total}       & {\bf 475}   & {\bf 2440}   & {\bf }           \\ \bottomrule
 \end{tabular}
-\end{table}
+\end{table}s
 
 As shown in Table~\ref{table:loan-app-process-summary}, total of 475 cases and 2440 events included in this dataset with a fairly even distribution between variants. In the following section, these variants will be used as organizational logs and the methodology presented in this thesis study will be applied.
 
@@ -31,40 +31,40 @@ In \textit{Process Model Mining} stage, variants of the dataset are used as orga
 \label{table:loan-app-process-process-model-mining}
 \begin{tabular}{lcccc}
 \hline
- & {\bf Fitness} & {\bf \begin{tabular}[c]{@{}c@{}}Structural\\ Appropriateness\end{tabular}} & {\bf \begin{tabular}[c]{@{}c@{}}Behavioral\\ Appropriateness\end{tabular}} & {\bf \begin{tabular}[c]{@{}c@{}}Average\\ Appropriateness\end{tabular}} \\ \hline
-{\bf Variant \#1} & 100 \% & 70 \% & 98,5 \% & 84,2 \% \\ \hline
+ & {\bf Fitness} & {\bf \begin{tabular}[c]{@{}c@{}}Structural Appropriateness\end{tabular}} & {\bf \begin{tabular}[c]{@{}c@{}}Behavioral Appropriateness\end{tabular}} & {\bf \begin{tabular}[c]{@{}c@{}}Average Appropriateness\end{tabular}} \\ \hline
+{\bf Variant \#1} & 100 \% & 70 \% & 98.5 \% & 84.2 \% \\ \hline
 {\bf Variant \#2} & 100 \% & 100 \% & 100 \% & 100 \% \\ \hline
 {\bf Variant \#3} & 100 \% & 100 \% & 100 \% & 100 \% \\ \hline
-{\bf Variant \#4} & 100 \% & 100 \% & 98,2 \% & 99,1 \% \\ \hline
-{\bf Average} & {\bf 100 \%} & {\bf 92,5 \%} & {\bf 99,7 \%} & {\bf 96,06 \%} \\ \hline
+{\bf Variant \#4} & 100 \% & 100 \% & 98.2 \% & 99.1 \% \\ \hline
+{\bf Average} & {\bf 100 \%} & {\bf 92.5 \%} & {\bf 99.7 \%} & {\bf 96.06 \%} \\ \hline
 \end{tabular}
 \end{table}
- \begin{figure}
+\begin{figure}
 \centering
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration1}
-  \caption{Variant #1}
-  \label{fig:loan-application-process-models-1}
-\end{subfigure}%
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration2}
-  \caption{Variant #2}
-  \label{fig:loan-application-process-models-2}
-\end{subfigure} \\
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration3}
-  \caption{Variant #3}
-  \label{fig:loan-application-process-models-3}
-\end{subfigure}%
-\begin{subfigure}{.4\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration4}
-  \caption{Variant #4}
-  \label{fig:loan-application-process-models-4}
-\end{subfigure}
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration1}
+    \caption{Variant #1}
+    \label{fig:loan-application-process-models-1}
+  \end{subfigure}%
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration2}
+    \caption{Variant #2}
+    \label{fig:loan-application-process-models-2}
+  \end{subfigure} \\
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration3}
+    \caption{Variant #3}
+    \label{fig:loan-application-process-models-3}
+  \end{subfigure}%
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{5_results_discussions/loan-application-process/ETM_Configuration4}
+    \caption{Variant #4}
+    \label{fig:loan-application-process-models-4}
+  \end{subfigure}
 \caption{Process models of Loan Application Process dataset}
 \label{fig:loan-application-process-models}
 \end{figure} 
@@ -73,7 +73,7 @@ In \textit{Performance Indicator Analysis} stage, firstly event logs are replaye
 \begin{figure}
 	\centering
 	\includegraphics[width=.7\textwidth]{5_results_discussions/loan-application-process/cluster-sse-plot}
-	\caption{Number of Clusters vs. Within-SSE for Loan Application Process Variants}
+	\caption{Number of Clusters vs. Within-SSE for Loan Application Process Dataset}
   \label{fig:loan-cluster-sse-plot}
 \end{figure}
 
@@ -102,8 +102,8 @@ In \textit{Recommendation Generation} stage, an organization and performance dif
 
 In the analysis of Figure~\ref{fig:loan-recommendation-generation-analysis}, every organization is selected one-by-one with different threshold values. For every analysis, number of performance indicators and average number of mismatch patterns causing them are plotted. In addition, total number of mismatch patterns without clustering for each organization is added to the plot as an upper bound. With the help of this upper bound, responsiveness and degree of helping the user to focus on the performance improvement can be analyzed. As can be seen, for each threshold value average number of mismatch patterns \textit{with performance indicator clustering} are very low compared to \textit{without clustering}. In other words, when user wants to improve its performance with any threshold, there are significantly less number of mismatch patterns on average to check. This shows the methodology proposed in this thesis can help users to focus on differences between organizations given this dataset. 
 
-\subsection{Results}
-\label{sec:loan-app-results}
+\subsection{Discussions}
+\label{sec:loan-app-discussions}
 When the evaluation of the stages for \textit{Loan Application Example} dataset are gathered together, the following results can be expressed:
 \todo{READ ABOVE and WRITE}
 % burada yukarıdaki çıkanları özetle + çıkan önerilerden bir tanesini falan çizerek anlat
