@@ -71,12 +71,24 @@ After calculating the performance indicators, municipalities are clustered based
 \begin{figure}
 	\centering
 	\includegraphics[width=.7\textwidth]{5_results_discussions/coselog-wabo/cluster-sse-plot}
-	\caption{Number of Clusters vs. within-SSE for  Environmental Permit Application Process Dataset}
+	\caption{Number of Clusters vs. within-SSE for Environmental Permit Application Process Dataset}
   \label{fig:coselog-wabo-cluster-sse-plot}
 \end{figure}
 
-In \textit{Mismatch Pattern Analysis} stage,
- % BartHompes paketi ile ikili ikili çalıştır- run
+In \textit{Mismatch Pattern Analysis} stage, number of mismatch patterns are analyzed with the \textit{graph-edit similarity} between each two municipality. In order to check correlation between \textit{graph-edit similarity} and number of mismatch patterns, data is plotted in Figure~\ref{fig:coselog-wabo-pattern-analysis-results}. When the plot is checked, it can be seen that as the similarity between process models of municipalities increases, number of mismatch patterns decreases on most of the cases. When further analyzed, it can be seen that Municipalities \#4 and \#5, which have significantly more complex process model compared to others, fails in spotting mismatch patterns according to \textit{graph-edit similarity}.
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/mismatch-pattern-analysis-results}
+	\caption{Mismatch Patterns vs. Graph-Edit Similarity for Environmental Permit Application Process Dataset}
+  \label{fig:coselog-wabo-mismatch-pattern-analysis-results}
+\end{figure}
+When the mismatch patterns are analyzed according to their types as plotted in Figure~\ref{fig:coselog-wabo-mismatch-pattern-types}, mostly \textit{Skipped Activity} pattern is spotted. Following these, \textit{Different Dependencies} and \textit{Additional Dependencies} are spotted between process models of municipalities. Unlike the synthetic dataset, there are on average of 78 mismatch patterns are spotted for process models of municipalities. Unfortunately, \textit{Refined Activity} pattern analyzers could not be applied on this dataset since activity names ..
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/mismatch-pattern-types}
+	\caption{Mismatch Pattern Types for Environmental Permit Application Process Dataset}
+  \label{fig:coselog-wabo-mismatch-pattern-types}
+\end{figure} 
 
 
 In \textit{Recommendation Generation} stage,
