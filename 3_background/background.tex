@@ -198,8 +198,8 @@ In cluster analysis, various algorithms are proposed with different approaches o
 \begin{definition}{k-means Algorithm}
 \begin{enumerate}
   \item Arbitrarily choose initial $k$ centers: $C={c_1,c_2,...c_k}$
-  \item For each $i \in {1,...k}$, set the cluster $C_i$ to be the set of points that are closer to $c_i$ than they are to $c_j$ for all $i\neqj$.
-  \item For each $i \in {1,...k}$, set $c_i$ to be the center of mass of all points in $C_i$. $c_i=\frac{1}{|C_i|} \sum_{\substack{x\in C_i}} x$
+  \item For each $i \in {1,...k}$, set the cluster $C_i$ to be the set of points that are closer to $c_i$ than they are to $c_j$ for all $i \neq j$.
+  \item For each $i \in {1,...k}$, set $c_i$ to be the center of mass of all points in $C_i$. $c_i=\frac{1}{|C_i|} \sum_{\substack{x \in C_i}} x$
   \item Repeat Step 2 and 3 until $C$ no longer changes.
 \end{enumerate}
 \end{definition}
@@ -207,7 +207,7 @@ In cluster analysis, various algorithms are proposed with different approaches o
 \begin{definition}{k-means++ Algorithm}
 \begin{enumerate}
   \item Take one center $c_1$, chosen uniformly from data points $X$.
-  \item Take a new center $c_i$, chosen from data points $X$ with probability $\frac{D(x)^2}{\sum_{\substack{x\in X}} D(x)^2}$ where $D(x)$ is the shortest distance from a data point to the closest cluster center.
+  \item Take a new center $c_i$, chosen from data points $X$ with probability $\frac{D(x)^2}{\sum_{\substack{x \in X}} D(x)^2}$ where $D(x)$ is the shortest distance from a data point to the closest cluster center.
   \item Repeat Step 2 until $k$ cluster centers are selected.
   \item Proceed with the 2-4 steps of k-means Algorithm.
 \end{enumerate}
