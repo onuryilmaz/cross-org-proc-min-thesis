@@ -67,7 +67,7 @@ In \textit{Performance Indicator Analysis} stage, alignment costs are calculated
 \end{tabular}
 \end{table}
 
-After calculating the performance indicators, municipalities are clustered based on these values and this stage is evaluated by the within-SSE values for different number of clusters as plotted in Figure~\ref{fig:coselog-wabo-cluster-sse-plot}. In order to avoid overfitting of clusters, number of clusters, \textit{k}, is selected to be 2 for this dataset for further analysis. 
+After calculating the performance indicators, municipalities are clustered based on these values and this stage is evaluated by the within-SSE values for different number of clusters as plotted in Figure~\ref{fig:coselog-wabo-cluster-sse-plot}. In order to avoid overfitting of clusters, number of clusters, \textit{k}, is selected to be 2 for this dataset for further analysis. For two clusters, Municipality \#1 is located in one cluster where municipalities \#2, \#3, \#4 and \#5 are grouped into to other cluster.
 \begin{figure}
 	\centering
 	\includegraphics[width=.7\textwidth]{5_results_discussions/coselog-wabo/cluster-sse-plot}
@@ -82,7 +82,7 @@ In \textit{Mismatch Pattern Analysis} stage, number of mismatch patterns are ana
 	\caption{Mismatch Patterns vs. Graph-Edit Similarity for Environmental Permit Application Process Dataset}
   \label{fig:coselog-wabo-mismatch-pattern-analysis-results}
 \end{figure}
-When the mismatch patterns are analyzed according to their types as plotted in Figure~\ref{fig:coselog-wabo-mismatch-pattern-types}, mostly \textit{Skipped Activity} pattern is spotted. Following these, \textit{Different Dependencies} and \textit{Additional Dependencies} are spotted between process models of municipalities. Unlike the synthetic dataset, there are on average of 78 mismatch patterns are spotted for process models of municipalities. Unfortunately, \textit{Refined Activity} pattern analyzers could not be applied on this dataset since activity names ..
+When the mismatch patterns are analyzed according to their types as plotted in Figure~\ref{fig:coselog-wabo-mismatch-pattern-types}, mostly \textit{Skipped Activity} pattern is spotted. Following these, \textit{Different Dependencies} and \textit{Additional Dependencies} are spotted between process models of municipalities. Unlike the synthetic dataset, there are on average of 78 mismatch patterns are spotted for process models of municipalities. Unfortunately, \textit{Refined Activity} pattern analyzers could not be applied on this dataset since activity names are not provided in this dataset and instead of activity codes without any semantic meaning are used. Since the \textit{Refined Activity} pattern in this study is based on the difference between labels, they are eliminated in the analysis of this dataset.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/mismatch-pattern-types}
@@ -90,9 +90,18 @@ When the mismatch patterns are analyzed according to their types as plotted in F
   \label{fig:coselog-wabo-mismatch-pattern-types}
 \end{figure} 
 
+In \textit{Recommendation Generation} stage, an organization and performance difference threshold is selected as analysis input likewise the previous dataset. For different threshold values, number of performance indicators that are performing better for the selected organization and spotted mismatch patterns are plotted in Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis}. 
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/recommendation-generation-analysis}
+	\caption{Recommendation Generation Analysis for Environmental Permit Application Process Dataset}
+  \label{fig:coselog-wabo-recommendation-generation-analysis}
+\end{figure}
 
-In \textit{Recommendation Generation} stage,
-% Responsiveness
+In the analysis of Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis}, it can be seen that only the cluster that the Municipality \#1 performs better in performance indicators. For the threshold of 50\%, cluster of Municipality \#1 performs better in 6 performance indicators and it lists total of 30 mismatch patterns. On the average it show 6 patterns to the user as the potential causes of performance improvement. With the same approach, cluster of Municipality \#1 performs better in 3 indicators with the difference of 75 \% and on average 10 mismatch patterns are listed. When it is compared to the total mismatch patterns of Municipality #1, which is 357, proposed approach helps significantly to the user for focusing performance improvement.
+
+\todo{k=3 ile dene}
+Since selecting number of clusters as 2 did not yield high learning potential for performance improvement, analysis is repeated with selecting number of clusters as 3. When three clusters are created, Municipality \#1 is located in the first cluster; Municipality \#2 and \#4 are located in the second cluster; and Municipality \#3 and \#5 are grouped in to the last cluster.
 
 \subsection{Discussions}
 \label{sec:coselog-discussions}
