@@ -94,14 +94,22 @@ In \textit{Recommendation Generation} stage, an organization and performance dif
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/recommendation-generation-analysis}
-	\caption{Recommendation Generation Analysis for Environmental Permit Application Process Dataset}
+	\caption{Recommendation Generation Analysis for Environmental Permit Application Process Dataset (2 Clusters)}
   \label{fig:coselog-wabo-recommendation-generation-analysis}
 \end{figure}
 
-In the analysis of Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis}, it can be seen that only the cluster that the Municipality \#1 performs better in performance indicators. For the threshold of 50\%, cluster of Municipality \#1 performs better in 6 performance indicators and it lists total of 30 mismatch patterns. On the average it show 6 patterns to the user as the potential causes of performance improvement. With the same approach, cluster of Municipality \#1 performs better in 3 indicators with the difference of 75 \% and on average 10 mismatch patterns are listed. When it is compared to the total mismatch patterns of Municipality #1, which is 357, proposed approach helps significantly to the user for focusing performance improvement.
+In the analysis of Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis}, it can be seen that only the cluster that the Municipality \#1 has the potential of learning from other cluster since it performs worse in performance indicators. For the threshold of 50\%, cluster of Municipality \#1 performs worse in 6 performance indicators and proposed approach lists total of 30 mismatch patterns. On the average it show 6 patterns to the user as the potential causes of performance improvement. With the same approach, cluster of Municipality \#1 performs worse in 3 indicators with the difference of 75 \% and on average 10 mismatch patterns are listed for each performance indicator. When it is compared to the total mismatch patterns of Municipality #1, which is 357, proposed approach helps significantly to the user for focusing performance improvement.
 
-\todo{k=3 ile dene}
-Since selecting number of clusters as 2 did not yield high learning potential for performance improvement, analysis is repeated with selecting number of clusters as 3. When three clusters are created, Municipality \#1 is located in the first cluster; Municipality \#2 and \#4 are located in the second cluster; and Municipality \#3 and \#5 are grouped in to the last cluster.
+Since selecting number of clusters as 2 did not yield high learning potential for performance improvement, analysis is repeated with selecting number of clusters as 3. When three clusters are created, Municipality \#1 is located in the first cluster; Municipality \#2 and \#4 are located in the second cluster; and Municipality \#3 and \#5 are grouped in to the last cluster. For these clusters analysis is repeated for threshold of 25 \%, 50 \% and 75 \%, and as plotted in Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis-k3}, in addition to Municipality \#1, now Municipality \#3 and \#5 have the learning potential from other clusters. However, Municipality \#2 and \#4 performs better in performance indicators which yielded no mismatch pattern analysis data for them. Increasing cluster sizes in this analysis shows that organizations can learn more from each other but it has the potential danger of overfitting to other organizations process model. 
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/recommendation-generation-analysis-k3}
+	\caption{Recommendation Generation Analysis for Environmental Permit Application Process Dataset (3 Clusters)}
+  \label{fig:coselog-wabo-recommendation-generation-analysis-k3}
+\end{figure}
 
 \subsection{Discussions}
 \label{sec:coselog-discussions}
+\todo{write}
+%evaluation metric'ler ve stage'lerin özetini geç
+%çıkan sonuçların visual değerlendirmesini yap
