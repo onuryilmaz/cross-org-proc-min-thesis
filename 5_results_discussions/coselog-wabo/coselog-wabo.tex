@@ -1,6 +1,6 @@
 \section{Environmental Permit Application Process}
 \label{sec:environmental-permit-application-process}
-In this section, methodology proposed in this thesis study will be applied on the \textit{Environmental Permit Application Process} dataset \cite{coselog-data} and evaluation results will be presented with a similar approach above. Since this dataset consists of real-life event logs, preprocessing is undertaken prior to start analysis. Incomplete traces, which started but not ended in the time frame of log collection, and exceptional cases are removed from event logs with the help of ProM log visualization tools with a similar approach in \cite{buijs2014flexible}. Statistical information about the dataset that is used in this section can be summarized in Table~\ref{table:coselog-process-summary}.
+In this section, methodology proposed in this thesis study will be applied on the \textit{Environmental Permit Application Process} dataset \cite{coselog-data} and evaluation results will be presented with a similar previous approach. Since this dataset consists of real-life event logs, preprocessing is undertaken prior to start analysis. Incomplete traces, which started but not ended in the time frame of log collection, and exceptional cases are removed from event logs using ProM log visualization tools with a similar approach in \cite{buijs2014flexible}. Statistical information about the dataset that is used in this section can be summarized in Table~\ref{table:coselog-process-summary} after preprocessing.
 
 %\caption{Statistical summary of Environmental Permit Application Process dataset}
 %\label{table:coselog-process-summary}
@@ -26,12 +26,12 @@ As shown in Table~\ref{table:coselog-process-summary}, total of 1214 cases and 2
 \label{sec:coselog-methodology}
 In \textit{Process Model Mining} stage, event logs of each municipality in the dataset are used as organizational event logs and they are used to mine process models. Considering preprocessing is undertaken on the event logs, noise threshold in \textit{Inductive Miner} is set to a low value of 10\% to achieve a higher fitness. 
 
-Appropriateness and fitness evaluation metrics are summarized in Table~\ref{table:coselog-wabo-process-model-mining} and it can be seen that each event log is successful in terms of representing reality with high fitness values. However, some of the process models like Municipality \#5 and \#4 resulted with low appropriateness values. Process models for each event log are visualized with a detail simplification based on number of activities and paths in Figure~\ref{fig:coselog-wabo-process-models} and it can be seen that low appropriateness values resulted with complicated process models that are difficult to analyze visually. Detail simplification is only used for visualization and it draws the mainstream process flows instead of whole set of paths and activities. It should be kept in mind that actual process models are 10 to 20 times more complicated in terms of number of activities and paths than the ones presented in Figure~\ref{fig:coselog-wabo-process-models}. 
+Appropriateness and fitness evaluation metrics are summarized in Table~\ref{table:coselog-wabo-process-model-mining} and it can be seen that each event log is successful in terms of representing reality with high fitness values. However, some of the process models like Municipality \#5 and \#4 resulted with low appropriateness values. Process models for each event log are visualized with a detail simplification based on number of activities and paths in Figure~\ref{fig:coselog-wabo-process-models}. Detail simplification is only used for visualization and it draws the mainstream process flows instead of whole set of paths and activities. When process model diagrams are checked it can be seen that low appropriateness values resulted with complicated process models that are difficult to analyze visually. It should be kept in mind that actual process models are 10 to 20 times more complicated in terms of number of activities and paths than the ones presented in Figure~\ref{fig:coselog-wabo-process-models}. 
 %\caption{Process Model Mining Evaluation of Environmental Permit Application Process Dataset}
 %\label{table:coselog-wabo-process-model-mining}
 \begin{table}[]
 \centering
-\caption{Process Model Mining Evaluation of Environmental Permit Application Process Dataset}
+\caption{Process Model Mining Evaluation of Environmental Permit Application Process dataset}
 \label{table:coselog-wabo-process-model-mining}
 \begin{tabular}{lcccc}
 \hline
@@ -81,9 +81,7 @@ Appropriateness and fitness evaluation metrics are summarized in Table~\ref{tabl
 \label{fig:coselog-wabo-process-models}
 \end{figure} 
 
-
-
-In \textit{Performance Indicator Analysis} stage, alignment costs are calculated over replay of event logs on process models. As presented in the Table~\ref{table:coselog-wabo-replay}, as appropriateness and fitness decrease alignment costs increase for the municipalities. This indicates the fact that both process model mining stage and replay stage is in conformity and performance indicators calculated over replay are acceptable.
+In \textit{Performance Indicator Analysis} stage, alignment costs are calculated over replay of event logs on process models. As presented in the Table~\ref{table:coselog-wabo-replay}, as appropriateness and fitness decrease; alignment costs increase for the municipalities. This is an expected behavior since decrease in fitness indicates that process model cannot parse event log well and low appropriateness means the process models are not structured in terms of quality metrics. These results indicates the fact that both process model mining stage and replay stage is in conformity and performance indicators calculated over replay are acceptable.
 %\caption{Replay Evaluation of Environmental Permit Application Process Dataset}
 %\label{table:coselog-wabo-replay}
 \begin{table}[]
@@ -105,22 +103,23 @@ After calculating the performance indicators, municipalities are clustered based
 \begin{figure}
 	\centering
 	\includegraphics[width=.7\textwidth]{5_results_discussions/coselog-wabo/cluster-sse-plot}
-	\caption{Number of Clusters vs. within-SSE for Environmental Permit Application Process Dataset}
+	\caption{Number of Clusters vs. within-SSE for Environmental Permit Application Process dataset}
   \label{fig:coselog-wabo-cluster-sse-plot}
 \end{figure}
 
-In \textit{Mismatch Pattern Analysis} stage, number of mismatch patterns are analyzed with the \textit{graph-edit similarity} between each two municipality. In order to check correlation between \textit{graph-edit similarity} and number of mismatch patterns, data is plotted in Figure~\ref{fig:coselog-wabo-pattern-analysis-results}. When the plot is checked, it can be seen that as the similarity between process models of municipalities increases, number of mismatch patterns decreases on most of the cases. When further analyzed, it can be seen that Municipalities \#4 and \#5, which have significantly more complex process model compared to others, fails in spotting mismatch patterns according to \textit{graph-edit similarity}.
+In \textit{Mismatch Pattern Analysis} stage, number of mismatch patterns are analyzed with the \textit{graph-edit similarity} between each two municipality. In order to check correlation between \textit{graph-edit similarity} and number of mismatch patterns, data is plotted in Figure~\ref{fig:coselog-wabo-mismatch-pattern-analysis-results}. When the plot is checked, it can be seen that as the similarity between process models of municipalities increases, number of mismatch patterns decreases on most of the cases. When further analyzed, it can be seen that Municipalities \#4 and \#5, which have significantly more complex process model compared to others, fails in spotting mismatch patterns according to \textit{graph-edit similarity}.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/mismatch-pattern-analysis-results}
 	\caption{Mismatch Patterns vs. Graph-Edit Similarity for Environmental Permit Application Process Dataset}
   \label{fig:coselog-wabo-mismatch-pattern-analysis-results}
 \end{figure}
-When the mismatch patterns are analyzed according to their types as plotted in Figure~\ref{fig:coselog-wabo-mismatch-pattern-types}, mostly \textit{Skipped Activity} pattern is spotted. Following these, \textit{Different Dependencies} and \textit{Additional Dependencies} are spotted between process models of municipalities. Unlike the synthetic dataset, there are on average of 78 mismatch patterns are spotted for process models of municipalities. Unfortunately, \textit{Refined Activity} pattern analyzers could not be applied on this dataset since activity names are not provided in this dataset and instead of activity codes without any semantic meaning are used. Since the \textit{Refined Activity} pattern in this study is based on the difference between labels, they are eliminated in the analysis of this dataset.
+
+When the mismatch patterns are analyzed according to their types as diagrammed in Figure~\ref{fig:coselog-wabo-mismatch-pattern-types},\textit{Skipped Activity} pattern is spotted most frequently. Following this, \textit{Different Dependencies} and \textit{Additional Dependencies} are spotted mostly and there are on average of 78 mismatch patterns for process models of municipalities. Unfortunately, \textit{Refined Activity} pattern analyzers could not be applied on this dataset since activity names are not provided and activity codes without any semantic meaning are used instead. Considering the implementation of \textit{Refined Activity} pattern in this study, which is based on the difference between labels, they are eliminated in the analysis of this dataset.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/mismatch-pattern-types}
-	\caption{Mismatch Pattern Types for Environmental Permit Application Process Dataset}
+	\caption{Mismatch pattern types for Environmental Permit Application Process dataset}
   \label{fig:coselog-wabo-mismatch-pattern-types}
 \end{figure} 
 
@@ -128,17 +127,17 @@ In \textit{Recommendation Generation} stage, an organization and performance dif
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/recommendation-generation-analysis}
-	\caption{Recommendation Generation Analysis for Environmental Permit Application Process Dataset (2 Clusters)}
+	\caption{Recommendation Generation analysis for Environmental Permit Application Process dataset (2 Clusters)}
   \label{fig:coselog-wabo-recommendation-generation-analysis}
 \end{figure}
 
-In the analysis of Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis}, it can be seen that only the cluster that the Municipality \#1 has the potential of learning from other cluster since it performs worse in performance indicators. For the threshold of 50\%, cluster of Municipality \#1 performs worse in 6 performance indicators and proposed approach lists total of 30 mismatch patterns. On the average it show 6 patterns to the user as the potential causes of performance improvement. With the same approach, cluster of Municipality \#1 performs worse in 3 indicators with the difference of 75 \% and on average 10 mismatch patterns are listed for each performance indicator. When it is compared to the total mismatch patterns of Municipality #1, which is 357, proposed approach helps significantly to the user for focusing performance improvement.
+In the analysis of Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis}, it can be seen that only the cluster that the Municipality \#1 has the potential of learning from other cluster since it performs worse in performance indicators. For the threshold of 50\%, cluster of Municipality \#1 performs worse in 6 performance indicators and proposed approach lists total of 30 mismatch patterns. On the average it show 5 patterns for each performance indicator to the user as the potential causes of performance improvement. With the same approach, cluster of Municipality \#1 performs worse in 3 indicators with the difference of 75 \% and on average 10 mismatch patterns are listed for each performance indicator. When it is compared to the total mismatch patterns of Municipality #1, which is 357, proposed approach helps significantly to the user for focusing performance improvement.
 
-Since selecting number of clusters as 2 did not yield high learning potential for performance improvement, analysis is repeated with selecting number of clusters as 3. When three clusters are created, Municipality \#1 is located in the first cluster; Municipality \#2 and \#4 are located in the second cluster; and Municipality \#3 and \#5 are grouped in to the last cluster. For these clusters analysis is repeated for threshold of 25 \%, 50 \% and 75 \%, and as plotted in Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis-k3}, in addition to Municipality \#1, now Municipality \#3 and \#5 have the learning potential from other clusters. However, Municipality \#2 and \#4 performs better in all performance indicators which yielded no mismatch pattern analysis data for them. Increasing cluster sizes in this analysis shows that organizations can learn more from each other but it has the potential danger of overfitting to other organizations process model. 
+Since selecting number of clusters as 2 did not yield high learning potential for performance improvement, analysis is repeated with selecting number of clusters as 3. When three clusters are created, Municipality \#1 is located in the first cluster; Municipality \#2 and \#4 are located in the second cluster; and Municipality \#3 and \#5 are grouped in to the last cluster. For these three clusters analysis is repeated for the thresholds of 25 \%, 50 \% and 75 \% since these are the breaking points for performance indicator changes. As plotted in Figure~\ref{fig:coselog-wabo-recommendation-generation-analysis-k3}, in addition to Municipality \#1, now Municipality \#3 and \#5 have the learning potential from other clusters. However, Municipality \#2 and \#4 performs better in all performance indicators which yielded no mismatch pattern analysis data for them. Increasing cluster sizes in this analysis shows that organizations can learn more from each other but it has the potential danger of overfitting to other organizations process model. 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{5_results_discussions/coselog-wabo/recommendation-generation-analysis-k3}
-	\caption{Recommendation Generation Analysis for Environmental Permit Application Process Dataset (3 Clusters)}
+	\caption{Recommendation Generation analysis for Environmental Permit Application Process dataset (3 Clusters)}
   \label{fig:coselog-wabo-recommendation-generation-analysis-k3}
 \end{figure}
 
