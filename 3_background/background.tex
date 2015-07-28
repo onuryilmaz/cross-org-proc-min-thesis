@@ -120,12 +120,11 @@ Business Process Modeling Notation (BPMN) is one of the most popular and widely 
   \label{fig:loan-bpmn}
 \end{figure}
 
-\todo{checked until here!}
 \section{Process Discovery}
 \label{sec:process-discovery}
-In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges. With this reasoning, Inductive Process Mining \cite{leemans2013discovering} is selected as appropriate since it is simple, highly applicable and configurable. In the literature, its derivatives which handles infrequent behaviors \cite{leemans2014discoveringinfrequent}; incomplete logs \cite{leemans2014discoveringincomplete}; and model optimization \cite{weidlich2012profiles} are also available.  
+In process mining field, one of the most challenging tasks is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges. With this reasoning, Inductive Process Mining \cite{leemans2013discovering} is selected as appropriate since it is simple, highly applicable and configurable. In the literature, its derivatives which handles infrequent behaviors \cite{leemans2014discoveringinfrequent}; incomplete logs \cite{leemans2014discoveringincomplete}; and model optimization \cite{weidlich2012profiles} are also available.  
 
-\textit{Inductive Miner (IM)}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and well-fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a key attribute in this study. Formalization of the key points in the study \cite{leemans2013discovering} are as following:
+\textit{Inductive Miner (IM)}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and well-fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a significant attribute for this thesis study. Formalization of the key points in the study \cite{leemans2013discovering} are as following:
 
 \theoremstyle{definition}
 \begin{definition}{}
@@ -137,7 +136,7 @@ In process mining field, one of the most challenging task is to construct a proc
 (Rediscoverability) Let a process is expressible by a model $M$ which is unknown priori. Given a log $L$ of $M$, $L$ is a subset of language used to describe model $M$. $M$ is isomorphic-rediscoverable from $L$ by mining algorithm $B$ if and only if $M \in B(L)$.
 \end{definition}
  
-Framework developed in the study \cite{leemans2013discovering} uses a divide-and-conquer approach to discover subprocesses of sublogs obtained by splitting the event log. Main steps of the algorithm are listed as following:
+Framework developed in the study \cite{leemans2013discovering} uses a divide-and-conquer approach to discover subprocesses of sublogs obtained by splitting the event log and its main steps can be listed as following:
 \begin{enumerate}
   \item Activity Sets: Split the \textit{activities} in log to disjoint sets.
   \item Sublogs: Split the \textit{log} by using \textit{activity sets}.
@@ -149,7 +148,7 @@ In this thesis study, infrequent behavior capable implementation is used for exp
 
 \section{Process Performance Analysis}
 \label{sec:process-performance-analysis}
-In the main and traditional tasks of process mining spectrum, event logs are used to discover and enhance process models. In addition to these main tasks, process mining enables to discover relationships between event logs and process models for conformance and performance analysis. Within conformance, any deviations from modeled behavior can be discovered, moreover when the logs are replayed on the models bottleneck analysis can be undertaken with the help of timestamps on the event logs. However, in order to replay event logs on the process models there is a need for \textit{alignment} which is formalized in \cite{van2012replaying}. Formalization and notions presented in the study \cite{van2012replaying} are based on the assumption that process models and event logs use the same set of activity labels and therefore they are can be related.
+In the main and traditional tasks of process mining spectrum, event logs are used to discover and enhance process models. In addition to these main tasks, process mining enables to discover relationships between event logs and process models for conformance and performance analysis. Within conformance, any deviations from modeled behavior can be discovered; moreover when the logs are replayed on the models, bottleneck analysis can be undertaken with the help of timestamps on the event logs. However, in order to replay event logs on the process models there is a need for \textit{alignment} which is formalized in \cite{van2012replaying}. Formalization and notions presented in the study \cite{van2012replaying} are based on the assumption that process models and event logs use the same set of activity labels and therefore they can be related.
 
 The first notion in alignment of process model and event log is defining the relationship between \textit{moves in the model and log}. The necessity of this notion is based on the fact that some moves in the event log cannot be operated with the process model and vice versa. In the study \cite{van2012replaying}, move and alignment are defined as following:
 
@@ -177,7 +176,7 @@ In order to qualify the alignment operations, distance function on legal moves i
 \begin{enumerate}
   \item If $x \in A_{L}$ and $y=\bot$, then  $\delta(x,y)$ is the cost of \textit{move x in log}.
   \item If $x=\bot$ and $y \in A_{M}$, then  $\delta(x,y)$ is the cost of \textit{move y in model}.
-  \item If $x \in A_{L}$ and $y \in A_{M}$, then  $\delta(x,y)$ is the cost of \textit{move x in log and move y in model} (This cost is generally $\delta(x,y) = 0$ if $x = y$).
+  \item If $x \in A_{L}$ and $y \in A_{M}$, then  $\delta(x,y)$ is the cost of \textit{move x in log and move y in model} and this cost is generally $\delta(x,y) = 0$ if $x = y$.
 \end{enumerate}
 \end{definition}
 
@@ -191,14 +190,14 @@ This optimal alignment can be found with the help of different approaches and wi
 
 \section{Machine Learning and Clustering}
 \label{sec:unsupervised-learning}
-Machine learning is a study area of computer science which have roots in pattern recognition and computational learning theory of artificial intelligence. Machine learning approaches work on construction and learning from data to make further predictions. There are various approaches proposed in this area and clustering approach will be presented in this section. Cluster analysis is based on assigning the set of observations into subsets (\textit{clusters}) so that observations within the same cluster are similar whereas the observations from different clusters are dissimilar, where the similarity criteria is predefined. Clustering is a method in unsupervised learning, where the main problem is learning a hidden structure in unlabeled data. Since the provided data is unlabeled there is no error or reward assignment to the potential solutions provided these approaches; however, quality metrics on clusters are used to evaluate results. With these characteristics, clustering is a common technique in exploratory data mining and statistical data analysis and it is used in many fields like image analysis, information retrieval and bioinformatics.
+Machine learning is a study area of computer science which have roots in pattern recognition and computational learning theory of artificial intelligence. Machine learning approaches work on construction and learning from data to make further predictions. There are various approaches proposed in this area and clustering approach will be presented in this section. Cluster analysis is based on assigning the set of observations into subsets (\textit{clusters}) so that observations within the same cluster are similar whereas the observations from different clusters are dissimilar, where the similarity criteria is predefined. Clustering is a method in unsupervised learning, where the main problem is learning a hidden structure in unlabeled data. Since the provided data is unlabeled there is no error or reward assignment to the potential solutions provided by these approaches; however, quality metrics on clusters are used to evaluate results. With these characteristics, clustering is a common technique in exploratory data mining and statistical data analysis and it is used in many fields like image analysis, information retrieval and bioinformatics.
 
-In cluster analysis, various algorithms are proposed with different approaches on defining clusters and how to efficiently find them. Popular approaches are based on the idea of decreasing the distance among the members of same cluster, space density of data space, intervals or particular statistical distributions. Within this thesis study, centroid-based clustering is used in which the clusters are defined by a central vector, which may not a member of data set. When number of clusters are fixed to \textit{k}, the approach is named as \textit{k-means clustering} and the problem is finding k cluster centers and assigning data members to nearest cluster center while minimizing the squared distances of data members to the assigned cluster centers. Although seems easy, this optimization problem is NP-hard and most of the implementations include approximate solutions. A well-known algorithm in k-means clustering is Lloyd's algorithm and it is referred as \textit{k-means algorithm} and its variation based on random initialization \textit{k-means++} are formalized in the study of Arthur and Vassilvitskii \cite{arthur2007}: 
+In cluster analysis, various algorithms are proposed with different approaches on defining clusters and how to efficiently find them. Popular approaches are based on the idea of decreasing the distance among the members of same cluster, space density of data space, intervals or particular statistical distributions. Within this thesis study, centroid-based clustering is used in which the clusters are defined by a central vector, which might not be a member of data set. When number of clusters are fixed to \textit{k}, the approach is named as \textit{k-means clustering} and the problem is finding k cluster centers and assigning data members to nearest cluster center while minimizing the squared distances of data members to the assigned cluster centers. Although seems easy, this optimization problem is NP-hard and most of the implementations include approximate solutions. A well-known algorithm in k-means clustering is Lloyd's algorithm and it is referred as \textit{k-means algorithm} and its variation based on random initialization \textit{k-means++} are formalized in the study of Arthur and Vassilvitskii \cite{arthur2007}: 
 \theoremstyle{definition}
 \begin{definition}{k-means Algorithm}
 \begin{enumerate}
   \item Arbitrarily choose initial $k$ centers: $C={c_1,c_2,...c_k}$
-  \item For each $i \in {1,...k}$, set the cluster $C_i$ to be the set of points that are closer to $c_i$ than they are to $c_j$ for all $i \neq j$.
+  \item For each $i \in {1,...k}$; set the cluster $C_i$ to be the set of points that are closer to $c_i$ than they are to $c_j$ for all $i \neq j$.
   \item For each $i \in {1,...k}$, set $c_i$ to be the center of mass of all points in $C_i$ where $c_i=\frac{1}{|C_i|} \sum_{x \in C_i} x$
   \item Repeat Step 2 and 3 until $C$ no longer changes.
 \end{enumerate}
@@ -236,7 +235,7 @@ In cross-organizational process mining environment, there is a need to align pro
       \end{figure}
 \end{description}
  
-Control flow mismatch patterns are based on using different control-flow relations and dependencies for the same activities in different processes. Within the scope of this study, the following related control flow mismatch patterns are defined in study \cite{dijkman2007mismatch}:
+Control flow mismatch patterns are based on using different control-flow relations and dependencies for the same activities in different processes. Within the scope of this thesis study, the following related control flow mismatch patterns are defined in study \cite{dijkman2007mismatch}:
 \begin{description}
   \item[Activities at Different Moments in Processes] Set of activities are undertaken with different orders in different processes as shown in Figure~\ref{fig:different-moments}. 
       \begin{figure}
