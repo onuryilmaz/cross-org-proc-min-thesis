@@ -2,11 +2,11 @@
 
 \chapter{BACKGROUND}
 \label{chp:background}
-In this chapter background information is presented for the relevant topics to this thesis study. Topics are mentioned starting with the building blocks and then methodologies with the order of their usage in the methodology presented in this thesis study. Firstly, event logs and process models are mentioned with their mathematical formalization and background. Following these, process discovery approaches are explained and then performance analysis methodologies are presented. Then, machine learning and clustering topics are mentioned. Finally, mismatch patterns in process models are presented. All topics in this chapter are limited to the scope of this thesis study with the aim of constructing a necessary background.
+In this chapter background information is presented for the relevant topics to this thesis study. Topics are mentioned starting with the building blocks and then approaches with the order of their usage in the methodology presented in this thesis study. Firstly, event logs and process models are mentioned with their mathematical formalization and background. Following these, process discovery approaches are explained and then performance analysis methodologies are presented. Then, machine learning and clustering topics are mentioned. Finally, mismatch patterns in process models are presented. All topics in this chapter are limited to the scope of this thesis study with the aim of constructing a necessary background.
 
 \section{Event Log}
 \label{sec:event-log}
-Event logs are the main inputs to any process mining methodology including this thesis study and they include information related to real life activities. Event logs which are the outputs of the software systems like Enterprise Resource Planning (ERP) or Business Process Management (BPM) have common properties that are also assumed in the literature as the properties of event logs. General structure of event logs includes multiple layers as diagrammed in Figure~\ref{fig:event-log-structure}. Processes have cases which are simply single process instances. Within each case, there are events that are generally represents a sequence of activities performed. Each event is enhanced with the attributes such as timestamps, resource assignments and other contextual data. A fragment of this structure is presented in Table~\ref{table:event-log-loan} for the Loan Application Process\cite{loan-app-data}, which shows the footprints of a financial organization that provides consumer credits \cite{buijs2013improving}. In the table, each line represents an event with its attributes which are collected under cases to form a complete event log. 
+Event logs are the main inputs to any process mining methodology including this thesis study and they include information related to real life activities. Event logs which are the outputs of the software systems like Enterprise Resource Planning (ERP) or Business Process Management (BPM) have common properties that are also assumed in the literature as the properties of event logs. General structure of event logs includes multiple layers as diagrammed in Figure~\ref{fig:event-log-structure}. Processes have cases which are simply single process instances. Within each case, there are events that are generally represents a sequence of activities performed. Each event is enhanced with the attributes such as timestamps, resource assignments and other contextual data. A fragment of this structure is presented in Table~\ref{table:event-log-loan} for the Loan Application Process \cite{loan-app-data}, which shows the footprints of a financial organization that provides consumer credits \cite{buijs2013improving}. In the table, each line represents an event with its attributes which are collected under cases to form a complete event log. 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{3_background/event_log_structure}
@@ -84,7 +84,7 @@ Process models in the real life have additional properties to be executable and 
 \begin{enumerate}
   \item (Start Node) $P$ contains a \textit{source place i} where no token can be fired to.
   \item (End Node) $P$ contains a \textit{sink place o} where no token can be fired from.
-  \item (Connectedness) $\bar{N} = (P, T \cup \{t\}, F \cup \{(o,t),(t, i)\})$ is strongly connected, in other words there is a directed path between any pair of nodes in $\bar{N}$.
+  \item (Connectedness) $\bar{N} = (P, T \cup \{t\}, F \cup \{(o,t),(t, i)\})$ is strongly connected; in other words, there is a directed path between any pair of nodes in $\bar{N}$.
 \end{enumerate}
 \end{definition}
 
@@ -120,7 +120,7 @@ Business Process Modeling Notation (BPMN) is one of the most popular and widely 
   \label{fig:loan-bpmn}
 \end{figure}
 
-
+\todo{checked until here!}
 \section{Process Discovery}
 \label{sec:process-discovery}
 In process mining field, one of the most challenging task is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges. With this reasoning, Inductive Process Mining \cite{leemans2013discovering} is selected as appropriate since it is simple, highly applicable and configurable. In the literature, its derivatives which handles infrequent behaviors \cite{leemans2014discoveringinfrequent}; incomplete logs \cite{leemans2014discoveringincomplete}; and model optimization \cite{weidlich2012profiles} are also available.  
