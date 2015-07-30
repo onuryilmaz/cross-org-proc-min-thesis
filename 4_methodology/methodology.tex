@@ -149,11 +149,10 @@ Cluster Analysis Data is a tuple $(k, Assignments, Cluster\ Centroids)$ where
   \caption{Performance Indicator Clustering Stage as Black-box }
   \label{fig:performance-indicator-clustering-blackbox}
 \end{figure}
- 
-\todo{checked until here}
+
 \section{Mismatch Pattern Analysis}
 \label{sec:mismatch-pattern-analysis}
-In order to learn from other organizations, it is necessary to spot the differences between process models of different organizations. In this phase of methodology, differences between process models will be revealed by the mismatch patterns which are defined by Dijkman \cite{dijkman2007mismatch}. In the process mining stage, process models are mined to create Workflow nets; however, mismatch pattern definitions are closer to business environment and it is more suitable spot patterns in BPMN notation. Thus, mined process models are converted to BPMN models and then mismatch pattern analysis is applied. After spotting differences, mismatch patterns for activities and control flows average revealed for the organizations.
+In order to learn from other organizations, it is necessary to spot the differences between process models of different organizations. In this phase of methodology, differences between process models will be revealed by the mismatch patterns which are defined by Dijkman \cite{dijkman2007mismatch}. In the process mining stage, process models are mined to create Workflow nets; however, mismatch pattern definitions are closer to business environment and it is more suitable spot patterns in BPMN notation. Thus, mined process models are converted to BPMN models and then mismatch pattern analysis is applied. After spotting differences, mismatch patterns for activities and control flows are revealed for the organizations.
 
 Business Process Modeling Notation (BPMN) is one of the widely accepted modeling language in the industry and its a standardized notation by the Object Management Group (OMG) since 2004. Main aim of BPMN is to provide a notation that is easily understood by business stakeholders. In the preceding stages, Petri nets and their subset as Workflow nets are used for mining since they have stronger mathematical background. However, in this stage, BPMN formulation is used since mismatch patterns have roots in real-life business environment \cite{dijkman2007mismatch}. The following definition and conversion are defined in the study \cite{kalenkovaprocess} and they are used in the mismatch pattern analysis. 
 
@@ -171,7 +170,7 @@ $BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$ where
   \item Sets $A, G_{XOR}, G_{AND}, \{e_{start}\}, E_{end}$ form a partition of N,
   \item $SF \subseteq N \times N$ is a set of sequence flows,
   \item $\lambda : N \rightarrow U_{A}$ is a labeling function, where $U_{A}$ is some universe of activity labels,
-  \item Start event $e_{start}$ does not have incoming sequence flows and has not more than one outgoing sequence flows,
+  \item Start event $e_{start}$ does not have incoming sequence flows and more than one outgoing sequence flows,
   \item End events $E_{end}$ do not have outgoing sequence flows.  
 \end{enumerate}
 \end{definition}
@@ -186,7 +185,7 @@ Constructing BPMN Model from Petri nets, which are $N = (P, T, F)$ where $P$ is 
 \end{enumerate}
 \end{definition}
 
-For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. For each mismatch pattern analysis, the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. This approach also enables to locate the whole set of mismatches between process models when starting and ending points are provided as source and sink activities. Mismatch patterns are formulated and their importance in the methodology are listed as following:
+For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. where the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. When the complete set of mismatches between process models are required, this approach is used with starting and ending points as source and sink activities. Mismatch patterns are formulated and their importance in the methodology are listed as following:
 \begin{description}
   \item[Skipped Activity] Skipped activities are the operations that are not undertaken with some of the organizations. In business environment there could be various different reasons for an organization to exclude any activity in their process flows which are followed by other organizations. Therefore, this mismatch pattern should not be utilized solely but taken in to care with the other patterns. In this study, for each organization a list of activities that they do not include are listed as \textit{Skipped Activity} with the following definition. In addition, these differences are checked for the activities with a particular start and end point. 
 		\theoremstyle{definition}
@@ -206,9 +205,9 @@ For each organization, mined process models are converted to BPMN models and mis
 		\begin{definition}
 		Skipped Activity Analyzer is a function 
 
-		$SkippedActivityAnalyzer(O, A_{start}, A_{end})$ and it returns a set of \textit{Skipped Activity} for the organization $O$ and the activities between $A_{start}$ and $A_{end}$.
+		$SkippedActivityAnalyzer(O, A_{start}, A_{end})$ and it returns a \textit{Skipped Activity} for the organization $O$ and the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}
-  \item[Refined Activity] Refined activities exist in one process; however, as equivalent a collection of activities are undertaken in another organization's process to achieve the same task. Since there is no activity ontology information is kept in event logs and process models, there is no direct method to define whether the tasks can be classified as other tasks' refined state. In this study, assuming the labels of activities are correct and explanatory about their enclosures, similarity between labels are utilized for this aim. Using \textit{Levenshtein distance}, which is very popular in information retrieval area and also known as \textit{edit distance}, similarity of activity labels are calculated for each activity in respect to activities of other organizations' process models. This mismatch pattern presents information about the similar but not same activities in different process models which can be used to make organizations learn from each other. With a user-defined threshold for similarity based on the nature of business environment, most similar tasks can be listed for being refined.
+  \item[Refined Activity] Refined activities exist in one process; however, as equivalent a collection of activities are undertaken in another organization's process to achieve the same task. Since there is no activity ontology information is kept in event logs and process models, there is no direct way to define whether the tasks can be classified as other tasks' refined state. In this study, assuming the labels of activities are correct and explanatory about their enclosures, similarity between labels are utilized for this aim. Using \textit{Levenshtein distance}, which is very popular in information retrieval area and also known as \textit{edit distance}, similarity of activity labels are calculated for each activity in respect to activities of other organizations' process models. This mismatch pattern presents information about the similar but not same activities in different process models which can be used to make organizations learn from each other. With a user-defined threshold for similarity based on the nature of business environment, most similar tasks can be listed for being refined.
 		\theoremstyle{definition}
 		\begin{definition}
 		Refined Activity pattern is a tuple 
@@ -218,7 +217,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		  \item $O_{1}$ is the first organization where the refined activity is undertaken with the BPMN model of $BPMN_{{O}_{1}}$,
 		  \item $O_{2}$ is the second organization where a collection of activities checked for similarity with the BPMN model of $BPMN_{{O}_{2}}$,
 		  \item $RA$ is the refined activity and $RA \in BPMN_{{O}_{1}}(A)$ and $RA \notin BPMN_{{O}_{2}}(A)$,
-		  \item $SimilarityMap$ is a set of tuples $(SimilarityValue, A)$ where $SimilarityValue$ indicates the similarity between $RA$ and $A \in BPMN_{{O}_{1}}(A)$, 
+		  \item $SimilarityMap$ is a set of tuples $(SimilarityValue, B)$ where $SimilarityValue$ indicates the similarity between $RA$ and $B \in BPMN_{{O}_{2}}(A)$, 
  		  \item $A_{start}$ and $A_{end}$ are starting and ending points to check mismatch patterns and $A_{start}, A_{end} \in BPMN_{{O}_{1,2}}(A)$. 
 		\end{enumerate}
 		\end{definition}
@@ -305,12 +304,12 @@ For each organization, mined process models are converted to BPMN models and mis
 		\begin{definition}
 		Different Dependency Analyzer is a function 
 
-		$DifferentDependencysAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
+		$DifferentDependencyAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Dependency} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}	
 	\item[Additional Dependencies] Additional dependency pattern is a special case of \textit{Different Dependencies} where additional tasks are required in one organization in order to start an activity. These additional dependencies can include provisional tasks that are related to the original activity such as \textit{checking system} before \textit{starting application}. 
 		\theoremstyle{definition}
 		\begin{definition}
-		Additional Dependencies pattern is a \textit{Different Dependencies Mismatch} where $Prev_{1} \subseteq Prev_{2}$ or $Prev_{1} \subseteq Prev_{2}$.
+		Additional Dependencies pattern is a \textit{Different Dependencies Mismatch} where $Prev_{1} \subset Prev_{2}$ or $Prev_{2} \subset Prev_{1}$.
 		\end{definition}
 
 		\begin{definition}
@@ -320,7 +319,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		\end{definition}	
  \end{description}
  
-Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent so mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis as presented in Algorithm~\ref{algo:mismatch}.
+Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent to mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis as presented in Algorithm~\ref{algo:mismatch}.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{4_methodology/mismatch-pattern-analysis-blackbox}
@@ -348,7 +347,7 @@ $MismatchPatterns$ \leftarrow  AdditionalDependencysAnalyzer($O_{1}$,$O_{2}$,$A_
 \label{sec:recommendation-generation}
 Recommendation generation stage in the methodology is the final and core stage where all information retrieved from event logs until now are utilized. Till this point, all event logs are used to mine process models of each organization and then these event logs are replayed on the process models to calculate performance indicators. Following these steps, the organizations are clustered based on their performance indicators and mismatches between their process models are listed. In this stage, clustering results, which are performance indicator vectors for each cluster will be used to generate recommendations for each cluster of organizations based on the differences between their mismatch patterns.
 
-In this study, idea of recommendation is based on providing a set of mismatch patterns for each organization so that they can enhance their processes. These mismatch patterns are generated by comparing the process models of other organizations, particularly which are performing better in terms of their performance indicator values. In addition, clustering of organizations is undertaken generalize the way of identifying which organizations perform better in this environment. Recommendation idea and recommendation generation function is defined as following:
+In this study, idea of recommendation is based on providing a set of mismatch patterns for each organization so that they can enhance their processes. These mismatch patterns are generated by comparing the process models of other organizations, particularly which are performing better in terms of their performance indicator values. In addition, clustering of organizations is undertaken to generalize the way of identifying which organizations perform better in this environment. Recommendation idea and recommendation generation function is defined as following:
 \theoremstyle{definition}
 \begin{definition}
 Recommendation is a tuple 
@@ -379,8 +378,8 @@ Algorithm of recommendation generation function is based on the idea of checking
 $Recommendations \leftarrow \{\}$ \;
 $i \leftarrow C(Assignments(O))$ \;
 \For{$Centroid \in C(Cluster Centroids_{i})$} { 
-	\For{$Centroid' \in C(Cluster Centroids_{j}))\ i\neq j$} { 
-		\If{$Centroid(A_{start}) = Centroid'(A_{start}) \& Centroid(A_{end}) = Centroid'(A_{end})$} {
+	\For{$Centroid' \in C(Cluster Centroids_{j})\ i\neq j$} { 
+		\If{$Centroid(A_{start}) = Centroid'(A_{start})\ \&\ Centroid(A_{end}) = Centroid'(A_{end})$} {
 			\If{ ($\left |  Centroid(Value) -  Centroid'(Value)\right | \div Centroid(Value)) \geq P$  } {
 				$A_{start} \leftarrow Centroid(A_{start})$ \;
 				$A_{end} \leftarrow Centroid(A_{end})$ \;
@@ -407,7 +406,7 @@ This stage of methodology can be visualized as gathering inputs of mismatch patt
 \end{figure}
 
 \pagebreak
-\section{Implementation in ProM Framework}
+\section{Implementation in ProM Framework} \todo{checked until here}
 \label{sec:implementation}
 Methodology of this thesis study is implemented in ProM \cite{verbeek2010prom}, which is an extensible framework that supports a wide variety of process mining techniques in form of plugins. ProM is an open source framework for process mining algorithms which provides a platform to users and developers. Aim of this framework is to create a standard process mining platform that is accepted in industry and academia with an active community. Approach of this thesis study is implemented with its each stage as a standalone plugin that enables extensions for further studies. Developed set of plugins are packaged with the name of \textit{CrossOrgProcMin}\footnote{\url{http://www.promtools.org/prom6/packages/CrossOrgProcMin}} and it is available in the latest version of ProM release. 
 
