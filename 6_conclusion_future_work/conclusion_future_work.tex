@@ -1,15 +1,22 @@
-\chapter{CONCLUSION AND FUTURE WORK}
+5 \chapter{CONCLUSION AND FUTURE WORK}
 \label{chp:conclusion-and-future-work}
 
 \todo{WRITE}
 
-% neler yapıldı
+
+In the light of these motivations, approach proposed in this thesis study is a four-stage solution and it starts by mining the process models of organizations with a user defined noise threshold. With the mined models and event logs, second stage calculates the performance indicators for each organization and then clusters organizations based on how well they are operating. Third stage aims to find differences between process models of each organization. Final stage combines the information from all stages and provides a set of recommendations. With this approach it is aimed to help business process management users to focus on the potentially important parts of their business maps. In addition, this approach includes implementation of mismatch patterns and performance indicator based clustering of organizations. As an extensible framework, approach stages are designed with minimum inter-dependency and they are open to include new process mining approaches, performance indicators, clustering approaches and mismatch patterns. Moreover, every stage of the methodology is intended to be configurable for user needs and business environment requirements.
+
+Within this thesis study, proposed methodology is implemented in ProM framework \cite{verbeek2010prom} as a set of plugins corresponding for each stage and packaged under the name of \textit{CrossOrgProcMin}. Since ProM is the most popular open-source environment for academia and industry at the time of this thesis published, developed set of plugins are built over this framework. With the help of this implementation, approach proposed in this thesis is tested on a synthetic and real-life event logs. Performance of methodology is assessed with a defined evaluation metrics for each stage and resulting recommendations are presented to show how this approach helps users to focus on learning opportunities between organizations with a performance improvement potential.
+
+yukarıyı paraphrase yap
+
+sonuçlardan özetler geç ve contribution'ları bahset
 
 % contribution
 
 % future work:
 % loop handling in mismatch pattern
 % include more mismatch pattern
-% recommendation doğrulama / domain expert / groundtruth data ile
+% recommendation doğrulama / domain expert / groundtruth data ile semi supervised learning yapılabilir
 % threshold yerine ilgilendiği taskları da seçebilir
 % visualization ve path seçme process model görselleri üzerinden yapılabilir
