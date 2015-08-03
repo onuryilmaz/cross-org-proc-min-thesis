@@ -1,22 +1,32 @@
-5 \chapter{CONCLUSION AND FUTURE WORK}
+\chapter{CONCLUSION AND FUTURE WORK}
 \label{chp:conclusion-and-future-work}
 
-\todo{WRITE}
+\section{Conclusion}
 
+In this thesis study, a new approach proposed and tested for generating recommendations using cross-organizational process mining for process performance improvement. In an environment where processes are executed on several organizations and cross-organizational process mining is applied with the idea of unsupervised learning where predictor variables related to performances of organizations are used. Results show that it is possible to use cross-organizational process mining and mismatch patterns for performance improvement recommendations. Process mining is a large-spectrum field where different set of activities and approaches are gathered together to discover, monitor and improve processes. In this thesis study, a four-stage solution is presented with each stage has different mathematical background approach and their performances are explained.
 
-In the light of these motivations, approach proposed in this thesis study is a four-stage solution and it starts by mining the process models of organizations with a user defined noise threshold. With the mined models and event logs, second stage calculates the performance indicators for each organization and then clusters organizations based on how well they are operating. Third stage aims to find differences between process models of each organization. Final stage combines the information from all stages and provides a set of recommendations. With this approach it is aimed to help business process management users to focus on the potentially important parts of their business maps. In addition, this approach includes implementation of mismatch patterns and performance indicator based clustering of organizations. As an extensible framework, approach stages are designed with minimum inter-dependency and they are open to include new process mining approaches, performance indicators, clustering approaches and mismatch patterns. Moreover, every stage of the methodology is intended to be configurable for user needs and business environment requirements.
+Process mining stage mine the process models of different organizations and it is shown that a generic, noise-capable process mining method can create process models with high fitness and appropriateness values. This indicates that mining process models of different organizations under a generic method can yield comparable and appropriate process models. Success of this stage directly affects the quality of calculated performance indicators since they are collected through the replay of event logs over process models.
 
-Within this thesis study, proposed methodology is implemented in ProM framework \cite{verbeek2010prom} as a set of plugins corresponding for each stage and packaged under the name of \textit{CrossOrgProcMin}. Since ProM is the most popular open-source environment for academia and industry at the time of this thesis published, developed set of plugins are built over this framework. With the help of this implementation, approach proposed in this thesis is tested on a synthetic and real-life event logs. Performance of methodology is assessed with a defined evaluation metrics for each stage and resulting recommendations are presented to show how this approach helps users to focus on learning opportunities between organizations with a performance improvement potential.
+Performance indicator analysis stage in the methodology clusters the organizations based on their performance indicators and internal evaluation metrics show that it is applicable to cluster organizations based on how well they are operating. Although there are studies that clusters organizations based on their process models for structural analysis \cite{greco2005mining}, this approach showed that organizations can be clustered based on their performance indicators.
 
-yukarıyı paraphrase yap
+Mismatch analysis stage in this thesis has the aim of spotting differences between processes of organizations and it is known to be the first implementation of mismatch patterns \cite{dijkman2007mismatch}. When the results of this stage is checked against well-established similarity metrics in the literature, it yields that mismatch pattern finding can be used when there is a need for spotting different approaches in similar processes. 
 
-sonuçlardan özetler geç ve contribution'ları bahset
+Recommendation generation stage collects the generated and extracted information in all prior stages to list what the organizations can learn from other organizations which perform better. In order to define performing better, different thresholds are checked for each organization and resulting recommendations show that clustering organizations based on performance indicators and then checking mismatch patterns significantly helps user to focus on the differences with a potential performance improvement. In addition, quality of recommendations in business usefulness is tried to be explained with example outputs and these examples show that the approach yields recommendations difficult to spot manually and visually, which are also potential causes of performance improvement.
 
-% contribution
+In addition, proposed methodology is developed as extensible and configurable set of plugins in ProM framework \cite{verbeek2010prom} and published as open-source. This makes the methodology open to include new process mining methods, mismatch patterns and clustering approaches as well as testing with different datasets.
 
-% future work:
-% loop handling in mismatch pattern
-% include more mismatch pattern
+\section{Future Work}
+
+% farklı process mining metodları ile daha yüksek veriler, daha iyi modeller ortaya çıkarılabilir
+%
+% yeni performance indicator value, personel, resource allocation gibi
+%
+% loop handling in mismatch pattern finding
+% % include more mismatch pattern, farklı dağılım ve ağırlık falan
+% 
 % recommendation doğrulama / domain expert / groundtruth data ile semi supervised learning yapılabilir
+% 
 % threshold yerine ilgilendiği taskları da seçebilir
 % visualization ve path seçme process model görselleri üzerinden yapılabilir
+ 
+ 
