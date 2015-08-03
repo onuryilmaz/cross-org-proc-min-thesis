@@ -17,16 +17,11 @@ In addition, proposed methodology is developed as extensible and configurable se
 
 \section{Future Work}
 
-% farklı process mining metodları ile daha yüksek veriler, daha iyi modeller ortaya çıkarılabilir
-%
-% yeni performance indicator value, personel, resource allocation gibi
-%
-% loop handling in mismatch pattern finding
-% % include more mismatch pattern, farklı dağılım ve ağırlık falan
-% 
-% recommendation doğrulama / domain expert / groundtruth data ile semi supervised learning yapılabilir
-% 
-% threshold yerine ilgilendiği taskları da seçebilir
-% visualization ve path seçme process model görselleri üzerinden yapılabilir
- 
- 
+For the approach proposed in this thesis study, the following issues can be listed as pointers to future work:
+\begin{itemize}
+	\item In the process mining stage, instead of \textit{Inductive Miner}, different techniques can be tested which can mine complex process models with higher appropriateness levels while keeping the high fitness values.
+	\item In the performance indicator analysis stage, new indicators can be defined based on the business environment, event log and user needs. For instance, personnel and resource allocation indicators can be included as well as cost dimension.
+	\item For mismatch pattern analysis, new and business oriented mismatch patterns can be included in the analysis. In addition analyzers can fail when there are loops in the process models in current implementations, more robust implementations for loops in process models can be implemented in the future.
+	\item For the generated recommendation, their quality for business environment are not assessed within the scope of this thesis. However, when any feedback from a domain expert or BPM people is provided, the learning approach can be converted to semi-supervised learning from unsupervised learning.
+	\item For ProM implementation of this study, currently user selects an organization to list recommendation; in the future user might be able to select area of interest as well as starting and ending points visually on a process model. 
+\end{itemize}
