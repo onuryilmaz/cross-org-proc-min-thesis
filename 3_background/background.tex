@@ -152,7 +152,7 @@ The first notion in alignment of process model and event log is defining the rel
 
 \theoremstyle{definition}
 \begin{definition}{}
-(Move) For the event log $L$, $A_{L}^{\bot} = A_{L} \cup \{ \bot\}$ is defined where $x \in A_{L}$ refers to \textit{"move x in log"} and $\bot$ refers to \textit{"no move in log"}. One step in alignment is represented as $(x,y) \in A_{L}^{\bot} \times A_{M}^{\bot}$ such that:
+(Move) For the event log $L$, $A_{L}^{\bot} = A_{L} \cup \{ \bot\}$ is defined where $x \in A_{L}$ refers to \textit{"move x in log"} and $\bot$ refers to \textit{"no move in log"}. Similarly, $A_{M}^{\bot} = A_{M} \cup \{ \bot\}$ where $y \in A_{M}$ refers to \textit{"move y in model"} and $\bot$ refers to \textit{"no move in model"}. One step in alignment is represented as $(x,y) \in A_{L}^{\bot} \times A_{M}^{\bot}$ such that:
 \begin{enumerate}
   \item $(x,y)$ is a \textit{move in log} if $ x \in A_{L}$ and $y=\bot$,
   \item $(x,y)$ is a \textit{move in model} if $x=\bot$ and $y \in A_{M}$,
