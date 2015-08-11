@@ -120,9 +120,9 @@ Business Process Modeling Notation (BPMN) is one of the most popular and widely 
 
 \section{Process Discovery}
 \label{sec:process-discovery}
-In process mining field, one of the most challenging tasks is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than address all process discovery challenges. With this reasoning, Inductive Process Mining \cite{leemans2013discovering} is selected as appropriate since it is simple, highly applicable and configurable. In the literature, its derivatives which handles infrequent behaviors \cite{leemans2014discoveringinfrequent}; incomplete logs \cite{leemans2014discoveringincomplete}; and model optimization \cite{weidlich2012profiles} are also available.  
+In process mining field, one of the most challenging tasks is to construct a process model based on the behavior in the event logs, namely process discovery. Many process discovery algorithms are proposed to address different challenges in process discovery and using different notations. However, in this thesis focus of the study is learning from the cross-organizational process mining rather than addressing all process discovery challenges. With this reasoning, Inductive Process Mining \cite{leemans2013discovering} is selected as appropriate since it is simple, highly applicable and configurable. In the literature, its derivatives which handles infrequent behaviors \cite{leemans2014discoveringinfrequent}; incomplete logs \cite{leemans2014discoveringincomplete}; and model optimization \cite{weidlich2012profiles} are also available.  
 
-\textit{Inductive Miner (IM)}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and well-fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a significant attribute for this thesis study. Formalization of the key points in the study \cite{leemans2013discovering} are as following:
+\textit{Inductive Miner (IM)}, which is proposed as an extensible framework in \cite{leemans2013discovering}, aims to discover block-structured process models that are sound and well-fitting to the behavior represented in event log. In addition, this approach focuses on creating rediscoverable models that is a significant attribute for this thesis study. Formalization of the key points in the study \cite{leemans2013discovering} is as follows:
 
 \theoremstyle{definition}
 \begin{definition}{}
@@ -134,7 +134,7 @@ In process mining field, one of the most challenging tasks is to construct a pro
 (Rediscoverability) Let a process is expressible by a model $M$ which is unknown priori. Given a log $L$ of $M$, $L$ is a subset of language used to describe model $M$. $M$ is isomorphic-rediscoverable from $L$ by mining algorithm $B$ if and only if $M \in B(L)$.
 \end{definition}
  
-Framework developed in the study \cite{leemans2013discovering} uses a divide-and-conquer approach to discover subprocesses of sublogs obtained by splitting the event log and its main steps can be listed as following:
+Framework developed in the study \cite{leemans2013discovering} uses a divide-and-conquer approach to discover subprocesses of sublogs obtained by splitting the event log and its main steps can be listed as follows:
 \begin{enumerate}
   \item Activity Sets: Split the \textit{activities} in log to disjoint sets.
   \item Sublogs: Split the \textit{log} by using \textit{activity sets}.
@@ -148,7 +148,7 @@ In this thesis study, infrequent behavior capable implementation is used for exp
 \label{sec:process-performance-analysis}
 In the main and traditional tasks of process mining spectrum, event logs are used to discover and enhance process models. In addition to these main tasks, process mining enables to discover relationships between event logs and process models for conformance and performance analysis. Within conformance, any deviations from modeled behavior can be discovered; moreover when the logs are replayed on the models, bottleneck analysis can be undertaken with the help of timestamps on the event logs. However, in order to replay event logs on the process models there is a need for \textit{alignment} which is formalized in \cite{van2012replaying}. Formalization and notions presented in the study \cite{van2012replaying} are based on the assumption that process models and event logs use the same set of activity labels and therefore they can be related.
 
-The first notion in alignment of process model and event log is defining the relationship between \textit{moves in the model and log}. The necessity of this notion is based on the fact that some moves in the event log cannot be operated with the process model and vice versa. In the study \cite{van2012replaying}, move and alignment are defined as following:
+The first notion in alignment of process model and event log is defining the relationship between \textit{moves in the model and log}. The necessity of this notion is based on the fact that some moves in the event log cannot be operated with the process model and vice versa. In the study \cite{van2012replaying}, move and alignment are defined as follows:
 
 \theoremstyle{definition}
 \begin{definition}{}
@@ -167,7 +167,7 @@ In this environment, \textit{legal moves} are defined as $A_{LM} = \{ (x,y) \in 
 (Alignment) Let $\sigma_{L} \in L$ a trace in event log $L$ and let $\sigma_{M} \in \beta (M)$ a full execution sequence of process model $M$. An alignment of $\sigma_{L}$ and $\sigma_{M}$ can be defined as a sequence $\gamma \in {A_{LM}}^{*}$  where the projection of first element yields $\sigma_{L}$ and the projection of second element yields $\sigma_{M}$. 
 \end{definition}
 
-In order to qualify the alignment operations, distance function on legal moves is defined in \cite{van2012replaying} as following:
+In order to qualify the alignment operations, distance function on legal moves is defined in \cite{van2012replaying} as follows:
 \theoremstyle{definition}
 \begin{definition}{}
 (Distance Function) Distance function is defined on legal moves as $\delta \in A_{LM} \rightarrow \mathbb{N}$ to associate costs to moves in alignment:
@@ -178,7 +178,7 @@ In order to qualify the alignment operations, distance function on legal moves i
 \end{enumerate}
 \end{definition}
 
-According to this distance function definition, various different functions can be defined using costs. For instance, in \cite{van2012replaying} a \textit{standard distance function} is defined as no cost when log and model agree and cost of 1 otherwise. In addition, optional alignment between process model and event logs is defined as following:
+According to this distance function definition, various different functions can be defined using costs. For instance, in \cite{van2012replaying} a \textit{standard distance function} is defined as no cost when log and model agree and cost of 1 otherwise. In addition, optional alignment between process model and event logs is defined as follows:
  
 \begin{definition}{}
 (Optimal Alignment) Let $\sigma_{L} \in L$ be a trace in event log $L$, $M$ a process model and $\Gamma_{\sigma_{L},M} = \{ \gamma \in {A_{LM}}^{*} \mid \exists_{\sigma_{M} \in \beta (M)}\ \gamma\ is\ an\ alignment\ of\ \sigma_{L}\ and\ \sigma_{M} \}$. An alignment $\gamma \in \Gamma_{\sigma_{L},M}$ is \textit{optimal} for event log trace $\sigma_{L}$ and model $M$ if for any ${\gamma}' \in \Gamma_{\sigma_{L},M} : \delta({\gamma}')\geq \delta(\gamma)$.
@@ -203,8 +203,8 @@ In cluster analysis, various algorithms are proposed with different approaches o
 \theoremstyle{definition}
 \begin{definition}{k-means++ Algorithm}
 \begin{enumerate}
-  \item Take one center $c_1$, chosen uniformly from data points $X$.
-  \item Take a new center $c_i$, chosen from data points $X$ with probability $\frac{D(x)^2}{\sum_{x \in X} D(x)^2}$ where $D(x)$ is the shortest distance from a data point to the closest cluster center.
+  \item Take one center $c_1$, chosen uniformly from the set of data points $X$.
+  \item Take a new center $c_i$, chosen from the set of data points $X$ with probability $\frac{D(x)^2}{\sum_{x \in X} D(x)^2}$ where $D(x)$ is the shortest distance from a data point to the closest cluster center.
   \item Repeat Step 2 until $k$ cluster centers are selected.
   \item Proceed with the 2-4 steps of k-means Algorithm.
 \end{enumerate}
@@ -215,7 +215,7 @@ In this thesis study, clustering of performance analysis results is undertaken a
 \section{Mismatch Patterns in Process Models}
 \label{sec:mismatch-patterns-in-process-models}
 
-In cross-organizational process mining environment, there is a need to align processes of different organizations and in this scope both the organizations and their processes are similar but have significant differences. In order to align these processes and organizations, there is a need for spotting differences between process models. In the study of Dijkman \cite{dijkman2007mismatch}, a collection of patterns to describe frequent mismatches between the similar process models are presented. Mismatch patterns are grouped into three as authorization, activity and control flow mismatch patterns. Authorization mismatch patterns are based on assignment of the same tasks to different roles in different processes and left outside the scope of this thesis. Activity mismatch patterns are based on representing the tasks of a process by a different collection of activities in a different process, or not representing at all. Within the scope of this study, the related activity mismatch patterns are defined in study \cite{dijkman2007mismatch} as following:
+In cross-organizational process mining environment, there is a need to align processes of different organizations and in this scope both the organizations and their processes are similar but have significant differences. In order to align these processes and organizations, there is a need for spotting differences between process models. In the study of Dijkman \cite{dijkman2007mismatch}, a collection of patterns to describe frequent mismatches between the similar process models are presented. Mismatch patterns are grouped into three as authorization, activity and control flow mismatch patterns. Authorization mismatch patterns are based on assignment of the same tasks to different roles in different processes and left outside the scope of this thesis. Activity mismatch patterns are based on representing the tasks of a process by a different collection of activities in a different process, or not representing at all. Within the scope of this study, the related activity mismatch patterns are defined in study \cite{dijkman2007mismatch} as follows:
 \begin{description}
   \item[Skipped Activity] An activity exists in one process but no equivalent activity is found in the other process as illustrated in Figure~\ref{fig:skipped-activity}.
       \begin{figure}
@@ -233,7 +233,7 @@ In cross-organizational process mining environment, there is a need to align pro
       \end{figure}
 \end{description}
  
-Control flow mismatch patterns are based on using different control-flow relations and dependencies for the same activities in different processes. Within the scope of this thesis study, the following related control flow mismatch patterns are defined in study \cite{dijkman2007mismatch}:
+Control flow mismatch patterns are based on using different control-flow relations and dependencies for the same activities in different processes. Within the scope of this thesis study, the following related control flow mismatch patterns are defined as given in \cite{dijkman2007mismatch}:
 \begin{description}
   \item[Activities at Different Moments in Processes] Set of activities are undertaken with different orders in different processes as shown in Figure~\ref{fig:different-moments}. 
       \begin{figure}

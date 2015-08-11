@@ -5,7 +5,7 @@ In this chapter, methodology proposed in this thesis study is presented. Firstly
 
 \section{Approach Overview}
 \label{sec:approach-overview}
-Approach proposed in this study consists of four main stages and general information about these stages can be summarized as following:
+Approach proposed in this study consists of four main stages and general information about these stages can be summarized as follows:
 \begin{description}
 	\item[Process Model Mining:] Process models are extracted from event logs for each organization with a user specified noise threshold.
 	\item[Performance Indicator Analysis:] Event logs are replayed on process models and performance indicators are calculated for each organization. Using these indicators, organizations are clustered based on how well they are operating.
@@ -25,7 +25,7 @@ Flow of these stages with the important input and outputs can be visualized in F
 \label{sec:process-model-mining}
 Process model mining stage in the proposed approach has the aim of creating reproducible and generalized process models from event logs. In order to achieve this aim, implementation of \textit{Inductive Miner Infrequent (IMi)}, which is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs, is used in this study. 
 
-The selected implementation has the ability of pruning data to handle noise in the event logs. Like the other data mining approaches, event logs include data related to the infrequent behaviors occurred in real life. Although these infrequent behaviors might be caused by important structural or case related issues that should be analyzed; they make the process of mining and results more complex. In the scope of this study, without cleaning the data, most of the process model mining approaches result with \textit{spaghetti-like models} \cite{van2011process} which are difficult to further analyze. Since this thesis focuses on learning from the cross-organizational process mining rather than creating the best-fitting process models, data cleaning and noise handling is a necessary step. Therefore preprocessing steps are undertaken with a compatible approach of \textit{Inductive Miner Infrequent (IMi)}, where data is cleaned in every inductive step.
+The selected implementation has the ability of pruning data to handle noise in the event logs. Like the other data mining approaches, event logs include data related to the infrequent behaviors occurred in real life. Although these infrequent behaviors might be caused by important structural or case related issues that should be analyzed; they make the process of mining and results more complex. Within the scope of this study, without cleaning the data, most of the process model mining approaches result with \textit{spaghetti-like models} \cite{van2011process} which are difficult to further analyze. Since this thesis focuses on learning from the cross-organizational process mining rather than creating the best-fitting process models, data cleaning and noise handling is a necessary step. Therefore preprocessing steps are undertaken with a compatible approach of \textit{Inductive Miner Infrequent (IMi)}, where data is cleaned in every inductive step.
 
 Considering the scope of this study, instead of computational details of \textit{Inductive Miner Infrequent (IMi)}; black-box representation is used to explain its usage in the methodology. In order to set a filtering threshold, a user-provided value between 0 to 1 is added as input to method in addition to event logs. As a result, workflow net is produced which is a sound and properly completed Petri net without deadlocks. Black-box of this stage is illustrated in Figure~\ref{fig:process-model-mining-blackbox} and this stage is called for every organization's event logs to create their own process models in Workflow net formalization.
 
@@ -44,18 +44,18 @@ Performance indicator analysis stage focuses on calculating and analyzing the pe
 \item alignment and calculation of performance indicators; and
 \item clustering of organizations based on their performance values.
 \end{inparaenum}
-In order to evaluate the performance of an organization based on their process models and past activities; there are a number of indicators in time dimension, cost dimension and utilization \cite{van2011process}. However, in this study, process related performance values are considered since differences in the process models are studied in the next stages. With this reasoning, the following performance indicators are calculated and analyzed in this stage of methodology:
+In order to evaluate the performance of an organization based on their process models and past activities; there is a number of indicators in time dimension, cost dimension and utilization \cite{van2011process}. However, in this study, process related performance values are considered since differences in the process models are studied in the next stages. With this reasoning, the following performance indicators are calculated and analyzed in this stage of methodology:
 \begin{description}
-  \item[Average Time Between Activities] For each activity in the process model, average time to reach other activity is calculated. This is a simple but powerful performance metric for organizations since it can yield the average time to complete one task based on a starting point. From the performance perspective, organizations want to minimize average time between activities to increase their throughput \cite{van2012replaying}. This notion can be defined as following:
+  \item[Average Time Between Activities] For each activity in the process model, average time to reach other activity is calculated. This is a simple but powerful performance metric for organizations since it can yield the average time to complete one task based on a starting point. From the performance perspective, organizations want to minimize average time between activities to increase their throughput \cite{van2012replaying}. This notion can be defined as follows:
 	\theoremstyle{definition}
 	\begin{definition}{}
 	Average time between activity $A$ and $B$ in organization $i$ is 
-	$AvgTime_{A\rightarrow B}^{i} = \sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(A,B) / Occurences_{Event\ Log_{i}}(A,B)$ where
+	$AvgTime_{A\rightarrow B}^{i} = \sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(A,B) / |Occurences_{Event\ Log_{i}}(A,B)|$ where
 		\begin{enumerate}
 			\item $TimeBetween_{c}(A, B) = EndTime_{c}(B) - StartTime_{c}(A)$
 			\item $StartTime_{c}(A)$ is start time of activity $A$ in case $c$,
 			\item $EndTime_{c}(B)$ is end time of activity $B$ in case $c$,
-			\item $Occurences_{Event Log_{i}}(A, B)$ is number of occurrences of  activity $A$ followed by $B$ in  $Event\ Log_{i}$.
+			\item $|Occurences_{Event Log_{i}}(A, B)|$ is number of occurrences of activity $A$ followed by $B$ in  $Event\ Log_{i}$.
 		\end{enumerate}
 	\end{definition}
 
@@ -94,7 +94,7 @@ In order to use replay as an intermediate stage in this thesis, some of the ment
   \label{fig:replay-and-performance-indicator-calculation}
 \end{figure}
 
-Performance summary calculation step at the end of this stage is used to create a summary of data consists of average and standard deviation of time between activities. Resulting data can be defined as following:
+Performance summary calculation step at the end of this stage is used to create a summary of data consists of average and standard deviation of time between activities. Resulting data can be defined as follows:
 	\theoremstyle{definition}
 	\begin{definition}{} Performance Summary data for any organization $i$ is 
 
@@ -125,7 +125,7 @@ $SSE = \sum_{i=1}^{k} \sum_{x \in c_{i}} EuclideanDistance(mean_{i}, x)^{2}$ whe
 \end{enumerate}
 \end{definition}
 
-For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting \textit{k} from 1 to the number of organizations. For each clustering with different number of clusters, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:performance-indicator-clustering-blackbox}. Resulting cluster analysis data is formulated as following:
+For each organization, \textit{Performance Summary} data is used as the data source in clustering. It is aimed that the organizations with the similar average or standard deviation time between tasks will be assigned to same sets to further reveal the dissimilarities that the other clusters can learn from. Since not every activity exists in every organization, performance summary data is cleaned and merged to include only all shared activities. This cleaning step removes the non-existing activity related performance indicators from all the organizations so that clustering is applied on the data with no process model related information. Since number of clusters are not known priori, k-means clustering is applied starting \textit{k} from 1 to the number of organizations. For each clustering with different number of clusters, SSE values are plotted and user is made to select the appropriate cluster size. For the selected cluster size, clustering related information is used to generate recommendations in the further steps. This stage of methodology can be visualized as an input-output system in Figure~\ref{fig:performance-indicator-clustering-blackbox}. Resulting cluster analysis data is formulated as follows:
 
 \theoremstyle{definition}
 \begin{definition}
@@ -160,7 +160,7 @@ Business Process Modeling Notation (BPMN) is one of the widely accepted modeling
 \begin{definition}
 A BPMN model is a tuple 
 
-$BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$ where
+$BPMN_{model}=(N, A, G_{XOR}, G_{AND}, e_{start}, E_{end}, SF, \lambda)$, where
 \begin{enumerate}
   \item $N$ is a set of flow nodes,
   \item $A \subseteq N$ is a set of activities,
@@ -185,7 +185,7 @@ Constructing BPMN Model from Petri nets, which are $N = (P, T, F)$ where $P$ is 
 \end{enumerate}
 \end{definition}
 
-For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them. where the aim is to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending point in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. When the complete set of mismatches between process models are required, this approach is used with starting and ending points as source and sink activities. Mismatch patterns are formulated and their importance in the methodology are listed as following:
+For each organization, mined process models are converted to BPMN models and mismatch patterns analysis is undertaken on them, in order to locate differences between two process models or cluster of process models. In addition, since performance indicators are calculated based on a starting and ending points in the process model, same approach is applied to locate mismatch patterns. In other words, differences of process models are located through a starting activity to an ending activity. When the complete set of mismatches between process models are required, this approach is used with starting and ending points as source and sink activities. Mismatch patterns are formulated and their importance in the methodology are listed as following:
 \begin{description}
   \item[Skipped Activity] Skipped activities are the operations that are not undertaken with some of the organizations. In business environment there could be various different reasons for an organization to exclude any activity in their process flows which are followed by other organizations. Therefore, this mismatch pattern should not be utilized solely but taken in to care with the other patterns. In this study, for each organization a list of activities that they do not include are listed as \textit{Skipped Activity} with the following definition. In addition, these differences are checked for the activities with a particular start and end point. 
 		\theoremstyle{definition}
@@ -253,7 +253,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		$DifferentMomentsAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Moments} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}
 
-	\item[Different Conditions for Occurrence] Different conditions for occurrence take place where an activity has the same dependencies in different organizations but with different conditions. For instance, an organization needs to complete all dependency tasks before starting the next one; though another organization checks for the completion of only one of these dependencies. This difference between organizations can lead to loosen or tighten the conditions based on the application of other organizations. Considering the representation of different conditions for occurrence and other control flow mismatch patterns, a generic definition is developed firstly to use and further customize. Different conditions for occurrence pattern definition is developed based on this generic definition as following.
+	\item[Different Conditions for Occurrence] Different conditions for occurrence take place where an activity has the same dependencies in different organizations but with different conditions. For instance, an organization needs to complete all dependency tasks before starting the next one; though another organization checks for the completion of only one of these dependencies. This difference between organizations can lead to loosening or tightening of the conditions based on the application of other organizations. Considering the representation of different conditions for occurrence and other control flow mismatch patterns, a generic definition is developed firstly to use and further customize. Different conditions for occurrence pattern definition is developed based on this generic definition as following.
 		\theoremstyle{definition}
 		\begin{definition}
 		Control Flow Mismatch pattern is a tuple 
@@ -319,7 +319,7 @@ For each organization, mined process models are converted to BPMN models and mis
 		\end{definition}	
  \end{description}
  
-Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent to mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis as presented in Algorithm~\ref{algo:mismatch}.
+Mismatch pattern analysis stage in methodology can be visualized as a black-box diagram in Figure~\ref{fig:mismatch-pattern-analysis-blackbox}. Each organization's mined process models are converted to BPMN models and these models are sent to mismatch pattern analyzers with the starting and ending activities. For each organization, mismatch patterns are gathered and stored for the further analysis as presented in Algorithm~\ref{algo:mismatch}.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{4_methodology/mismatch-pattern-analysis-blackbox}
@@ -345,7 +345,7 @@ $MismatchPatterns$ \leftarrow  AdditionalDependencysAnalyzer($O_{1}$,$O_{2}$,$A_
 
 \section{Recommendation Generation}
 \label{sec:recommendation-generation}
-Recommendation generation stage in the methodology is the final and core stage where all information retrieved from event logs until now are utilized. Till this point, all event logs are used to mine process models of each organization and then these event logs are replayed on the process models to calculate performance indicators. Following these steps, the organizations are clustered based on their performance indicators and mismatches between their process models are listed. In this stage, clustering results, which are performance indicator vectors for each cluster will be used to generate recommendations for each cluster of organizations based on the differences between their mismatch patterns.
+Recommendation generation stage in the methodology is the final and core stage where all information retrieved from event logs until now are utilized. Until this point, all event logs are used to mine process models of each organization and then these event logs are replayed on the process models to calculate performance indicators. Following these steps, the organizations are clustered based on their performance indicators and mismatches between their process models are listed. In this stage, clustering results, which are performance indicator vectors for each cluster will be used to generate recommendations for each cluster of organizations based on the differences between their mismatch patterns.
 
 In this study, idea of recommendation is based on providing a set of mismatch patterns for each organization so that they can enhance their processes. These mismatch patterns are generated by comparing the process models of other organizations, particularly which are performing better in terms of their performance indicator values. In addition, clustering of organizations is undertaken to generalize the way of identifying which organizations perform better in this environment. Recommendation idea and recommendation generation function is defined as following:
 \theoremstyle{definition}
@@ -414,7 +414,7 @@ Implementation details are presented from two perspectives in this section. Firs
 
 \subsection{Software Architecture}
 \label{subsec:architecture}
-Approach of this study is divided into standalone stages where inputs and outputs between them are defined strictly. With the help of this understanding, each stage is developed as a standalone plugin in ProM framework which can be called separately. For this aim, five plugins are developed which are visualized in Figure~\ref{fig:architecture} to provide a high-level perspective. In addition, a set of utilities are developed to visualize and persistence of data in ProM environment. 
+Approach of this study is divided into stand-alone stages where inputs and outputs between them are defined strictly. With the help of this understanding, each stage is developed as a stand-alone plug-in in ProM framework which can be called separately. For this aim, five plug-ins are developed which are visualized in Figure~\ref{fig:architecture} to provide a high-level perspective. In addition, a set of utilities are developed to visualize and persistence of data in ProM environment. 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{4_methodology/architecture}
@@ -433,9 +433,9 @@ Approach of this study is divided into standalone stages where inputs and output
 
 \subsection{User Experience}
 \label{subsec:user-experience}
-Approach proposed in this study is a composition of different stages and it is very difficult for an end user to be capable of each step's details. Therefore, the plugins are developed with the high level of automation by minimizing the manual inputs required. In addition, each reporting step is well-documented so that user can easily understand and provide inputs without help of another guide. In this section, example screens will be presented to explain the story of end user for the developed plugins. Assuming the user is familiar with the ProM framework, only the steps specific to the developed plugins are illustrated. Intermediate steps are included in Appendix~\ref{sec:appendix-methodology-steps} and result screens are presented in this section.
+Approach proposed in this study is a composition of different stages and it is very difficult for an end user to be capable of each step's details. Therefore, the plug-ins are developed with a high level of automation by minimizing the manual inputs required. In addition, each reporting step is well-documented so that user can easily understand and provide inputs without help of another guide. In this section, example screens will be presented to explain the story of end user for the developed plug-ins. Assuming the user is familiar with the ProM framework, only the steps specific to the developed plug-ins are illustrated. Intermediate steps are included in Appendix~\ref{sec:appendix-methodology-steps} and result screens are presented in this section.
 
-When the user selects a number of event logs and starts \textit{Cross-Organizational Process Miner}, an informative screen about the plugin and the following steps are presented to the user as shown in Figure~\ref{fig:information-screen}. Following this screen, user is required to provide names for organizations of the event logs in a very simple form as can be seen on Figure~\ref{fig:organization-name-screen}. This step is added to provide user-friendly reports in the following stages with the names provided. In the stage of process mining, for each organization, user is expected  to provide a noise threshold and naming convention which is illustrated in Figure~\ref{fig:proc-miner-threshold-screen} and this screen is an extension of \textit{Inductive Miner} \cite{leemans2014discoveringinfrequent} screens. Following this, in the replay stage, user input is required for matching activity names in the event logs to process models as shown in Figure~\ref{fig:automated-replayer-screen} and this screen is derived from \textit{PNReplayer} package \cite{adriansyah2011towards} screens. When replay stage is completed, clustering of organizations based on performance indicators starts and user input is required for selecting the appropriate cluster size \textit{(k)} with the SSE values plotted as shown in Figure~\ref{fig:select-cluster-size-screen}. 
+When the user selects a number of event logs and starts \textit{Cross-Organizational Process Miner}, an informative screen about the plugin and the following steps are presented to the user as shown in Figure~\ref{fig:information-screen}. Following this screen, user is required to provide names for organizations of the event logs in a very simple form as can be seen in Figure~\ref{fig:organization-name-screen}. This step is added to provide user-friendly reports in the following stages with the names provided. In the stage of process mining, for each organization, user is expected  to provide a noise threshold and naming convention which is illustrated in Figure~\ref{fig:proc-miner-threshold-screen} and this screen is an extension of \textit{Inductive Miner} \cite{leemans2014discoveringinfrequent} screens. Following this, in the replay stage, user input is required for matching activity names in the event logs to process models as shown in Figure~\ref{fig:automated-replayer-screen} and this screen is derived from \textit{PNReplayer} package \cite{adriansyah2011towards} screens. When replay stage is completed, clustering of organizations based on performance indicators starts and user input is required for selecting the appropriate cluster size \textit{(k)} with the SSE values plotted as shown in Figure~\ref{fig:select-cluster-size-screen}. 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{4_methodology/select-cluster-size-screen}
@@ -452,7 +452,7 @@ With the successful execution of plugin, recommendation outputs are presented to
   \label{fig:result-without-clustering-screen}
 \end{figure}
 
-When the user selects to check mismatch patterns with performance clustering, in addition to organization, \textit{performance difference threshold} should be selected. For the selected organization's cluster, all performance indicators are listed as tabs in the main panel as visualized in Figure~\ref{fig:result-with-clustering-screen}. For each performance indicator, difference percentages between clusters are tabulated and highlighted if there is any other cluster perform better than the threshold. For the clusters performing better than threshold, mismatch patterns between the organizations of these clusters are listed in the second level tabs. This visualization aims to list mismatch patterns for an organization, compared to other clusters which perform better than the difference threshold.
+When the user selects to check mismatch patterns with performance clustering, in addition to organization, \textit{performance difference threshold} should be selected. For the selected organization's cluster, all performance indicators are listed as tabs in the main panel as visualized in Figure~\ref{fig:result-with-clustering-screen}. For each performance indicator, difference percentages between clusters are tabulated and highlighted if there is any other cluster that performs better than the threshold. For the clusters performing better than threshold, mismatch patterns between the organizations of these clusters are listed in the second level tabs. This visualization aims to list mismatch patterns for an organization, compared to other clusters which perform better than the difference threshold.
 
 \begin{figure}
 	\centering
