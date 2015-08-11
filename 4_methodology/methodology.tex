@@ -445,12 +445,12 @@ When the user selects a number of event logs and starts \textit{Cross-Organizati
 
 With the successful execution of plugin, recommendation outputs are presented to the end user. Recommendations are visualized in two ways to create comparable outputs with and without performance clustering. When the user selects to check mismatch patterns without performance clustering, an organization should be selected at the left top of the screen in Figure~\ref{fig:result-without-clustering-screen}. For the selected organization, all other organizations are compared and mismatch patterns are listed in separate tabs as shown in the main panel of Figure~\ref{fig:result-without-clustering-screen}. Main idea behind adding this visualization is to provide an insight to user that how much mismatch patterns can be discovered between organizations when no performance clustering is applied.
 
-\begin{figure}
+\begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=\textwidth]{4_methodology/result-without-clustering-screen}
 	\caption{ Mismatch Patterns without Performance Clustering Screen of Cross-Organizational Process Miner Plugin}
   \label{fig:result-without-clustering-screen}
-\end{figure}
+\end{sidewaysfigure}
 
 When the user selects to check mismatch patterns with performance clustering, in addition to organization, \textit{performance difference threshold} should be selected. For the selected organization's cluster, all performance indicators are listed as tabs in the main panel as visualized in Figure~\ref{fig:result-with-clustering-screen}. For each performance indicator, difference percentages between clusters are tabulated and highlighted if there is any other cluster that performs better than the threshold. For the clusters performing better than threshold, mismatch patterns between the organizations of these clusters are listed in the second level tabs. This visualization aims to list mismatch patterns for an organization, compared to other clusters which perform better than the difference threshold.
 
