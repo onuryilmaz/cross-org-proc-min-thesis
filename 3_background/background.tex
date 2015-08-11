@@ -4,7 +4,7 @@ In this chapter background information is presented for the relevant topics to t
 
 \section{Event Log}
 \label{sec:event-log}
-Event logs are the main inputs to any process mining methodology including this thesis study and they include information related to real life activities. Event logs which are the outputs of the software systems like Enterprise Resource Planning (ERP) or Business Process Management (BPM) have common properties that are also assumed in the literature as the properties of event logs. General structure of event logs includes multiple layers as diagrammed in Figure~\ref{fig:event-log-structure}. Processes have cases which are simply single process instances. Within each case, there are events that are generally represents a sequence of activities performed. Each event is enhanced with the attributes such as timestamps, resource assignments and other contextual data. A fragment of this structure is presented in Table~\ref{table:event-log-loan} for the Loan Application Process \cite{loan-app-data}, which shows the footprints of a financial organization that provides consumer credits \cite{buijs2013improving}. In the table, each line represents an event with its attributes which are collected under cases to form a complete event log. 
+Event logs are the main inputs to any process mining methodology including this thesis study and they include information related to real life activities. Event logs which are the outputs of the software systems like Enterprise Resource Planning (ERP) or Business Process Management (BPM) have common properties that are also assumed in the literature as the properties of event logs. General structure of event logs includes multiple layers as diagrammed in Figure~\ref{fig:event-log-structure}. Processes have cases which are simply single process instances. Within each case, there are events that are generally represented as a sequence of activities performed. Each event is enhanced with the attributes such as timestamps, resource assignments and other contextual data. A fragment of this structure is presented in Table~\ref{table:event-log-loan} for the Loan Application Process \cite{loan-app-data}, which shows the footprints of a financial organization that provides consumer credits \cite{buijs2013improving}. In the table, each line represents an event with its attributes which are collected under cases to form a complete event log. 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{3_background/event_log_structure}
@@ -48,7 +48,7 @@ Event log structure and related notions are formalized in \cite{van2011process} 
   \end{definition}
   \theoremstyle{definition}
   \begin{definition}{}
-  (Trace) Trace is a sequence of event \textit{t} $\in$ ${E}^{*}$ such that each event is restricted to occur only once.
+  (Trace) Trace is a sequence of events, \textit{t} $\in$ ${E}^{*}$ such that each event is restricted to occur only once.
   \end{definition}
   \theoremstyle{definition}
   \begin{definition}{}
@@ -59,11 +59,11 @@ In this study, event logs from different organizations are exploited, thus organ
 
 \section{Process Modeling}
 \label{sec:process-modeling}
-Process modeling is the foundation of process management applications and main tools of people in this profession. Although process modeling can be defined with informal process workflows to document procedures, there are a number of formalized notations which are more suitable to cross-applicability and mathematical analysis. In the control-flow view of process modeling, a process model is aimed to give decisions on which activities to take place with their orders. In this study, control-flow of process models are used to find mismatch patterns between different organizations that execute the same activities. Considering the scope of this  thesis, only Petri nets, Workflow Nets and Business Process Modeling Notation (BPMN) will be presented in this section. 
+Process modeling is the foundation of process management applications and main tools of people in this profession. Although process modeling can be defined with informal process workflows to document procedures, there is a number of formalized notations which are more suitable to cross-applicability and mathematical analysis. In the control-flow view of process modeling, a process model is aimed to give decisions on which activities to take place with their orders. In this study, control-flow of process models are used to find mismatch patterns between different organizations that execute the same activities. Considering the scope of this  thesis, only Petri nets, Workflow Nets and Business Process Modeling Notation (BPMN) will be presented in this section. 
 
 \subsection{Petri Nets}
 \label{sec:petri-nets}
-Petri net is a mathematical modeling language that is aimed to describe concurrent systems. Graphical notation of Petri nets seems intuitive and simple; however, it is powerful in terms of being executable and applicability of analysis techniques \cite{vanderAalst:2011:MBP:2000715}. Petri nets are directed bipartite graphs where \textit{nodes} represent transitions and \textit{places} represent conditions. Structure represented by Petri nets is static and the state of the net is described by placing \textit{tokens}, namely the process of \textit{marking}. Formalization of Petri nets are explained in \cite{reisig1998lectures} as following:
+Petri net is a mathematical modeling language that is aimed to describe concurrent systems. Graphical notation of Petri nets seems intuitive and simple; however, it is powerful in terms of being executable and applicability of analysis techniques \cite{vanderAalst:2011:MBP:2000715}. Petri nets are directed bipartite graphs where \textit{nodes} represent transitions and \textit{places} represent conditions. Structure represented by Petri nets is static and the state of the net is described by placing \textit{tokens}, namely the process of \textit{marking}. Formalization of Petri nets are explained in \cite{reisig1998lectures} as follows:
 \theoremstyle{definition}
 \begin{definition}{}
 (Petri Nets) A \textit{Petri net} is a triplet $N = (P, T, F)$ where $P$ is finite set of \textit{places}, $T$ is finite set of \textit{transitions} and $F$ is set of \textit{flow relations} where:
@@ -75,7 +75,7 @@ Petri net is a mathematical modeling language that is aimed to describe concurre
 
 \subsection{Workflow Nets}
 \label{sec:workflow-nets}
-Process models in the real life have additional properties to be executable and they are defined in the Workflow net formalization, which is simply a subset of Petri nets. These additional properties can be formalized as following \cite{van2013discovering}:
+Process models in the real life have additional properties to be executable and they are defined in the Workflow net formalization, which is simply a subset of Petri nets. These additional properties can be formalized in \cite{van2013discovering} as follows:
 \theoremstyle{definition}
 \begin{definition}{}
 (Workflow Nets) Let $N = (P, T, F)$ be a Petri net and $t$ is a new identifier not in $P \cup T$. $N$ is a workflow net (WF-net) if and only if:
@@ -94,7 +94,7 @@ In simple terms, a Workflow net is a Petri net with a source place to start the 
   \label{fig:loan-petri-net}
 \end{figure}
 
-Workflow nets are representatives of real life processes; however, they can result with processes including deadlocks, live-locks and never-reached activities. In order to avoid process models from these problems, soundness definition is suggested in \cite{van1998application} and it is simplified as following with the context of this thesis:
+Workflow nets are representatives of real life processes; however, they can result with processes including deadlocks, live-locks and never-reached activities. In order to avoid process models from these problems, soundness definition is suggested in \cite{van1998application} and it is simplified as follows with the context of this thesis:
 \theoremstyle{definition}
 \begin{definition}{}
 (Soundness) Let $N$ be a Workflow net and it is sound if and only if:
