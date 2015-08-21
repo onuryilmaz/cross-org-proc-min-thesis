@@ -72,7 +72,7 @@ In addition to average and standard deviation, minimum and maximum times between
 
 \subsection{Replay and Performance Indicator Calculation}
 \label{subsec:replay-and-performance-summary}
-Replay of event logs on process models is based on the idea of \textit{alignment} which is formalized in \cite{van2012replaying} and the basic assumption in this concept is that process models and event logs have the same activity labels. Alignment is based on \textit{moves in the model and log} and in order to have a successful replay where optimal alignment should be achieved. As proposed in \cite{adriansyah2011conformance} \cite{adriansyah2011towards}, $A^{*}$ algorithm which is a path-finding algorithm based on graphs is used to find optimal alignment of event logs on the process models.
+Replay of event logs on process models is based on the idea of \textit{alignment} which is formalized in \cite{van2012replaying} and the basic assumption in this concept is that process models and event logs have the same activity labels. Alignment is based on \textit{moves in the model and log} and in order to have a successful replay where optimal alignment should be achieved. As proposed in \cite{adriansyah2011conformance, adriansyah2011towards}, $A^{*}$ algorithm which is a path-finding algorithm based on graphs is used to find optimal alignment of event logs on the process models.
 
 In order to appropriately apply $A^{*}$ algorithm, there are number of manual and computational steps that should be undertaken. The following prerequisite steps are implemented in \cite{adriansyah2011towards} to apply $A^{*}$ algorithm:
  \begin{description}
