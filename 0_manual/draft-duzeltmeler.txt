@@ -1,6 +1,6 @@
 1) Marginde yazý düzeltmeleri
 vi
-32
+[checked] 32
 36
 39
 40
