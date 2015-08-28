@@ -4,9 +4,9 @@
 [checked] 36
 [checked] 39 ("achieve"->"complete" deðiþtirildi)
 [checked] 40 (sloppy ile deðiþtirildi)
-[?] 59
+[checked] 59
 [checked] 66
 
-[?] 2) Abstract
+[to-do] 2) Abstract - sayfa sayýsý yanlýþ diyor
 
 [checked] 3) Remove appendices cover 
