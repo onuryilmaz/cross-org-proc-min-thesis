@@ -2,7 +2,7 @@
 [?] vi
 [checked] 32
 [checked] 36
-[?] 39 ("achieve" [in-progress])
+[checked] 39 ("achieve"->"complete" deðiþtirildi)
 [?] 40
 [?] 59
 [checked] 66
