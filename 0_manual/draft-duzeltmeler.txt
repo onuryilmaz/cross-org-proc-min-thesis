@@ -1,11 +1,11 @@
 1) Marginde yazý düzeltmeleri
-vi
+[?] vi
 [checked] 32
-[in-progress] 36
-39
-40
-59
-66
+[checked] 36
+[?] 39
+[?] 40
+[?] 59
+[in-progress] 66
 
 [?] 2) Abstract
 
