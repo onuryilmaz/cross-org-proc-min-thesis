@@ -129,7 +129,7 @@ For each organization, \textit{Performance Summary} data is used as the data sou
 
 \theoremstyle{definition}
 \begin{definition}
-Cluster Analysis Data is a tuple \textit{(k, Assignments, Cluster\ Centroids)} where
+Cluster Analysis Data is a tuple $(k, Assignments, Cluster\ Centroids)$ where
 \begin{enumerate}
 	\item $k$ is the number of clusters,
 	\item $Assignments$ is a set of tuple $(Organization_{i}, Cluster_{j})$ where $i$ is identifier for organization and $j \leq k$ is identifier for cluster,
@@ -254,9 +254,7 @@ For each organization, mined process models are converted to BPMN models and mis
 	\item[Different Conditions for Occurrence] Different conditions for occurrence take place where an activity has the same dependencies in different organizations but with different conditions. For instance, an organization needs to complete all dependency tasks before starting the next one; though another organization checks for the completion of only one of these dependencies. This difference between organizations can lead to loosening or tightening of the conditions based on the application of other organizations. Considering the representation of different conditions for occurrence and other control flow mismatch patterns, a generic definition is developed firstly to use and further customize. Different conditions for occurrence pattern definition is developed based on this generic definition as following.
 		\theoremstyle{definition}
 		\begin{definition}
-		Control Flow Mismatch pattern is a tuple 
-
-		${Control\ Flow\ Mismatch} = (O_{1}, O_{2}, A, Prev_{1}, G_{1}, Prev_{2}, G_{2}, A_{start}, A_{end}) $ where 
+		Control Flow Mismatch pattern is a tuple ${Control\ Flow\ Mismatch} = (O_{1}, O_{2}, A, Prev_{1}, G_{1}, Prev_{2}, G_{2}, A_{start}, A_{end}) $ where 
 		\begin{enumerate}
 		  \item $O_{1}$ is the first organization with the BPMN model of $BPMN_{{O}_{1}}$,
 		  \item $O_{2}$ is the second organization with the BPMN model of $BPMN_{{O}_{2}}$,
@@ -283,9 +281,7 @@ For each organization, mined process models are converted to BPMN models and mis
 
 		\theoremstyle{definition}
 		\begin{definition}
-		Different Conditions Analyzer is a function 
-
-		$DifferentConditionsAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Conditions for Occurrence} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
+		Different Conditions Analyzer is a function $DifferentConditionsAnalyzer(O_{1}, O_{2}, A_{start}, A_{end})$ and it returns a set of \textit{Different Conditions for Occurrence} for the organization $O_{1}$ compared to $O_{2}$ for the activities between $A_{start}$ and $A_{end}$.
 		\end{definition}	
 
 	\item[Different Dependencies] When the dependency set of a specific activity is different in organizations, it can be concluded that this activity and the relation between its dependency sets should be reviewed since it can be achieved in both environments. Organizations can learn from each other to eliminate or enhance their process flows by changing these dependency sets. This can include re-organization of activities as well as removing and adding new activities. The idea is structured in the following simplified definition.
