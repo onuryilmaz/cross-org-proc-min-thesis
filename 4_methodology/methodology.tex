@@ -49,8 +49,7 @@ In order to evaluate the performance of an organization based on their process m
   \item[Average Time Between Activities] For each activity in the process model, average time to reach other activity is calculated. This is a simple but powerful performance metric for organizations since it can yield the average time to complete one task based on a starting point. From the performance perspective, organizations want to minimize average time between activities to increase their throughput \cite{van2012replaying}. This notion can be defined as follows:
 	\theoremstyle{definition}
 	\begin{definition}{}
-	Average time between activity $A$ and $B$ in organization $i$ is 
-	$AvgTime_{A\rightarrow B}^{i} = \frac{\sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(A,B)}{|Occurences_{Event\ Log_{i}}(A,B)|}$ where
+	Average time between activity $A$ and $B$ in organization $i$ is $AvgTime_{A\rightarrow B}^{i} = \frac{\sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(A,B)}{|Occurences_{Event\ Log_{i}}(A,B)|}$ where
 		\begin{enumerate}
 			\item $TimeBetween_{c}(A, B) = EndTime_{c}(B) - StartTime_{c}(A)$
 			\item $StartTime_{c}(A)$ is start time of activity $A$ in case $c$,

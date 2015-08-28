@@ -1,9 +1,9 @@
 1) Marginde yazý düzeltmeleri
-[?] vi
+[checked] vi (amaçlar kelimesi düzeldi)
 [checked] 32
 [checked] 36
 [checked] 39 ("achieve"->"complete" deðiþtirildi)
-[?] 40
+[checked] 40 (sloppy ile deðiþtirildi)
 [?] 59
 [checked] 66
 
