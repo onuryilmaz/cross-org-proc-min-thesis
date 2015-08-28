@@ -1,7 +1,7 @@
 1) Marginde yazý düzeltmeleri
 vi
 [checked] 32
-36
+[in-progress] 36
 39
 40
 59
