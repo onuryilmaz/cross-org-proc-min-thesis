@@ -2,10 +2,10 @@
 [?] vi
 [checked] 32
 [checked] 36
-[?] 39
+[?] 39 ("achieve" [in-progress])
 [?] 40
 [?] 59
-[in-progress] 66
+[checked] 66
 
 [?] 2) Abstract
 
