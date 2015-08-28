@@ -1126,5 +1126,5 @@ to\hsize{\hfil\box\@tempboxa\hfil}
 \uccode`@=`I \lccode`@="10
 
 \let\@enddoc=\enddocument
-\def\enddocument{\label{`@lastpage'}\@enddoc }
+\def\enddocument{\label{'@lastpage'}\@enddoc }
 
