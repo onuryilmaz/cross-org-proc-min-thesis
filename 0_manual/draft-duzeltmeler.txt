@@ -1,9 +1,12 @@
-Mark as completed each 
-Check over pdf
-
 1) Marginde yazý düzeltmeleri
-vi, 32, 36, 39, 40, 59, 66
+vi
+32
+36
+39
+40
+59
+66
 
-2) Abstract?
+[?] 2) Abstract
 
-3) Remove appendices cover 
+[checked] 3) Remove appendices cover 

@@ -50,7 +50,7 @@ In order to evaluate the performance of an organization based on their process m
 	\theoremstyle{definition}
 	\begin{definition}{}
 	Average time between activity $A$ and $B$ in organization $i$ is 
-	$AvgTime_{A\rightarrow B}^{i} = \sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(A,B) / |Occurences_{Event\ Log_{i}}(A,B)|$ where
+	$AvgTime_{A\rightarrow B}^{i} = \frac{\sum_{Case\ c \in Event Log_{i}} TimeBetween_{c}(A,B)}{|Occurences_{Event\ Log_{i}}(A,B)|}$ where
 		\begin{enumerate}
 			\item $TimeBetween_{c}(A, B) = EndTime_{c}(B) - StartTime_{c}(A)$
 			\item $StartTime_{c}(A)$ is start time of activity $A$ in case $c$,
