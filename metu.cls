@@ -794,7 +794,7 @@ to\hsize{\hfil\box\@tempboxa\hfil}
  Tez Y\"{o}neticisi & : \expthr@@{\@turkishsupervisor} \\[0.2cm]
  \ifexist@co Ortak Tez Y\"{o}neticisi & : \expthr@@{\@turkishcosupervisor}\fi \\[0.2cm]
 \end{tabular}
-\vskip \baselineskip \ifx\@date\kernel@date \@tdate \else \@datetotur{\@date} \fi, \pageref{`@lastpage'} sayfa\end{center}
+\vskip \baselineskip \ifx\@date\kernel@date \@tdate \else \@datetotur{\@date} \fi, \pageref{'@lastpage'} sayfa\end{center}
 \vskip \baselineskip \oneandhalfspacing
 \ifd@uble\doublespacing\else\ifs@ngle\singlespacing\else\oneandhalfspacing\fi\fi
 \@oztext}
@@ -832,7 +832,7 @@ to\hsize{\hfil\box\@tempboxa\hfil}
  Supervisor & : \expthr@@{\@supervisor} \\[0.2cm]
  \ifexist@co Co-Supervisor & : \expthr@@{\@cosupervisor}\fi\\[0.2cm]
 \end{tabular}
-\vskip \baselineskip \@date, \pageref{`@lastpage'} pages\end{center}
+\vskip \baselineskip \@date, \pageref{'@lastpage'} pages\end{center}
 \vskip \baselineskip 
 \ifd@uble\doublespacing\else\ifs@ngle\singlespacing\else\oneandhalfspacing\fi\fi
 \@abstracttext}
