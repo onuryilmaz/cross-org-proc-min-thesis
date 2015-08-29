@@ -7,6 +7,6 @@
 [checked] 59
 [checked] 66
 
-[to-do] 2) Abstract - sayfa sayýsý yanlýþ diyor
+[checked] 2) Abstract - sayfa sayýsý yanlýþ diyor
 
 [checked] 3) Remove appendices cover 
