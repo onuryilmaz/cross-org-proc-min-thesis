@@ -1,16 +1,16 @@
 \chapter{METHODOLOGY}
 \label{chp:methodology}
 
-In this chapter, methodology proposed in this thesis study is presented. Firstly, approach overview is described from a high-level perspective. Then, each stage in the methodology is presented together with their importance in the study, mathematical representations and definitions; and black-box diagrams. In the last section of this chapter, implementation details of this methodology in ProM framework is explained in detail with a software architecture overview.
+In this chapter, the methodology proposed in this thesis study is presented. Firstly, approach overview is described from a high-level perspective. Then, each stage in the methodology is presented together with their importance in the study, mathematical representations and definitions; and black-box diagrams. In the last section of this chapter, implementation details of this methodology in ProM framework is explained in detail with a software architecture overview.
 
 \section{Approach Overview}
 \label{sec:approach-overview}
-Approach proposed in this study consists of four main stages and general information about these stages can be summarized as follows:
+The approach proposed in this study consists of four main stages and general information about these stages can be summarized as follows:
 \begin{description}
 	\item[Process Model Mining:] Process models are extracted from event logs for each organization with a user specified noise threshold.
 	\item[Performance Indicator Analysis:] Event logs are replayed on process models and performance indicators are calculated for each organization. Using these indicators, organizations are clustered based on how well they are operating.
-	\item[Mismatch Pattern Analysis:] Differences between process models of organizations are extracted with a well-established mismatch patterns.
-	\item[Recommendation Generation:] Using the performance indicator clusterings and differences between process models, a set of recommendation for each organization is generated.
+	\item[Mismatch Pattern Analysis:] Differences between process models of organizations are extracted with well-established mismatch patterns.
+	\item[Recommendation Generation:] Using the performance indicator clusterings and differences between process models, a set of recommendations for each organization is generated.
 \end{description}
 
 Flow of these stages with the important input and outputs can be visualized in Figure~\ref{fig:approach-overview}. In the following sections, each stage will be explained in detail with their mathematical backgrounds.
@@ -23,7 +23,7 @@ Flow of these stages with the important input and outputs can be visualized in F
 
 \section{Process Model Mining}
 \label{sec:process-model-mining}
-Process model mining stage in the proposed approach has the aim of creating reproducible and generalized process models from event logs. In order to achieve this aim, implementation of \textit{Inductive Miner Infrequent (IMi)}, which is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs, is used in this study. 
+Process model mining in the proposed approach has the aim of creating reproducible and generalized process models from event logs. In order to achieve this aim, implementation of \textit{Inductive Miner Infrequent (IMi)}, which is proposed in \cite{leemans2014discoveringinfrequent} as an extension to \textit{Inductive Miner} to handle noise in the event logs, is used in this study. 
 
 The selected implementation has the ability of pruning data to handle noise in the event logs. Like the other data mining approaches, event logs include data related to the infrequent behaviors occurred in real life. Although these infrequent behaviors might be caused by important structural or case related issues that should be analyzed; they make the process of mining and results more complex. Within the scope of this study, without cleaning the data, most of the process model mining approaches result with \textit{spaghetti-like models} \cite{van2011process} which are difficult to further analyze. Since this thesis focuses on learning from the cross-organizational process mining rather than creating the best-fitting process models, data cleaning and noise handling is a necessary step. Therefore preprocessing steps are undertaken with a compatible approach of \textit{Inductive Miner Infrequent (IMi)}, where data is cleaned in every inductive step.
 
@@ -71,10 +71,10 @@ In addition to average and standard deviation, minimum and maximum times between
 \label{subsec:replay-and-performance-summary}
 Replay of event logs on process models is based on the idea of \textit{alignment} which is formalized in \cite{van2012replaying} and the basic assumption in this concept is that process models and event logs have the same activity labels. Alignment is based on \textit{moves in the model and log} and in order to have a successful replay where optimal alignment should be achieved. As proposed in \cite{adriansyah2011conformance, adriansyah2011towards}, $A^{*}$ algorithm which is a path-finding algorithm based on graphs is used to find optimal alignment of event logs on the process models.
 
-In order to appropriately apply $A^{*}$ algorithm, there are number of manual and computational steps that should be undertaken. The following prerequisite steps are implemented in \cite{adriansyah2011towards} to apply $A^{*}$ algorithm:
+In order to appropriately apply $A^{*}$ algorithm, there are a number of manual and computational steps that should be undertaken. The following prerequisite steps are implemented in \cite{adriansyah2011towards} to apply $A^{*}$ algorithm:
  \begin{description}
 	\item[Set Label Patterns between Process Model and Event Log:] In the event logs, there are various different transitions of the same activity which are generally not represented in process models. For instance, there can be \textit{"Activity A, Start"} and \textit{"Activity A, End"} in the event log; however they are reflected as \textit{"Activity A"} in the process model. Therefore, a list of all transitions and events are asked to the user to match to the ones in the process model in terms of patterns or regular expressions.
-	\item[Create Initial and Final Markings:] In case of there is no definite starting or ending point in the process model, user input is necessary to define these activities.
+	\item[Create Initial and Final Markings:] In case there is no definite starting or ending point in the process model, user input is necessary to define these activities.
 	\item[Set Cost Values:] Since $A^{*}$ algorithm is based on alignments which are basically moves along process models and event logs, the following cost values for each move is necessary to be set:
 	\begin{inparaenum}[\itshape a\upshape)]
 		\item move on process model, 
