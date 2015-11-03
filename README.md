@@ -1,4 +1,1 @@
-[Thesis Build Status](https://www.sharelatex.com/github/repos/onuryilmaz/thesis-tex)
-
-![](https://www.sharelatex.com/github/repos/onuryilmaz/thesis-tex/builds/latest/badge.svg)
-
+[![PDF Status](https://www.sharelatex.com/github/repos/onuryilmaz/cross-org-proc-min-thesis/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/onuryilmaz/cross-org-proc-min-thesis/builds/latest/output.pdf)
